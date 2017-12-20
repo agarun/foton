@@ -17,3 +17,14 @@
 /yarn-error.log
 
 .byebug_history
+
+# npm
+node_modules/
+npm-debug.log
+
+# webpack
+bundle.js
+bundle.js.map
+
+# osx
+.DS_Store
