@@ -1,5 +1,24 @@
 {
   "name": "foton",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "description": "500px clone built in Rails, React, & Redux",
+  "version": "0.0.1",
+  "main": "foton.jsx",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agarun/foton.git"
+  },
+  "author": "Aaron Agarunov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/agarun/foton/issues"
+  },
+  "homepage": "https://github.com/agarun/foton#readme"
 }
