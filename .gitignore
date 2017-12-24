@@ -28,3 +28,6 @@ bundle.js.map
 
 # osx
 .DS_Store
+
+# rails
+.keep
