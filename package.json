@@ -16,7 +16,7 @@
   },
   "description": "500px clone built in Rails, React, & Redux",
   "version": "0.0.1",
-  "main": "foton.jsx",
+  "main": "index.jsx",
   "directories": {
     "test": "test"
   },
