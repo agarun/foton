@@ -8,6 +8,8 @@ class User < ApplicationRecord
     user if user && user.valid_password?(plaintext_password)
   end
 
+  after_initialize :ensure_unique_session_token
+
   def password
     @password
   end
@@ -27,8 +29,6 @@ class User < ApplicationRecord
     self.session_token = generate_session_token
     self.save! && self.session_token
   end
-
-  after_initialize :ensure_unique_session_token
 
   private
 
