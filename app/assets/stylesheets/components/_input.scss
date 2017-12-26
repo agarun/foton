@@ -18,10 +18,11 @@
 
   &:focus {
     border-color: #2188ff;
-    box-shadow: 0 0 0 0.16em rgba(5, 90, 200, 0.2);
+    box-shadow: 0 0 0 0.2em rgba(5, 90, 200, 0.2);
   }
 }
 
 .input-invalid {
-  
+  border-color: #d62344;
+  box-shadow: 0 0 0 0.2em rgba(200, 5, 5, 0.2);
 }
