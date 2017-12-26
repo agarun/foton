@@ -6,13 +6,39 @@
   align-items: center;
   width: 100%;
   height: 100%;
-  background-color: $lightgray;
+  background-color: $gray-light;
+
+  form {
+    padding: 36px;
+    position: relative;
+    bottom: 15%;
+    max-width: 400px;
+    min-height: 300px;
+    background-color: white;
+    border-radius: 3px;
+    border: 1px solid $gray-border;
+
+    label {
+      font-size: 14px;
+      color: $gray-medium;
+    }
+  }
+
+  h1 {
+    margin-bottom: 1em;
+    font-size: 1.5em;
+    letter-spacing: 0.01em;
+    text-align: center;
+    color: $gray-header;
+  }
 }
 
-.session-form form {
-  position: relative;
-  bottom: 10%;
-  max-width: 400px;
-  min-height: 300px;
-  background-color: white;
+.session-form-redirect {
+  font-size: 14px;
+  color: $gray-header;
+
+  a {
+    text-decoration: none;
+    color: $blue;
+  }
 }
