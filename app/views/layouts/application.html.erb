@@ -6,9 +6,15 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_tag do %>
+      <% if logged_in? %>
+        window.currentUser =
+          <%= (render "api/users/user.json.jbuilder",
+              user: current_user).html_safe %>
+      <% end %>
+    <% end %>
     <%= javascript_include_tag 'application' %>
   </head>
-
   <body>
     <%= yield %>
   </body>
