@@ -1,0 +1,27 @@
+.input-block {
+  margin-top: 4px;
+  margin-bottom: 12px;
+  padding: 8px;
+  display: block;
+  font-size: 14px;
+  line-height: 20px;
+  color: $gray-medium;
+
+  border: 1px solid #dbdde0;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 1px rgba(27, 31, 35, 0.05);
+  outline: none;
+}
+
+.input-session {
+  width: 320px;
+
+  &:focus {
+    border-color: #2188ff;
+    box-shadow: 0 0 0 0.16em rgba(5, 90, 200, 0.2);
+  }
+}
+
+.input-invalid {
+  
+}
