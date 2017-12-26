@@ -13,6 +13,7 @@ class SessionForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.demoUserLogin = this.demoUserLogin.bind(this);
   }
 
   handleSubmit(e) {
@@ -29,6 +30,17 @@ class SessionForm extends React.Component {
       if (this.props.errors) this.props.clearErrors();
       this.setState({ [field]: e.currentTarget.value });
     };
+  }
+
+  demoUserLogin(e) {
+    const demoUser = {
+      username: 'adventurer',
+      password: 'password'
+    };
+    e.persist();
+    this.setState(demoUser, () => {
+      this.handleSubmit(e);
+    });
   }
 
   render() {
@@ -70,10 +82,14 @@ class SessionForm extends React.Component {
             />
           </label>
           <input
+            className="green-button session-button"
             type="submit"
             value={formType === 'login' ? 'Log in' : 'Sign up'}
           />
-          <button>
+          <button
+            className="blue-button session-button"
+            onClick={this.demoUserLogin}
+          >
             Guest Sign In
           </button>
           <p className="session-form-redirect">
