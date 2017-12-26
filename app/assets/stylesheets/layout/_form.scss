@@ -46,15 +46,32 @@
   }
 }
 
+@keyframes slideInDown {
+  from {
+    transform: translate3d(0, -100%, 0);
+    visibility: visible;
+  }
+
+  to { transform: translate3d(0, 0, 0); }
+}
+
 .session-error {
   padding: 8px;
   position: absolute;
-  top: 2%;
+  top: -50px;
   width: 400px;
-  background-color: $red;
-  color: white;
+  display: flex;
+  align-items: center;
   font-size: 13px;
   font-weight: 500;
+  white-space: pre-wrap;
   letter-spacing: 0.01em;
-  border-radius: 3px;
+  background-color: $red;
+  color: white;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  animation-name: slideInDown;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+  svg { margin: 2px 12px 0px 4px; }
 }
