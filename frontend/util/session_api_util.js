@@ -8,16 +8,16 @@ export const logIn = user => (
   })
 );
 
-export const logOut = userId => (
+export const logOut = () => (
   $.ajax({
-    method: 'GET',
-    url: `/api/users/${userId}`,
+    method: 'DELETE',
+    url: `/api/session`,
   })
 );
 
 export const signUp = user => (
   $.ajax({
-    method: 'GET',
+    method: 'POST',
     url: `/api/users/`,
     data: {
       user
