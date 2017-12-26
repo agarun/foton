@@ -22,20 +22,19 @@ class SessionForm extends React.Component {
   }
 
   handleChange(field) {
-    return (e) => (
-      this.setState({
-        [field]: e.currentTarget.value
-      })
-    );
+    return (e) => {
+      if (this.props.errors) this.props.clearErrors();
+      this.setState({ [field]: e.currentTarget.value });
+    };
   }
 
   render() {
     const formType = this.props.formType;
     const errors = this.props.errors;
-    
+
     return (
       <section className="session-form">
-        {errors && <div>You've got errors</div>}
+        {errors && <div>Need fly in & out animations. Need render detail.</div>}
         <form onSubmit={this.handleSubmit}>
           <h1>
             {formType === 'login' ? 'Log In to Foton' : 'Join Foton'}
@@ -88,6 +87,16 @@ class SessionForm extends React.Component {
         </form>
       </section>
     );
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.formType !== nextProps.formType) {
+      this.props.clearErrors();
+    }
+  }
+
+  componentWillUnmount() {
+    this.props.clearErrors();
   }
 }
 
