@@ -1,0 +1,18 @@
+.session-form {
+  position: absolute;
+  top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: $lightgray;
+}
+
+.session-form form {
+  position: relative;
+  bottom: 10%;
+  max-width: 400px;
+  min-height: 300px;
+  background-color: white;
+}
