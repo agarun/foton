@@ -35,7 +35,7 @@ class User < ApplicationRecord
 
   def ensure_unique_session_token
     loop do
-      self.session_token ||= generate_session_token
+      self.session_token = generate_session_token
       break if User.find_by(session_token: session_token).nil?
     end
   end
