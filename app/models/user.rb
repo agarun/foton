@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-  validates :username, :password_digest, :session_token, presence: true
+  validates :password_digest, :session_token, presence: true
   validates :username, :session_token, uniqueness: true
-  validates :username, length: { minimum: 4 }
+  validates :username, length: { minimum: 4, maximum: 24 }
   validates :password, length: { minimum: 6, allow_nil: true }
 
   def self.find_by_credentials(username, plaintext_password)

@@ -6,7 +6,7 @@ class Api::UsersController < ApplicationController
       log_in(@new_user)
       render :show
     else
-      render json: @new_user.errors.full_messages,
+      render json: @new_user.errors.to_hash(true),
              status: :unprocessable_entity
     end
   end
