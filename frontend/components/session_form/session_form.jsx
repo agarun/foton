@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SessionError from './session_error';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -18,7 +19,9 @@ class SessionForm extends React.Component {
     e.preventDefault();
 
     const newUser = Object.assign({}, this.state);
-    this.props.processForm(newUser);
+    this.props.processForm(newUser).then(() => {
+      this.props.history.push('/');
+    });
   }
 
   handleChange(field) {
@@ -34,7 +37,7 @@ class SessionForm extends React.Component {
 
     return (
       <section className="session-form">
-        {errors && <div>Need fly in & out animations. Need render detail.</div>}
+        {errors && <SessionError sessionErrors={errors} />}
         <form onSubmit={this.handleSubmit}>
           <h1>
             {formType === 'login' ? 'Log In to Foton' : 'Join Foton'}

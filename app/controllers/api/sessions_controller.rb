@@ -9,10 +9,10 @@ class Api::SessionsController < ApplicationController
       log_in(@user)
       render :show
     elsif User.find_by(username: params[:user][:username])
-      render json: { password: "Invalid password! Please try again." },
+      render json: { password: ["Invalid password! Please try again."] },
              status: :unprocessable_entity
     else
-      render json: { username: "The username you entered is incorrect." },
+      render json: { username: ["The username you entered is incorrect."] },
              status: :unprocessable_entity
     end
   end
