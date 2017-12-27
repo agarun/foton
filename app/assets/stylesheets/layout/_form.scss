@@ -73,5 +73,9 @@
   animation-name: slideInDown;
   animation-duration: 0.5s;
   animation-fill-mode: both;
-  svg { margin: 2px 12px 0px 4px; }
+  z-index: 1000;
+
+  svg {
+    margin: 2px 12px 0px 4px;
+  }
 }

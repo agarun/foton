@@ -1,7 +1,75 @@
 nav {
-  height: 50px;
+  width: 100%;
+  z-index: 1;
+}
+
+.nav-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin: 0 auto;
+  width: 90%;
+  height: 100%;
+
+  a {
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  ul {
+    display: flex;
+  }
+}
+
+.nav-logo {
+  width: 70px;
 }
 
 .nav-transparent {
-  // drop-shadow
+  height: 80px;
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0.3),
+    transparent
+  );
+  background-color: transparent;
+
+  .nav-logo {
+    svg {
+      fill: white;
+    }
+    svg:hover {
+      fill: $gray-border;
+    }
+  }
+
+  a {
+    color: white;
+    &:hover {
+      color: $gray-border;
+    }
+  }
+}
+
+.nav-fixed {
+  position: fixed;
+  top: 0;
+  height: 50px;
+  background-color: white;
+  border-bottom: 1px solid $gray-border;
+
+  .nav-logo {
+    svg {
+      fill: black;
+    }
+    svg:hover {
+      fill: $blue;
+    }
+  }
+
+  a {
+    color: #222;
+    &:hover {
+      color: gray;
+    }
+  }
 }
