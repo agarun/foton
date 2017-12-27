@@ -2,6 +2,7 @@ class User < ApplicationRecord
   validates :password_digest, :session_token, presence: true
   validates :username, :session_token, uniqueness: true
   validates :username, length: { minimum: 4, maximum: 24 }
+  validate :check_invalid_characters
   validates :password, length: { minimum: 6, allow_nil: true }
 
   def self.find_by_credentials(username, plaintext_password)
@@ -42,5 +43,11 @@ class User < ApplicationRecord
 
   def generate_session_token
     SecureRandom.urlsafe_base64
+  end
+
+  def check_invalid_characters
+    if username.length > 4 && username.match(/\A[a-zA-Z0-9_]+\Z/)
+      errors.add(:username, "can only have letters, numbers, & underscores.")
+    end
   end
 end

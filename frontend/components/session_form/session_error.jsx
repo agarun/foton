@@ -8,7 +8,7 @@ const SessionError = ({ sessionErrors }) => (
       {
         Object
           .keys(sessionErrors)
-          .map(key => sessionErrors[key])
+          .map(errorType => sessionErrors[errorType].join('\n'))
           .join('\n')
       }
     </p>
