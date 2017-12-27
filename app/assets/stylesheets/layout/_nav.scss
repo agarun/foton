@@ -15,29 +15,35 @@ nav {
 .nav-wrapper {
   margin: 0 auto;
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
+  justify-content: space-between;
   align-items: center;
   width: 90%;
   height: 100%;
 }
 
-.nav-logo {
-  width: 70px;
+.nav-logo + ul {
+  margin: 0 40px;
+  flex-grow: 1;
+
+  li {
+    margin: 0 15px;
+  }
 }
 
 .nav-transparent {
   height: 80px;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), transparent);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.35), transparent);
   background-color: transparent;
 
   .nav-logo {
     svg { fill: white; }
-    svg:hover { fill: $gray-medium-2; }
+    svg:hover { fill: $gray-light-2; }
   }
 
   a {
     color: white;
-    &:hover { color: $gray-medium-2; }
+    &:hover { color: $gray-light-2; }
   }
 
   .login {
@@ -47,7 +53,7 @@ nav {
 
     &:hover {
       color: white;
-      background-color: rgba(0, 0, 0, 0.1);
+      background-color: rgba(255, 255, 255, 0.2);
     }
   }
 
@@ -62,7 +68,7 @@ nav {
 
     &:hover {
       color: white;
-      background-color: lighten($blue, 5%);
+      background-color: lighten($blue, 7%);
       border: 1px solid opacify($blue, 0.7);
     }
   }
