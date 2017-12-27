@@ -5,7 +5,7 @@
   display: block;
   font-size: 14px;
   line-height: 20px;
-  color: $gray-medium;
+  color: darken($gray-medium, 5%);
 
   border: 1px solid #dbdde0;
   border-radius: 3px;

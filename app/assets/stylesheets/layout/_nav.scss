@@ -1,15 +1,6 @@
 nav {
   width: 100%;
   z-index: 1;
-}
-
-.nav-wrapper {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  margin: 0 auto;
-  width: 90%;
-  height: 100%;
 
   a {
     text-decoration: none;
@@ -21,31 +12,58 @@ nav {
   }
 }
 
+.nav-wrapper {
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  width: 90%;
+  height: 100%;
+}
+
 .nav-logo {
   width: 70px;
 }
 
 .nav-transparent {
   height: 80px;
-  background-image: linear-gradient(
-    rgba(0, 0, 0, 0.3),
-    transparent
-  );
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), transparent);
   background-color: transparent;
 
   .nav-logo {
-    svg {
-      fill: white;
-    }
-    svg:hover {
-      fill: $gray-border;
-    }
+    svg { fill: white; }
+    svg:hover { fill: $gray-medium-2; }
   }
 
   a {
     color: white;
+    &:hover { color: $gray-medium-2; }
+  }
+
+  .login {
+    padding: 5px 15px;
+    border-radius: 3px;
+    transition: 150ms ease-out;
+
     &:hover {
-      color: $gray-border;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .signup {
+    margin: 15px;
+    padding: 5px 15px;
+    background-color: $blue;
+    color: white;
+    border-radius: 3px;
+    transition: 150ms ease-out;
+    border: 1px solid lighten($blue, 5%);
+
+    &:hover {
+      color: white;
+      background-color: lighten($blue, 5%);
+      border: 1px solid opacify($blue, 0.7);
     }
   }
 }
@@ -58,18 +76,38 @@ nav {
   border-bottom: 1px solid $gray-border;
 
   .nav-logo {
-    svg {
-      fill: black;
-    }
-    svg:hover {
-      fill: $blue;
-    }
+    svg { fill: black; }
+    svg:hover { fill: $blue; }
   }
 
   a {
-    color: #222;
+    color: #444;
+    &:hover { color: $blue; }
+  }
+
+  .login {
+    padding: 15px;
+    display: block;
+
     &:hover {
-      color: gray;
+      color: $blue;
+    }
+  }
+
+  .signup {
+    padding: 15px;
+    display: block;
+    background-color: lighten($green, 3%);
+    color: white;
+
+    &:hover {
+      background-color: lighten($green, 6%);
+      color: white;
+    }
+
+    &:active {
+      background-color: $green;
+      color: white;
     }
   }
 }
