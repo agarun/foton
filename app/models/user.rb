@@ -46,8 +46,8 @@ class User < ApplicationRecord
   end
 
   def check_invalid_characters
-    if username.length > 4 && username.match(/\A[a-zA-Z0-9_]+\Z/)
-      errors.add(:username, "can only have letters, numbers, & underscores.")
+    if username.length > 4 && !username.match(/\A[a-zA-Z0-9_]+\Z/)
+      errors.add(:username, "can only have letters, numbers, and _.")
     end
   end
 end

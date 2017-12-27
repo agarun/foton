@@ -33,13 +33,16 @@ class SessionForm extends React.Component {
   }
 
   demoUserLogin(e) {
+    e.preventDefault();
+
     const demoUser = {
       username: 'adventurer',
       password: 'password'
     };
-    e.persist();
     this.setState(demoUser, () => {
-      this.handleSubmit(e);
+      this.props.demoLogIn(demoUser).then(() => {
+        this.props.history.push('/');
+      });
     });
   }
 
@@ -65,6 +68,7 @@ class SessionForm extends React.Component {
               type="text"
               autoComplete="username"
               onChange={this.handleChange('username')}
+              value={this.state.username}
               autoFocus
             />
           </label>
@@ -79,6 +83,7 @@ class SessionForm extends React.Component {
               type="password"
               autoComplete="off"
               onChange={this.handleChange('password')}
+              value={this.state.password}
             />
           </label>
           <input
