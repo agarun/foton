@@ -20,9 +20,7 @@ class SessionForm extends React.Component {
     e.preventDefault();
 
     const newUser = Object.assign({}, this.state);
-    this.props.processForm(newUser).then(() => {
-      this.props.history.push('/');
-    });
+    this.props.processForm(newUser);
   }
 
   handleChange(field) {
@@ -40,9 +38,7 @@ class SessionForm extends React.Component {
       password: 'password'
     };
     this.setState(demoUser, () => {
-      this.props.demoLogIn(demoUser).then(() => {
-        this.props.history.push('/');
-      });
+      this.props.demoLogIn(demoUser);
     });
   }
 
