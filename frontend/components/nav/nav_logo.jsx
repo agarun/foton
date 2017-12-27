@@ -1,11 +1,12 @@
 import React from 'react';
 import LogoSVG from '../svg/logo';
+import { Link } from 'react-router-dom';
 
 const NavLogo = () => (
   <section className="nav-logo">
-    <a href="/">
+    <Link to="/">
       <LogoSVG />
-    </a>
+    </Link>
   </section>
 );
 
