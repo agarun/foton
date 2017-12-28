@@ -31,3 +31,6 @@ bundle.js.map
 
 # rails
 .keep
+
+# Ignore application configuration
+/config/application.yml
