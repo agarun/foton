@@ -14,12 +14,12 @@ class User < ApplicationRecord
   validate :check_invalid_characters
   validates :password, length: { minimum: 6, allow_nil: true }
 
+  after_initialize :ensure_unique_session_token
+
   def self.find_by_credentials(username, plaintext_password)
     user = User.find_by(username: username)
     user if user && user.valid_password?(plaintext_password)
   end
-
-  after_initialize :ensure_unique_session_token
 
   def password
     @password
