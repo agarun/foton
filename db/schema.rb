@@ -10,16 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171225210037) do
+ActiveRecord::Schema.define(version: 20171228040531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "photos", force: :cascade do |t|
+    t.integer "author_id", null: false
+    t.string "title"
+    t.text "description"
+    t.boolean "is_cover_photo", default: false
+    t.boolean "is_profile_photo", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_photos_on_author_id"
+    t.index ["is_cover_photo"], name: "index_photos_on_is_cover_photo", where: "is_cover_photo"
+    t.index ["is_profile_photo"], name: "index_photos_on_is_profile_photo", where: "is_profile_photo"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
     t.string "password_digest", null: false
     t.string "session_token", null: false
-    t.string "bio"
+    t.text "bio"
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
