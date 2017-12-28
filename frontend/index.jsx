@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
+import ReactModal from 'react-modal';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -17,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore();
   }
 
+  ReactModal.setAppElement('#root');
   ReactDOM.render(
     <Root store={store} />,
     document.getElementById('root')
