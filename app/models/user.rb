@@ -5,6 +5,15 @@ class User < ApplicationRecord
   validate :check_invalid_characters
   validates :password, length: { minimum: 6, allow_nil: true }
 
+  has_many :photos, -> { where is_profile_photo: false },
+           foreign_key: :author_id
+  has_one :cover_photo, -> { where is_cover_photo: true },
+          foreign_key: :author_id,
+          class_name: :Photo
+  has_one :profile_photo, -> { where is_profile_photo: true },
+          foreign_key: :author_id,
+          class_name: :Photo
+
   def self.find_by_credentials(username, plaintext_password)
     user = User.find_by(username: username)
     user if user && user.valid_password?(plaintext_password)
