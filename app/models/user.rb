@@ -1,10 +1,4 @@
 class User < ApplicationRecord
-  validates :password_digest, :session_token, presence: true
-  validates :username, :session_token, uniqueness: true
-  validates :username, length: { minimum: 4, maximum: 24 }
-  validate :check_invalid_characters
-  validates :password, length: { minimum: 6, allow_nil: true }
-
   has_many :photos, -> { where is_profile_photo: false },
            foreign_key: :author_id
   has_one :cover_photo, -> { where is_cover_photo: true },
@@ -13,6 +7,12 @@ class User < ApplicationRecord
   has_one :profile_photo, -> { where is_profile_photo: true },
           foreign_key: :author_id,
           class_name: :Photo
+
+  validates :password_digest, :session_token, presence: true
+  validates :username, :session_token, uniqueness: true
+  validates :username, length: { minimum: 4, maximum: 24 }
+  validate :check_invalid_characters
+  validates :password, length: { minimum: 6, allow_nil: true }
 
   def self.find_by_credentials(username, plaintext_password)
     user = User.find_by(username: username)
