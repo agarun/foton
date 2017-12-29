@@ -1,0 +1,20 @@
+.upload-button {
+  cursor: pointer;
+
+  a {
+    padding: 15px;
+    display: block;
+    background-color: lighten($green, 3%);
+    color: white;
+
+    &:hover {
+      background-color: lighten($green, 6%);
+      color: white;
+    }
+
+    &:active {
+      background-color: $green;
+      color: white;
+    }
+  }
+}

@@ -1,0 +1,59 @@
+.ReactModalPortal > div {
+  opacity: 0;
+}
+
+.ReactModalPortal .ReactModal__Overlay {
+  transition: opacity 200ms ease-in-out;
+  opacity: 0;
+  z-index: 100;
+
+  &--after-open {
+    opacity: 1;
+  }
+
+  &--before-close {
+    opacity: 0;
+  }
+}
+
+.ReactModalPortal .ReactModal__Content {
+  box-shadow: 0 5px 40px 5px rgba(0, 0, 0, 0.21);
+  transition: all 200ms ease-in-out;
+  opacity: 0;
+  animation-name: zoomIn;
+  animation-duration: 0.2s;
+  animation-fill-mode: both;
+
+  &--after-open {
+    opacity: 1;
+  }
+
+  &--before-close {
+    animation-name: zoomOut;
+    animation-duration: 0.2s;
+    animation-fill-mode: both;
+  }
+}
+
+.upload-modal {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  bottom: 50px;
+  right: 50px;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  border-radius: 3px;
+  border: none;
+  &:focus { outline: none; }
+}
+
+.upload-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(black, 0.5);
+}
