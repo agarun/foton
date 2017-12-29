@@ -4,12 +4,71 @@ import ReactModal from 'react-modal';
 class UploadForm extends React.Component {
   constructor(props) {
     super(props);
+
+    this.initialState = {
+      title: '',
+      description: '',
+      imageFile: null,
+      imageUrl: '',
+    };
+
+    this.state = Object.assign({}, this.initialState);
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleFile = this.handleFile.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.resetState = this.resetState.bind(this);
   }
 
-  // upload form things
+  handleChange(field) {
+    return (e) => (
+      this.setState({ [field]: e.target.value })
+    );
+  }
+
+  handleFile(e) {
+    const file = e.currentTarget.files[0];
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      this.setState({ imageFile: file, imageUrl: fileReader.result });
+    };
+
+    if (file) {
+      fileReader.readAsDataURL(file);
+      if (!this.state.title.length) this.setState({ title: file.name });
+    }
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('photo[title]', this.state.title);
+    formData.append('photo[description]', this.state.description);
+    if (this.state.imageFile) formData.append('photo[image]', this.state.imageFile);
+    this.props.createPhoto(formData)
+      .then(() => {
+        // TODO: Navigate to user's profile
+        this.props.toggleUploadModal();
+      });
+  }
+
+  resetState() {
+    const blankState = Object.assign({}, this.initialState);
+    this.setState(blankState);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.showModal && !nextProps.showModal) {
+      setTimeout(this.resetState, 500);
+    }
+  }
+
+  componentWillUpdate() {
+    if (this.props.errors) this.props.clearErrors();
+  }
 
   render() {
-    const { toggleUploadModal, showModal } = this.props;
+    const { toggleUploadModal, showModal, errors } = this.props;
 
     return (
       <ReactModal
@@ -20,14 +79,72 @@ class UploadForm extends React.Component {
         className="upload-modal"
         overlayClassName="upload-overlay"
       >
-        <p>Modal Content</p>
-        <button onClick={toggleUploadModal}>
-          X
+        <section className="upload-area">
+          {
+            this.state.imageFile ? (
+              <section className="upload-image-preview">
+                {/* <button
+                  className="upload-photo-reset"
+                  onClick={this.resetState}>
+                </button> */}
+                <img
+                  src={this.state.imageUrl}
+                  alt="preview of image to upload"
+                  onClick={this.resetState}
+                />
+              </section>
+            ) : (
+              <label className="upload-select">
+                Select Photos
+                <input
+                  type="file"
+                  onChange={this.handleFile}
+                />
+              </label>
+            )
+          }
+        </section>
+        <form
+          className="upload-form"
+          onSubmit={this.handleSubmit}
+        >
+          <section className="upload-form-submit">
+            <button className="green-button upload-submit-button">
+              Submit
+            </button>
+          </section>
+          <section className="upload-form-input">
+            {
+              errors && (
+                <section className="upload-errors">
+                  {errors.join('\n')}
+                </section>
+              )
+            }
+            <label>
+              Title
+              <input
+                onChange={this.handleChange('title')}
+                value={this.state.title}
+              />
+            </label>
+            <label>
+              Description
+              <textarea
+                onChange={this.handleChange('description')}
+                value={this.state.description}
+              />
+            </label>
+          </section>
+        </form>
+
+        <button
+          className="upload-close"
+          onClick={toggleUploadModal}>
         </button>
       </ReactModal>
     );
   }
-
 }
 
 export default UploadForm;
