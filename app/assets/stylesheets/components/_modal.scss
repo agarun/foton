@@ -19,7 +19,6 @@
 .ReactModalPortal .ReactModal__Content {
   box-shadow: 0 5px 40px 5px rgba(0, 0, 0, 0.21);
   transition: all 200ms ease-in-out;
-  opacity: 0;
   animation-name: zoomIn;
   animation-duration: 0.2s;
   animation-fill-mode: both;
@@ -37,12 +36,11 @@
 
 .upload-modal {
   position: absolute;
-  top: 50px;
-  left: 50px;
-  bottom: 50px;
-  right: 50px;
+  top: 60px;
+  left: 60px;
+  bottom: 60px;
+  right: 60px;
   display: flex;
-  justify-content: center;
   background-color: white;
   border-radius: 3px;
   border: none;

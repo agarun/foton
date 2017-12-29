@@ -2,8 +2,10 @@
   cursor: pointer;
 
   a {
-    padding: 15px;
-    display: block;
+    padding: 13px 15px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
     background-color: lighten($green, 3%);
     color: white;
 
@@ -16,5 +18,61 @@
       background-color: $green;
       color: white;
     }
+  }
+}
+
+.upload-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  background-color: $gray-light;
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+  border-right: 1px solid $gray-border;
+}
+
+.upload-select {
+  @include colored-button($blue);
+  padding: 10px 20px;
+  max-width: 200px;
+
+  input {
+    position: fixed;
+    visibility: hidden;
+  }
+}
+
+.upload-form {
+  margin: 20px;
+  flex-basis: 300px;
+}
+
+.upload-submit-button {
+  margin: 0 auto;
+  min-width: 100px;
+  max-width: 200px;
+  font-size: 15px;
+}
+
+.upload-close {
+  display: block;
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  font-size: 19px;
+  font-weight: bold;
+  background-color: transparent;
+  color: darken($gray-light-2, 20%);
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  &:after {
+    content: "\d7";
+  }
+
+  &:hover {
+    color: $gray-medium;
   }
 }

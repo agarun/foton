@@ -2,6 +2,7 @@
   padding: 9px 10px;
   margin: 10px 0;
   width: 320px;
+  vertical-align: middle;
   text-shadow: 0px 1px 0px darken($color, 8%);
   text-align: center;
   text-decoration: none;
@@ -13,6 +14,7 @@
   border: 1px solid darken($color, 5%);
   outline: none;
   transition: 150ms ease-in;
+  cursor: pointer;
 
   &:hover {
     background-color: lighten($color, 3%);
