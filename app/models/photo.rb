@@ -7,7 +7,8 @@ class Photo < ApplicationRecord
   validates_attachment :image,
                        presence: true,
                        content_type: { content_type: /\Aimage\/.*\z/ },
-                       size: { in: 0..10.megabytes }
+                       size: { in: 0..20.megabytes },
+                       unless: :is_profile_photo
 
   validates :is_cover_photo,
             uniqueness: { scope: :author_id,

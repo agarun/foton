@@ -15,6 +15,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6, allow_nil: true }
 
   after_initialize :ensure_unique_session_token
+  after_save :assign_default_profile_photo
 
   def self.find_by_credentials(username, plaintext_password)
     user = User.find_by(username: username)
@@ -57,6 +58,15 @@ class User < ApplicationRecord
   def check_invalid_characters
     if !username.empty? && !username.match(/\A[a-zA-Z0-9_]+\Z/)
       errors.add(:username, "can only have letters, numbers, and _.")
+    end
+  end
+
+  def assign_default_profile_photo
+    if profile_photo.nil?
+      photos.create(
+        author_id: id,
+        is_profile_photo: true
+      )
     end
   end
 end
