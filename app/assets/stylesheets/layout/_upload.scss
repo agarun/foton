@@ -27,10 +27,12 @@
   justify-content: center;
   align-items: center;
   flex-grow: 1;
+  height: 100%;
   background-color: $gray-light;
   border-bottom-left-radius: 3px;
   border-top-left-radius: 3px;
   border-right: 1px solid $gray-border;
+  overflow: hidden;
 
   img {
     margin: 0 auto;
@@ -64,6 +66,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 120px;
     background-color: lighten($gray-light, 1.5%);
     border-bottom: 1px solid $gray-border;
   }
@@ -135,8 +138,11 @@
 }
 
 .upload-image-preview {
-  position: relative;
   margin: 0 auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &:hover .upload-photo-reset {
     visibility: visible;
