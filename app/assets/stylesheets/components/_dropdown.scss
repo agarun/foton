@@ -1,0 +1,40 @@
+.nav-dropdown-menu {
+  margin: 0 30px;
+  padding: 7px 0 5px 0;
+  position: relative;
+  height: 50px;
+  cursor: pointer;
+
+  &-profile-icon  {
+    margin-bottom: 1px;
+    padding: 1px;
+    width: 38px;
+    border-radius: 50%;
+    background-color: $gray-light;
+    border: 1px solid $gray-light-2;
+  }
+
+  &:hover .nav-dropdown-submenu {
+    display: block;
+  }
+}
+
+.nav-dropdown-submenu {
+  margin: 0;
+  padding: 12px;
+  position: absolute;
+  top: 50px;
+  left: -15px;
+  display: none;
+  width: 75px;
+  background-color: white;
+  border: 1px solid $gray-border;
+  border-top-color: white;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  box-shadow: 0 1px 1px rgba(150, 160, 170, 0.1);
+
+  a {
+    font-size: 13px;
+  }
+}
