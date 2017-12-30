@@ -22,9 +22,9 @@
 .nav-dropdown-submenu {
   position: absolute;
   top: 49px;
-  left: -15px;
+  left: -20px;
   display: none;
-  width: 88px;
+  width: 94px;
   background-color: white;
   border: 1px solid $gray-border;
   border-top-color: white;
@@ -43,7 +43,10 @@
   }
 
   li &-username {
-    font-size: 12px;
+    font-size: 11px;
+    font-weight: bold;
     color: $blue-medium;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }

@@ -8,6 +8,8 @@ class User < ApplicationRecord
           foreign_key: :author_id,
           class_name: :Photo
 
+  before_validation { username.downcase! }
+
   validates :password_digest, :session_token, presence: true
   validates :username, :session_token, uniqueness: true
   validates :username, length: { minimum: 4, maximum: 24 }
