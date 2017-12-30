@@ -1,10 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { toggleModal } from '../../actions/ui_actions';
+import { logOut } from '../../actions/session_actions';
 import UploadSVG from '../svg/upload';
+import NavProfileDropdown from './nav_profile_dropdown';
 
-const NavContent = ({ showUploadModal }) => (
+const NavContent = ({ showUploadModal, logOut, currentUser }) => (
   <ul>
+    <NavProfileDropdown
+      logOut={logOut}
+      currentUser={currentUser}
+    />
     <li className="upload-button">
       <a onClick={showUploadModal}>
         <UploadSVG />
@@ -12,19 +18,19 @@ const NavContent = ({ showUploadModal }) => (
         Upload
       </a>
     </li>
-    <li>
-      {/* Profile Thumb */}
-      {/* Profile Dropdown */}
-        {/* Logout button for now */}
-    </li>
   </ul>
 );
 
+const mapStateToProps = state => ({
+  currentUser: state.session.currentUser,
+});
+
 const mapDispatchToProps = dispatch => ({
   showUploadModal: () => dispatch(toggleModal('upload')),
+  logOut: () => dispatch(logOut()),
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(NavContent);
