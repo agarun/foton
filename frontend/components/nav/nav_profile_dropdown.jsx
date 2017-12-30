@@ -9,6 +9,9 @@ const NavProfileDropdown = ({ logOut, currentUser }) => (
       className="nav-dropdown-menu-profile-icon"
     />
     <ul className="nav-dropdown-submenu">
+      <li className="nav-dropdown-submenu-username">
+        {currentUser.username}
+      </li>
       <li>
         <a onClick={logOut}>Log out</a>
       </li>

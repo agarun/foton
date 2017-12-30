@@ -1,5 +1,5 @@
 .nav-dropdown-menu {
-  margin: 0 30px;
+  margin: 0 40px;
   padding: 7px 0 5px 0;
   position: relative;
   height: 50px;
@@ -20,13 +20,11 @@
 }
 
 .nav-dropdown-submenu {
-  margin: 0;
-  padding: 12px;
   position: absolute;
-  top: 50px;
+  top: 49px;
   left: -15px;
   display: none;
-  width: 75px;
+  width: 88px;
   background-color: white;
   border: 1px solid $gray-border;
   border-top-color: white;
@@ -34,7 +32,18 @@
   border-bottom-right-radius: 3px;
   box-shadow: 0 1px 1px rgba(150, 160, 170, 0.1);
 
-  a {
+  li {
+    padding: 12px;
+    display: block;
     font-size: 13px;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $gray-border;
+    }
+  }
+
+  li &-username {
+    font-size: 12px;
+    color: $blue-medium;
   }
 }
