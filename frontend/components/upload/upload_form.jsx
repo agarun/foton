@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactModal from 'react-modal';
+import Spinner from '../spinner/spinner';
 
 class UploadForm extends React.Component {
   constructor(props) {
@@ -44,11 +45,14 @@ class UploadForm extends React.Component {
     const formData = new FormData();
     formData.append('photo[title]', this.state.title);
     formData.append('photo[description]', this.state.description);
-    if (this.state.imageFile) formData.append('photo[image]', this.state.imageFile);
+    if (this.state.imageFile) {
+      formData.append('photo[image]', this.state.imageFile);
+      this.props.requestUpload();
+    }
     this.props.createPhoto(formData)
       .then(() => {
         // TODO: Navigate to user's profile
-        this.props.toggleUploadModal();
+        // this.props.toggleUploadModal();
       });
   }
 
@@ -68,7 +72,7 @@ class UploadForm extends React.Component {
   }
 
   render() {
-    const { toggleUploadModal, showModal, errors } = this.props;
+    const { toggleUploadModal, showModal, isFetching, errors } = this.props;
 
     return (
       <ReactModal
@@ -83,10 +87,6 @@ class UploadForm extends React.Component {
           {
             this.state.imageFile ? (
               <section className="upload-image-preview">
-                {/* <button
-                  className="upload-photo-reset"
-                  onClick={this.resetState}>
-                </button> */}
                 <img
                   src={this.state.imageUrl}
                   alt="preview of image to upload"
@@ -109,11 +109,21 @@ class UploadForm extends React.Component {
           onSubmit={this.handleSubmit}
         >
           <section className="upload-form-submit">
-            <button className="green-button upload-submit-button">
-              Submit
-            </button>
+            {
+              isFetching ? (
+                <Spinner />
+              ) : (
+                showModal &&
+                <button className="green-button upload-submit-button">
+                  Submit
+                </button>
+              )
+            }
           </section>
-          <section className="upload-form-input">
+          <section
+            className="upload-form-input"
+            style={{ opacity: isFetching ? 0.5 : 1 }}
+          >
             {
               errors && (
                 <section className="upload-errors">
