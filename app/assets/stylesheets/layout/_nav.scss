@@ -37,7 +37,7 @@ nav {
   background-color: transparent;
 
   .nav-logo {
-    svg { fill: white; }
+    svg { fill: white; width: 70px; }
     svg:hover { fill: $gray-light-2; }
   }
 
@@ -82,7 +82,7 @@ nav {
   border-bottom: 1px solid $gray-border;
 
   .nav-logo {
-    svg { fill: black; }
+    svg { fill: black; width: 70px; }
     svg:hover { fill: $blue; }
   }
 
