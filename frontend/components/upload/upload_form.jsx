@@ -95,7 +95,7 @@ class UploadForm extends React.Component {
               </section>
             ) : (
               <label className="upload-select">
-                Select Photos
+                Select Photo
                 <input
                   type="file"
                   onChange={this.handleFile}
