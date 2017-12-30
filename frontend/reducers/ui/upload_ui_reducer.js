@@ -1,7 +1,9 @@
-import { TOGGLE_MODAL } from '../../actions/ui_actions';
+import { TOGGLE_MODAL, REQUEST_UPLOAD } from '../../actions/ui_actions';
+import { RECEIVE_PHOTO, RECEIVE_UPLOAD_ERRORS } from '../../actions/photo_actions';
 
 const initialState = {
-  showModal: false
+  showModal: false,
+  isFetching: false,
 };
 
 const uploadUiReducer = (state = initialState, action) => {
@@ -12,8 +14,17 @@ const uploadUiReducer = (state = initialState, action) => {
     case TOGGLE_MODAL:
       if (action.currentModal === 'upload') {
         newState.showModal = !state.showModal;
+        newState.isFetching = false;
       }
       return newState;
+    case REQUEST_UPLOAD:
+      newState.isFetching = true;
+      return newState;
+    case RECEIVE_UPLOAD_ERRORS:
+      newState.isFetching = false;
+      return newState;
+    case RECEIVE_PHOTO:
+      return initialState;
     default:
       return state;
   }
