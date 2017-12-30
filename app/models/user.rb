@@ -67,6 +67,7 @@ class User < ApplicationRecord
         author_id: id,
         is_profile_photo: true
       )
+      reload_profile_photo
     end
   end
 end
