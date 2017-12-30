@@ -7,9 +7,9 @@ import { MainPage } from '../util/main_page_util';
 import Nav from './nav/nav';
 import SessionFormContainer from './session_form/session_form_container';
 import UploadForm from './upload/upload_form_container';
+import PageNotFound from './pages/404';
 
-const App = () => {
-  return (
+const App = () => (
   <main>
     <Nav />
     <Switch>
@@ -25,9 +25,10 @@ const App = () => {
         exact path="/upload"
         // Navigate user to ':username/manage' and open upload modal
       /> */}
+      <PageNotFound />
     </Switch>
     <UploadForm />
-  </main>);
-};
+  </main>
+);
 
 export default App;

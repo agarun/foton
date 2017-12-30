@@ -1,0 +1,44 @@
+.page-not-found {
+  margin: 3% auto;
+  padding: 30px;
+  width: 40%;
+  line-height: 1;
+  background-color: white;
+  border-radius: 3px;
+  border: 1px solid $gray-light;
+  box-shadow: 0 2px 5px rgba(150, 160, 170, 0.2);
+
+  &-links {
+    margin-top: 40px;
+    text-align: center;
+
+    p {
+      margin: 25px 0;
+      font-size: 13px;
+      color: #555;
+    }
+  }
+
+  h1 {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  a {
+    margin: 5px;
+    padding: 8px;
+    display: inline-block;
+    font-size: 1.3em;
+    text-decoration: none;
+    color: $blue;
+    background-color: $gray-light;
+  }
+
+  img {
+    margin: 30px auto;
+    display: block;
+  }
+}
+
+// cool animation on my logo or 404 lik discord
