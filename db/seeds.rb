@@ -6,6 +6,12 @@ Photo.destroy_all
 User.create!(username: "adventurer", password: "password", bio: "Everyone likes a good aventure!", location: "New York")
 User.create!(username: "aaron", password: "hunter2", bio: "", location: "Brooklyn")
 
+# prohibited usernames
+
+User.create!(username: "discover", password: "router_hits_page_first")
+User.create!(username: "about", password: "router_hits_page_first")
+User.create!(username: "search", password: "router_hits_page_first")
+
 # production
 
 # users = [
