@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// TODO: Clicking the main <li> also links to the user profile
 
 const NavProfileDropdown = ({ logOut, currentUser }) => (
   <li className="nav-dropdown-menu">
