@@ -1,14 +1,19 @@
 class Api::UsersController < ApplicationController
   def create
-    @new_user = User.new(user_params)
+    @user = User.new(user_params)
 
-    if @new_user.save
-      log_in(@new_user)
+    if @user.save
+      log_in(@user)
       render :show
     else
-      render json: @new_user.errors.to_hash(true),
+      render json: @user.errors.to_hash(true),
              status: :unprocessable_entity
     end
+  end
+
+  def show
+    @user = User.find_by(username: params[:username])
+    render json: ["Not Found"], status: :not_found if @user.nil?
   end
 
   private
