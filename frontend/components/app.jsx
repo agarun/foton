@@ -8,6 +8,7 @@ import Nav from './nav/nav';
 import SessionFormContainer from './session_form/session_form_container';
 import UploadForm from './upload/upload_form_container';
 import PageNotFound from './pages/404';
+import UserProfileContainer from './users/user_profile_container';
 
 const App = () => (
   <main>
@@ -17,15 +18,23 @@ const App = () => (
         exact path="/"
         component={MainPage}
       />
+      <Route
+        exact path="/404"
+        component={PageNotFound}
+      />
       <AuthRoute
         exact path="/:formType(login|signup)"
         component={SessionFormContainer}
       />
       {/* <Route
         exact path="/upload"
-        // Navigate user to ':username/manage' and open upload modal
+        // TODO: Navigate user to ':username/manage' and open upload modal
       /> */}
-      <PageNotFound />
+      <Route
+        exact path="/:username"
+        component={UserProfileContainer}
+      />
+      <Route component={PageNotFound} />
     </Switch>
     <UploadForm />
   </main>
