@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  def to_param
+    username
+  end
+
   has_many :photos, -> { where is_profile_photo: false },
            foreign_key: :author_id
   has_one :cover_photo, -> { where is_cover_photo: true },
