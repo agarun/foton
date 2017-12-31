@@ -68,7 +68,7 @@ class UploadForm extends React.Component {
   }
 
   componentWillUpdate() {
-    if (this.props.errors) this.props.clearErrors();
+    if (this.props.errors && !this.props.showModal) this.props.clearErrors();
   }
 
   render() {
