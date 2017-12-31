@@ -7,6 +7,9 @@
   border-radius: 3px;
   border: 1px solid $gray-light;
   box-shadow: 0 2px 5px rgba(150, 160, 170, 0.2);
+  animation-name: fadeIn;
+  animation-duration: 0.25s;
+  animation-fill-mode: both;
 
   &-links {
     margin-top: 40px;
