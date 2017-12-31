@@ -42,11 +42,15 @@
     }
   }
 
-  li &-username {
-    font-size: 11px;
+  li &-username a {
+    font-size: 11.5px;
     font-weight: bold;
     color: $blue-medium;
     overflow: hidden;
     text-overflow: ellipsis;
+
+    &:hover {
+      color: $blue-medium;
+    }
   }
 }
