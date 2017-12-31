@@ -115,7 +115,7 @@
   font-size: 15px;
 }
 
-.upload-close, .upload-photo-reset {
+.upload-close {
   display: block;
   position: absolute;
   top: 3px;
@@ -148,21 +148,31 @@
     visibility: visible;
   }
 
+  img {
+
+  }
+
   &:hover img {
     cursor: pointer;
-    opacity: 0.8;
+    opacity: 0.85;
   }
 }
 
 .upload-photo-reset {
-  visibility: hidden;
-  display: inline;
-  top: 33%;
-  left: 33%;
+  position: absolute;
   color: $gray-light;
-  font-size: 300px;
-  color: red;
-  z-index: 10;
+  font-size: 200px;
+  visibility: hidden;
+  pointer-events: none;
+
+  &:after {
+    z-index: 100;
+    content: "\d7";
+    cursor: pointer;
+    vertical-align: 20%;
+    text-shadow: rgba($red, 0.6) 0px 0px 6px;
+    -webkit-font-smoothing: antialiased;
+  }
 }
 
 .upload-errors {
