@@ -93,8 +93,7 @@ class UploadForm extends React.Component {
                   src={this.state.imageUrl}
                   alt="preview of image to upload"
                 />
-                <section className="upload-photo-reset">
-                </section>
+                <span className="upload-photo-reset"></span>
               </section>
             ) : (
               <label className="upload-select">
