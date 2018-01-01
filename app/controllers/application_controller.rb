@@ -25,6 +25,8 @@ class ApplicationController < ActionController::Base
   end
 
   def require_user_logged_in
-    render json: ['Please log in!'], status: :unauthorized unless current_user
+    unless current_user
+      render json: ['Session expired. Please log in!'], status: :unauthorized
+    end
   end
 end
