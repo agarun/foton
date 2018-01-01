@@ -42,12 +42,13 @@
     }
   }
 
-  li &-username a {
+  li a &-username {
     font-size: 11.5px;
     font-weight: bold;
     color: $blue-medium;
     overflow: hidden;
     text-overflow: ellipsis;
+    border-bottom: 1px solid $gray-border;
 
     &:hover {
       color: $blue-medium;
