@@ -86,13 +86,12 @@ class UploadForm extends React.Component {
         <section className="upload-area">
           {
             this.state.imageFile ? (
-              <section className="upload-image-preview">
-                <img
-                  src={this.state.imageUrl}
-                  alt="preview of image to upload"
-                  onClick={this.resetState}
-                />
-              </section>
+              <img
+                className="upload-image-preview"
+                src={this.state.imageUrl}
+                alt="preview of image to upload"
+                onClick={this.resetState}
+              />
             ) : (
               <label className="upload-select">
                 Select Photo

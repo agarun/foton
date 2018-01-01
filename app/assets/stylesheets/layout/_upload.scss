@@ -141,14 +141,10 @@
   position: relative;
   display: inline-block;
   text-align: center;
+  background-color: $red;
+  cursor: pointer;
 
-  img {
-    display: inline-block;
-    background-color: $red;
-    cursor: pointer;
-  }
-
-  &:hover img {
+  &:hover {
     opacity: 0.7;
   }
 }
