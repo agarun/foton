@@ -138,35 +138,18 @@
 }
 
 .upload-image-preview {
-  margin: 0 auto;
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: inline-block;
+  text-align: center;
 
-  &:hover .upload-photo-reset {
-    visibility: visible;
-  }
-
-  .upload-photo-reset {
-    position: absolute;
+  img {
+    display: inline-block;
+    background-color: $red;
     cursor: pointer;
-    visibility: hidden;
-    font-size: 200px;
-    text-shadow: rgba($red, 0.6) 0px 0px 6px;
-    -webkit-font-smoothing: antialiased;
-    color: white;
-    z-index: 100;
-
-    &:after {
-      content: "\d7";
-      vertical-align: 20%;
-    }
   }
 
   &:hover img {
-    cursor: pointer;
-    opacity: 0.85;
+    opacity: 0.7;
   }
 }
 
