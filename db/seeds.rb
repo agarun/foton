@@ -1,10 +1,38 @@
 User.destroy_all
 Photo.destroy_all
+Follow.destroy_all
 
 # dev
 
-User.create!(username: "adventurer", password: "password", bio: "Everyone likes a good aventure!", location: "New York")
-User.create!(username: "aaron", password: "hunter2", bio: "", location: "Brooklyn")
+users = [
+  User.create!(username: "adventurer", password: "password", bio: "Everyone likes a good aventure!", location: "New York"),
+  User.create!(username: "aaron", password: "hunter2", bio: "", location: "Brooklyn"),
+  User.create!(username: "Rosalia", password: "hunter2", bio: "", location: "Barcelona"),
+  User.create!(username: "Sinjin", password: "hunter2", bio: "I love fractals.", location: "Jersey"),
+  User.create!(username: "Kamasi", password: "hunter2", bio: "Jazz is like a telescope.", location: "Los Angeles"),
+  User.create!(username: "Loyle", password: "hunter2", bio: "", location: "London"),
+  User.create!(username: "Sevda", password: "hunter2", bio: "", location: "Baku"),
+  User.create!(username: "Kacy", password: "hunter2", bio: "Musician. Send me good music!", location: "Phoenix"),
+  User.create!(username: "Jane", password: "hunter2", bio: "", location: "Israel"),
+  User.create!(username: "Olafur", password: "hunter2", bio: "The greatest thing about being a musician is being in the position to inspire other people.", location: "Iceland"),
+  User.create!(username: "Ludovico", password: "hunter2", bio: "It's only when we become aware that our time is limited that we can channel our energy into truly living.", location: "Milan"),
+  User.create!(username: "Jorja", password: "hunter2", bio: "", location: "Walsall")
+]
+
+# random follows
+
+users.each do |user1|
+  users.each do |user2|
+    next if user1 == user2
+
+    the_follow = Follow.new(
+      follower_id: user1.id,
+      followed_id: user2.id
+    )
+
+    the_follow.save! if rand(2).zero?
+  end
+end
 
 # prohibited usernames
 
