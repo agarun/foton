@@ -12,10 +12,26 @@ class User < ApplicationRecord
           foreign_key: :author_id,
           class_name: :Photo
 
+  has_many :initiated_follows,
+           class_name: :Follow,
+           foreign_key: :follower_id,
+           dependent: :destroy
+  has_many :received_follows,
+           class_name: :Follow,
+           foreign_key: :followed_id,
+           dependent: :destroy
+  has_many :following,
+           through: :initiated_follows,
+           source: :followed
+  has_many :followers,
+           through: :received_follows,
+           source: :follower
+
   before_validation { username.downcase! }
 
   validates :password_digest, :session_token, presence: true
-  validates :username, :session_token, uniqueness: true
+  validates :session_token, uniqueness: true
+  validates :username, uniqueness: { case_sensitive: false }
   validates :username, length: { minimum: 4, maximum: 24 }
   validate :check_invalid_characters
   validates :password, length: { minimum: 6, allow_nil: true }
