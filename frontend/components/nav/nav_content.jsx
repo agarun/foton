@@ -26,7 +26,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  showUploadModal: () => dispatch(toggleModal('upload')),
+  showUploadModal: () => dispatch(toggleModal('UPLOAD')),
   logOut: () => dispatch(logOut()),
 });
 

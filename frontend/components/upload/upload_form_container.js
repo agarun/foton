@@ -5,13 +5,13 @@ import { clearErrors } from '../../actions/error_actions';
 import UploadForm from './upload_form';
 
 const mapStateToProps = state => ({
-  showModal: state.ui.upload.showModal,
+  showModal: state.ui.modal.showModal,
   isFetching: state.ui.upload.isFetching,
   errors: state.errors.upload,
 });
 
 const mapDispatchToProps = dispatch => ({
-  toggleUploadModal: () => dispatch(toggleModal('upload')),
+  toggleUploadModal: () => dispatch(toggleModal('UPLOAD')),
   fetchUpload: () => dispatch(fetchUpload()),
   createPhoto: photo => dispatch(createPhoto(photo)),
   clearErrors: () => dispatch(clearErrors()),
