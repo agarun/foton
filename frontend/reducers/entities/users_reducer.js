@@ -24,7 +24,7 @@ const usersReducer = (state = {}, action) => {
         const currentUser = { [currentUserUsername]: action.currentUser };
         return Object.assign({}, state, currentUser);
       }
-      break;
+      return state;
     case RECEIVE_FOLLOW: {
       const {
         follower_username, followed_username, follower_id, followed_id

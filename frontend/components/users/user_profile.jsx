@@ -26,28 +26,33 @@ class UserProfile extends Component {
   }
 
   render() {
-    const pageNotFound = this.state.pageNotFound;
-    if (pageNotFound) return <PageNotFound />;
-
     const { user, currentUser, followUser, unfollowUser } = this.props;
+
+    if (this.state.pageNotFound) return <PageNotFound />;
+    if (Object.keys(user).length === 0) return null;
+
     return (
       <section className="main">
-        {/* dev placeholders */}
-        {user.username} <br />
-        {user.bio} <br />
-        {user.location} <br />
+        <div>{user.username}</div>
+        <div>{user.bio}</div>
 
         {
-          Object.keys(user).length !== 0 && (
-            currentUser && currentUser.id === user.id ?
-              'Edit Profile Button Here' :
-              <FollowButton
-                user={user}
-                followUser={followUser}
-                unfollowUser={unfollowUser}
-              />
-          )
+          currentUser && currentUser.id === user.id ?
+            'Edit Profile Button Here' :
+            <FollowButton
+              user={user}
+              followUser={followUser}
+              unfollowUser={unfollowUser}
+            />
         }
+
+        <div>
+          {user.follower_ids.length}&nbsp;Followers
+        </div>
+        <div>
+          {user.following_ids.length}&nbsp;Following
+        </div>
+        <div>{user.location}</div>
       </section>
     );
   }
