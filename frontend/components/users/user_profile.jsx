@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PageNotFound from '../pages/404';
+import FollowButton from '../follows/follow_button';
 
 class UserProfile extends Component {
   constructor(props) {
@@ -28,12 +29,25 @@ class UserProfile extends Component {
     const pageNotFound = this.state.pageNotFound;
     if (pageNotFound) return <PageNotFound />;
 
-    const user = this.props.user;
+    const { user, currentUser, followUser, unfollowUser } = this.props;
     return (
       <section className="main">
-        {user.username}
-        {user.bio}
-        {user.location}
+        {/* dev placeholders */}
+        {user.username} <br />
+        {user.bio} <br />
+        {user.location} <br />
+
+        {
+          Object.keys(user).length !== 0 && (
+            currentUser && currentUser.id === user.id ?
+              'Edit Profile Button Here' :
+              <FollowButton
+                user={user}
+                followUser={followUser}
+                unfollowUser={unfollowUser}
+              />
+          )
+        }
       </section>
     );
   }
