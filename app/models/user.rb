@@ -75,6 +75,10 @@ class User < ApplicationRecord
     following.delete(other_user)
   end
 
+  def follows?(other_user)
+    following.include?(other_user)
+  end
+
   private
 
   def ensure_unique_session_token
