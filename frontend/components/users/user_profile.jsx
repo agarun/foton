@@ -26,33 +26,39 @@ class UserProfile extends Component {
   }
 
   render() {
-    const { user, currentUser, followUser, unfollowUser } = this.props;
+    const {
+      user, currentUser, followUser, unfollowUser, toggleFollowsModal
+    } = this.props;
 
     if (this.state.pageNotFound) return <PageNotFound />;
     if (Object.keys(user).length === 0) return null;
 
     return (
       <section className="main">
-        <div>{user.username}</div>
-        <div>{user.bio}</div>
+        <ul>
+          <li>{user.username}</li>
+          <li>{user.bio}</li>
+        </ul>
 
-        {
-          currentUser && currentUser.id === user.id ?
-            'Edit Profile Button Here' :
-            <FollowButton
-              user={user}
-              followUser={followUser}
-              unfollowUser={unfollowUser}
-            />
-        }
+          {
+            currentUser && currentUser.id === user.id ?
+              'Edit Profile Button Here' :
+              <FollowButton
+                user={user}
+                followUser={followUser}
+                unfollowUser={unfollowUser}
+              />
+          }
 
-        <div>
-          {user.follower_ids.length}&nbsp;Followers
-        </div>
-        <div>
-          {user.following_ids.length}&nbsp;Following
-        </div>
-        <div>{user.location}</div>
+        <ul className="user-profile-stats">
+          <li onClick={toggleFollowsModal(user.follower_ids)}>
+            {user.follower_ids.length}&nbsp;Followers
+          </li>
+          <li onClick={toggleFollowsModal(user.follwing_ids)}>
+            {user.following_ids.length}&nbsp;Following
+          </li>
+          <li>{user.location}</li>
+        </ul>
       </section>
     );
   }
