@@ -64,6 +64,14 @@ class User < ApplicationRecord
     self.save! && self.session_token
   end
 
+  def follow(other_user)
+    following << other_user
+  end
+
+  def unfollow(other_user)
+    following.delete(other_user)
+  end
+
   private
 
   def ensure_unique_session_token
