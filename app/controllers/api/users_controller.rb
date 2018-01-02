@@ -19,11 +19,17 @@ class Api::UsersController < ApplicationController
   end
 
   def follow
-    current_user.follow(User.find_by(params[:id]))
+    user_to_follow = User.find(params[:id])
+    current_user.follow(user_to_follow)
+    render partial: 'api/follows/follow_data',
+      locals: { follower: current_user, followed: user_to_follow }
   end
 
   def unfollow
-    current_user.unfollow(User.find_by(params[:id]))
+    user_to_unfollow = User.find(params[:id])
+    current_user.unfollow(user_to_unfollow)
+    render partial: 'api/follows/follow_data',
+      locals: { follower: current_user, followed: user_to_unfollow }
   end
 
   private
