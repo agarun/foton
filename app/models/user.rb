@@ -94,12 +94,6 @@ class User < ApplicationRecord
     end
   end
 
-  def check_blacklisted_usernames
-    if %w[discover about search admin].include?(username)
-      errors.add(:username, "is already taken.")
-    end
-  end
-
   def assign_default_profile_photo
     if profile_photo.nil?
       photos.create(
