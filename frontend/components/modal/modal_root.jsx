@@ -7,6 +7,8 @@ const MODAL_COMPONENTS = {
 };
 
 const ModalRoot = ({ currentModal, showModal }) => {
+  // `ModalRoot` will show at least 1 and at most 1 modal
+  // because each modal has a closing animation.
   if (!currentModal) return null;
 
   const Modal = MODAL_COMPONENTS[currentModal];
