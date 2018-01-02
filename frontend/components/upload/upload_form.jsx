@@ -19,7 +19,6 @@ class UploadForm extends React.Component {
     this.handleFile = this.handleFile.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.resetState = this.resetState.bind(this);
-    this.closeModal = this.closeModal.bind(this);
   }
 
   handleChange(field) {
@@ -62,10 +61,6 @@ class UploadForm extends React.Component {
     this.setState(blankState);
   }
 
-  closeModal() {
-    this.props.toggleUploadModal();
-  }
-
   componentWillUpdate() {
     if (this.props.errors && !this.props.showModal) this.props.clearErrors();
   }
@@ -77,7 +72,7 @@ class UploadForm extends React.Component {
       <ReactModal
         isOpen={showModal}
         contentLabel="Upload Photo"
-        onRequestClose={this.closeModal}
+        onRequestClose={toggleUploadModal}
         closeTimeoutMS={400}
         className="upload-modal"
         overlayClassName="upload-overlay"

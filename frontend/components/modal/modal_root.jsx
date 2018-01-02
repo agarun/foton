@@ -7,8 +7,8 @@ const MODAL_COMPONENTS = {
 };
 
 const ModalRoot = ({ currentModal, showModal }) => {
-  // `ModalRoot` will show at least 1 and at most 1 modal
-  // because each modal has a closing animation.
+  // `ModalRoot` shows at least 1 and at most 1 modal,
+  // uses a `react-modal` portal, and retains a closing animation
   if (!currentModal) return null;
 
   const Modal = MODAL_COMPONENTS[currentModal];
