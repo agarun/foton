@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { toggleModal, requestUpload } from '../../actions/ui_actions';
+import { toggleModal, fetchUpload } from '../../actions/ui_actions';
 import { createPhoto } from '../../actions/photo_actions';
 import { clearErrors } from '../../actions/error_actions';
 import UploadForm from './upload_form';
@@ -12,7 +12,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   toggleUploadModal: () => dispatch(toggleModal('upload')),
-  requestUpload: () => dispatch(requestUpload()),
+  fetchUpload: () => dispatch(fetchUpload()),
   createPhoto: photo => dispatch(createPhoto(photo)),
   clearErrors: () => dispatch(clearErrors()),
 });

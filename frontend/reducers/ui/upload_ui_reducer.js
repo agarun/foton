@@ -1,4 +1,4 @@
-import { TOGGLE_MODAL, REQUEST_UPLOAD } from '../../actions/ui_actions';
+import { TOGGLE_MODAL, FETCH_UPLOAD } from '../../actions/ui_actions';
 import { RECEIVE_PHOTO, RECEIVE_UPLOAD_ERRORS } from '../../actions/photo_actions';
 
 const initialState = {
@@ -17,7 +17,7 @@ const uploadUiReducer = (state = initialState, action) => {
         newState.isFetching = false;
       }
       return newState;
-    case REQUEST_UPLOAD:
+    case FETCH_UPLOAD:
       newState.isFetching = true;
       return newState;
     case RECEIVE_UPLOAD_ERRORS:
