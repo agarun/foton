@@ -33,25 +33,3 @@
     animation-fill-mode: both;
   }
 }
-
-.upload-modal {
-  position: absolute;
-  top: 60px;
-  left: 60px;
-  bottom: 60px;
-  right: 60px;
-  display: flex;
-  background-color: white;
-  border-radius: 3px;
-  border: none;
-  &:focus { outline: none; }
-}
-
-.upload-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(black, 0.5);
-}
