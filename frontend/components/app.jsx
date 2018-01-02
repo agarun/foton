@@ -6,9 +6,9 @@ import { MainPage } from '../util/main_page_util';
 
 import Nav from './nav/nav';
 import SessionFormContainer from './session_form/session_form_container';
-import UploadForm from './upload/upload_form_container';
-import PageNotFound from './pages/404';
 import UserProfileContainer from './users/user_profile_container';
+import ModalRoot from './modal/modal_root';
+import PageNotFound from './pages/404';
 
 const App = () => (
   <main>
@@ -36,7 +36,7 @@ const App = () => (
       />
       <Route component={PageNotFound} />
     </Switch>
-    <UploadForm />
+    <ModalRoot />
   </main>
 );
 
