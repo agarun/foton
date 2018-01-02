@@ -30,7 +30,6 @@ bundle.js.map
 .DS_Store
 
 # rails
-.keep
 /public/*
 
 # Ignore application configuration

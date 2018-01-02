@@ -21,8 +21,13 @@
   "directories": {
     "test": "test"
   },
+  "engines": {
+    "node": "6.10.1",
+    "npm": "3.10.10"
+  },
   "scripts": {
-    "test": ""
+    "test": "",
+    "postinstall": "webpack"
   },
   "repository": {
     "type": "git",
