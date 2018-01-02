@@ -1,8 +1,4 @@
 class User < ApplicationRecord
-  def to_param
-    username
-  end
-
   has_many :photos, -> { where is_profile_photo: false },
            foreign_key: :author_id
   has_one :cover_photo, -> { where is_cover_photo: true },
@@ -31,8 +27,11 @@ class User < ApplicationRecord
 
   validates :password_digest, :session_token, presence: true
   validates :session_token, uniqueness: true
-  validates :username, uniqueness: { case_sensitive: false }
-  validates :username, length: { minimum: 4, maximum: 24 }
+  validates :username,
+            uniqueness: { case_sensitive: false },
+            length: { minimum: 4, maximum: 24 },
+            exclusion: { in: %w[about discover search login logout
+                                upload admin], message: 'is unavailable.' }
   validate :check_invalid_characters
   validates :password, length: { minimum: 6, allow_nil: true }
 
@@ -64,6 +63,10 @@ class User < ApplicationRecord
     self.save! && self.session_token
   end
 
+  def to_param
+    username
+  end
+
   def follow(other_user)
     following << other_user
   end
@@ -88,6 +91,12 @@ class User < ApplicationRecord
   def check_invalid_characters
     if !username.empty? && !username.match(/\A[a-zA-Z0-9_]+\Z/)
       errors.add(:username, "can only have letters, numbers, and _.")
+    end
+  end
+
+  def check_blacklisted_usernames
+    if %w[discover about search admin].include?(username)
+      errors.add(:username, "is already taken.")
     end
   end
 
