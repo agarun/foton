@@ -1,8 +1,7 @@
 import { connect } from 'react-redux';
-import UserProfile from './user_profile';
-import { selectUserByUsername } from '../../selectors/selectors';
 import { fetchUser } from '../../actions/user_actions';
 import { toggleModal } from '../../actions/ui_actions';
+import UserProfile from './user_profile';
 
 const mapStateToProps = (state, { match }) => {
   const username = match.params.username;
