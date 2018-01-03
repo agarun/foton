@@ -43,21 +43,23 @@ class UserProfile extends Component {
           {
             currentUser && currentUser.id === user.id ?
               'Edit Profile Button Here' :
-              <FollowButton
-                user={user}
-                followUser={followUser}
-                unfollowUser={unfollowUser}
-              />
+              <FollowButton user={user} />
           }
 
         <ul className="user-profile-stats">
-          <li onClick={toggleFollowsModal(user.follower_ids)}>
+          <li
+            onClick={() => toggleFollowsModal(user, 'FOLLOWERS')}
+          >
             {user.follower_ids.length}&nbsp;Followers
           </li>
-          <li onClick={toggleFollowsModal(user.follwing_ids)}>
+          <li
+            onClick={() => toggleFollowsModal(user, 'FOLLOWING')}
+          >
             {user.following_ids.length}&nbsp;Following
           </li>
-          <li>{user.location}</li>
+          <li>
+            {user.location}
+          </li>
         </ul>
       </section>
     );

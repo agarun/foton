@@ -1,11 +1,8 @@
 import { connect } from 'react-redux';
 import UserProfile from './user_profile';
 import { selectUserByUsername } from '../../selectors/selectors';
-import {
-  fetchUser,
-  followUser,
-  unfollowUser
-} from '../../actions/user_actions';
+import { fetchUser } from '../../actions/user_actions';
+import { toggleModal } from '../../actions/ui_actions';
 
 const mapStateToProps = (state, { match }) => {
   const username = match.params.username;
@@ -21,8 +18,9 @@ const mapStateToProps = (state, { match }) => {
 
 const mapDispatchToProps = dispatch => ({
   fetchUser: username => dispatch(fetchUser(username)),
-  followUser: user => dispatch(followUser(user)),
-  unfollowUser: user => dispatch(unfollowUser(user)),
+  toggleFollowsModal: (user, requestType) => (
+    dispatch(toggleModal('FOLLOWS', { user, requestType }))
+  ),
 });
 
 export default connect(
