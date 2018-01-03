@@ -1,11 +1,14 @@
 .follow-modal {
   position: absolute;
-  top: 10%;
-  left: 10%;
-  bottom: 10%;
-  right: 10%;
+  left: 50%;
+  margin-left: -175px;
+  top: 50%;
+  margin-top: -250px;
   display: flex;
-  background-color: white;
+  flex-direction: column;
+  width: 350px;
+  height: 500px;
+  background-color: $gray-light;
   border-radius: 3px;
   border: none;
   &:focus { outline: none; }
@@ -20,15 +23,99 @@
   background-color: rgba(black, 0.5);
 }
 
+.follow-modal-header {
+  padding: 12px 12px 13px 11px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  background-color: white;
+  border-bottom: 2px solid $gray-border;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+
+  &-stats {
+    color: #555;
+    strong {
+      color: $gray-medium;
+    }
+  }
+
+  &-close {
+    display: block;
+    position: absolute;
+    top: 9px;
+    right: 5px;
+    font-size: 19px;
+    font-weight: bold;
+    background-color: transparent;
+    color: $gray-medium;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    &:after {
+      content: "\d7";
+    }
+
+    &:hover {
+      color: darken($gray-light-2, 20%);
+    }
+  }
+}
+
+.follow-modal-scroll {
+  overflow: auto;
+  max-width: 350px;
+  background-color: $gray-light;
+}
+
+.follow-modal-users {
+  li:not(:last-of-type) {
+    border-bottom: 1px solid $gray-border;
+  }
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    button {
+      margin: 0 12px;
+    }
+  }
+
+  &-mid {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    font-size: 13px;
+  }
+
+  &-profile-photo {
+    margin: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid $gray-light-2;
+  }
+
+  &-name {
+  }
+
+  &-follower-count {
+
+  }
+}
+
 .follow-button {
   padding: 6px 8px;
   font-size: 13px;
   text-decoration: none;
-  color: blue;
+  color: $blue;
   outline: none;
   border: none;
   background-color: transparent;
-  border: 1px solid blue;
+  border: 1px solid $blue;
   border-radius: 3px;
   cursor: pointer;
 
@@ -47,8 +134,6 @@
 
 .unfollow-button {
   padding: 0;
-  display: inline-block;
-  line-height: 24px;
   color: white;
   outline: none;
   border: none;
