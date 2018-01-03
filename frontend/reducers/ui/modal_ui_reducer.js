@@ -4,6 +4,7 @@ import { RECEIVE_PHOTO } from '../../actions/photo_actions';
 const initialState = {
   showModal: false,
   currentModal: null,
+  currentModalProps: null,
 };
 
 const modalUiReducer = (state = initialState, action) => {
@@ -14,6 +15,7 @@ const modalUiReducer = (state = initialState, action) => {
     case TOGGLE_MODAL:
       newState.showModal = !state.showModal;
       newState.currentModal = action.currentModal;
+      newState.currentModalProps = action.currentModalProps;
       return newState;
     case RECEIVE_PHOTO:
       return initialState;

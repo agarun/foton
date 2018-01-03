@@ -1,5 +1,6 @@
 import {
   RECEIVE_USER,
+  RECEIVE_USERS,
   RECEIVE_FOLLOW,
   RECEIVE_UNFOLLOW
 } from '../../actions/user_actions';
@@ -25,6 +26,8 @@ const usersReducer = (state = {}, action) => {
         return Object.assign({}, state, currentUser);
       }
       return state;
+    case RECEIVE_USERS:
+      return Object.assign({}, state, action.users);
     case RECEIVE_FOLLOW: {
       const {
         follower_username, followed_username, follower_id, followed_id
@@ -32,21 +35,32 @@ const usersReducer = (state = {}, action) => {
 
       newState[followed_username].follower_ids.push(follower_id);
       newState[followed_username].current_user_follows = true;
-      newState[follower_username].following_ids.push(followed_id);
+
+      // current user is *not* in not in this slice of state
+      // if this route was accessed via a permalink
+      if (newState[follower_username])
+        newState[follower_username].following_ids.push(followed_id);
+
       return newState;
     }
     case RECEIVE_UNFOLLOW:
       const {
         followed_username, follower_username, follower_id, followed_id
       } = action.followData;
+
       const followerIdx =
         newState[followed_username].follower_ids.indexOf(follower_id);
-      const followedIdx =
-        newState[follower_username].following_ids.indexOf(followed_id);
-
       newState[followed_username].follower_ids.splice(followerIdx, 1);
       newState[followed_username].current_user_follows = false;
-      newState[follower_username].following_ids.splice(followedIdx, 1);
+
+      // current user is *not* in not in this slice of state
+      // if this route was accessed via a permalink
+      if (newState[follower_username]) {
+        const followedIdx =
+          newState[follower_username].following_ids.indexOf(followed_id);
+        newState[follower_username].following_ids.splice(followedIdx, 1);
+      }
+
       return newState;
     default:
       return state;
