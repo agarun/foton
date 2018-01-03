@@ -1,9 +1,10 @@
 export const TOGGLE_MODAL = 'TOGGLE_MODAL';
 export const FETCH_UPLOAD = 'FETCH_UPLOAD';
 
-export const toggleModal = currentModal => ({
+export const toggleModal = (currentModal, currentModalProps) => ({
   type: TOGGLE_MODAL,
-  currentModal
+  currentModal,
+  currentModalProps,
 });
 
 export const fetchUpload = () => ({
