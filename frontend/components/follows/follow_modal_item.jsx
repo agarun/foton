@@ -11,16 +11,16 @@ const FollowModalItem = ({ user }) => (
           src={user.profile_photo_url}
         />
       </Link>
-
       <section className="follow-modal-users-mid">
-        <Link className="follow-modal-users-name" to={user.username}>
-          <strong>{user.username}</strong>
-        </Link>
+        <section className="follow-modal-users-name">
+          <Link to={user.username}>
+            <strong>{user.username}</strong>
+          </Link>
+        </section>
         <section className="follow-modal-users-follower-count">
           {user.follower_ids.length} followers
         </section>
       </section>
-
       <FollowButton user={user} />
     </li> :
     null

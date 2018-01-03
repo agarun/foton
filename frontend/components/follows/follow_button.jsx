@@ -11,37 +11,37 @@ const FollowButton = ({
   closeFollowsModal,
   currentUser,
   history
-}) => {
-  if (currentUser) {
-    return (
-      currentUser.id !== user.id ? (
-        user.current_user_follows ? (
-          <button
-            className="unfollow-button"
-            onClick={() => unfollowUser(user)}
-          ></button>
-        ) : (
-          <button
-            className="follow-button"
-            onClick={() => followUser(user)}
-          ></button>
-        )
-      ) : (
-        "That's you!"
-      )
-    );
-  } else {
-    return (
+}) => (
+  !currentUser || currentUser.id !== user.id ? (
+    user.current_user_follows ? (
+      <button
+        className="unfollow-button"
+        onClick={() => {
+          unfollowUser(user)
+            .then(null, () => {
+              history.push('/login');
+              closeFollowsModal();
+            });
+        }}
+      ></button>
+    ) : ( // render follow button if not logged in OR viewing an unfollowed user
       <button
         className="follow-button"
         onClick={() => {
-          history.push('/login');
-          closeFollowsModal();
+          followUser(user)
+            .then(null, () => {
+              history.push('/login');
+              closeFollowsModal();
+            });
         }}
       ></button>
-    );
-  }
-};
+    )
+  ) : (
+    <span className="follow-current-user">
+      That's you!
+    </span>
+  )
+);
 
 const mapStateToProps = state => ({
   currentUser: state.session.currentUser,

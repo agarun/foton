@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { toggleModal } from '../../actions/ui_actions';
 import { getUserFollowers, getUserFollowing } from '../../actions/user_actions';
 import FollowModal from './follow_modal';
@@ -25,7 +26,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(FollowModal);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(FollowModal)
+);
