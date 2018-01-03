@@ -1,0 +1,33 @@
+.user-profile-cover-photo {
+
+}
+
+.user-profile-header {
+
+}
+
+.user-profile-buttons {
+
+}
+
+.user-profile-info {
+  
+}
+
+.user-profile-stats {
+  &-follows {
+    margin: 0 16px;
+    display: inline;
+    font-size: 14px;
+    color: $gray-medium;
+    cursor: pointer;
+
+    &:hover {
+      color: lighten($gray-medium, 10%);
+    }
+
+    strong {
+      font-weight: 600;
+    }
+  }
+}

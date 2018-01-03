@@ -23,7 +23,7 @@ class FollowModal extends Component {
       <ReactModal
         isOpen={this.props.showModal}
         onRequestClose={() => this.props.toggleFollowsModal(this.props.user)}
-        closeTimeoutMS={400}
+        closeTimeoutMS={500}
         className="follow-modal"
         overlayClassName="follow-overlay"
       >
