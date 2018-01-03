@@ -18,18 +18,30 @@ class Api::UsersController < ApplicationController
     render json: ["Not Found"], status: :not_found if @user.nil?
   end
 
+  def followers
+    user = User.find(params[:id])
+    render partial: 'api/follows/follow_collection',
+           locals: { users: user.followers }
+  end
+
+  def following
+    user = User.find(params[:id])
+    render partial: 'api/follows/follow_collection',
+           locals: { users: user.following }
+  end
+
   def follow
     user_to_follow = User.find(params[:id])
     current_user.follow(user_to_follow)
     render partial: 'api/follows/follow_data',
-      locals: { follower: current_user, followed: user_to_follow }
+           locals: { follower: current_user, followed: user_to_follow }
   end
 
   def unfollow
     user_to_unfollow = User.find(params[:id])
     current_user.unfollow(user_to_unfollow)
     render partial: 'api/follows/follow_data',
-      locals: { follower: current_user, followed: user_to_unfollow }
+           locals: { follower: current_user, followed: user_to_unfollow }
   end
 
   private

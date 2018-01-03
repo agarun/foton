@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resources :users, only: :create do
       member do
+        get :followers
+        get :following
         patch :follow
         delete :unfollow
       end
@@ -12,6 +14,5 @@ Rails.application.routes.draw do
 
     resource :session, only: %i[create destroy]
     resources :photos, only: %i[show create update destroy]
-    resource :follows, only: %i[create destroy] # TODO
   end
 end
