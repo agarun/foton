@@ -19,6 +19,17 @@ users = [
   User.create!(username: "Jorja", password: "hunter2", bio: "", location: "Walsall")
 ]
 
+# dev color seeds
+
+30.times do |i|
+  p = Photo.create(
+    author_id: users[rand(users.size)].id,
+    title: "Photo Number #{i}"
+  )
+  p.image = File.open(Dir.glob('../../../../aaron/Desktop/color/*.jpg').sample)
+  p.save!
+end
+
 # random follows
 
 users.each do |user1|
