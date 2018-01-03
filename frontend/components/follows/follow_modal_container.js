@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { toggleModal } from '../../actions/ui_actions';
-import { getUserFollowers, getUserFollowing } from '../../actions/user_actions';
+import { fetchUserFollowers, fetchUserFollowing }
+  from '../../actions/user_actions';
 import FollowModal from './follow_modal';
 
 const mapStateToProps = (state, ownProps) => {
@@ -18,7 +19,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   const processRequest =
-    ownProps.requestType === 'FOLLOWING' ? getUserFollowing : getUserFollowers;
+    ownProps.requestType === 'FOLLOWING' ? fetchUserFollowing : fetchUserFollowers;
 
   return {
     toggleFollowsModal: user => dispatch(toggleModal('FOLLOWS', { user })),
