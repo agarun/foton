@@ -8,20 +8,17 @@ class FollowModal extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.requestType !== nextProps.requestType) {
+    if (nextProps.requestType &&
+       this.props.requestType !== nextProps.requestType) {
       nextProps.processRequest(nextProps.user);
     }
-    // debugger
-    // if (nextProps.requestType &&
-    //   this.props.requestType !== nextProps.requestType) {
-    //   nextProps.processRequest(this.props.user);
-    // }
-    // TODO if path is diff toggle modal
-    // TODO protected link to follow etc
+    if (nextProps.requestType &&
+       nextProps.history.location !== nextProps.location) {
+      this.props.toggleFollowsModal(this.props.user);
+    }
   }
 
   render() {
-    // debugger
     return (
       <ReactModal
         isOpen={this.props.showModal}
@@ -57,11 +54,6 @@ class FollowModal extends Component {
       </ReactModal>
     );
   }
-
-    componentWillDismount() {
-      debugger
-    }
-
 }
 
 export default FollowModal;
