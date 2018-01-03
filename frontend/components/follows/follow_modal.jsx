@@ -17,6 +17,7 @@ class FollowModal extends Component {
     //   nextProps.processRequest(this.props.user);
     // }
     // TODO if path is diff toggle modal
+    // TODO protected link to follow etc
   }
 
   render() {

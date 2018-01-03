@@ -15,14 +15,14 @@ const usersReducer = (state = {}, action) => {
   let newState = merge({}, state);
   switch (action.type) {
     case RECEIVE_USER: {
-      const newUserUsername = action.user.username;
-      const newUser = { [newUserUsername]: action.user };
+      const newUserId = action.user.id;
+      const newUser = { [newUserId]: action.user };
       return Object.assign({}, state, newUser);
     }
     case RECEIVE_CURRENT_USER:
       if (action.currentUser) {
-        const currentUserUsername = action.currentUser.username;
-        const currentUser = { [currentUserUsername]: action.currentUser };
+        const currentUserId = action.currentUser.id;
+        const currentUser = { [currentUserId]: action.currentUser };
         return Object.assign({}, state, currentUser);
       }
       return state;
@@ -30,35 +30,35 @@ const usersReducer = (state = {}, action) => {
       return Object.assign({}, state, action.users);
     case RECEIVE_FOLLOW: {
       const {
-        follower_username, followed_username, follower_id, followed_id
+        follower_id, followed_id
       } = action.followData;
 
-      newState[followed_username].follower_ids.push(follower_id);
-      newState[followed_username].current_user_follows = true;
+      newState[followed_id].follower_ids.push(follower_id);
+      newState[followed_id].current_user_follows = true;
 
       // current user is *not* in not in this slice of state
       // if this route was accessed via a permalink
-      if (newState[follower_username])
-        newState[follower_username].following_ids.push(followed_id);
+      if (newState[follower_id])
+        newState[follower_id].following_ids.push(followed_id);
 
       return newState;
     }
     case RECEIVE_UNFOLLOW:
       const {
-        followed_username, follower_username, follower_id, followed_id
+        followed_id, follower_id
       } = action.followData;
 
       const followerIdx =
-        newState[followed_username].follower_ids.indexOf(follower_id);
-      newState[followed_username].follower_ids.splice(followerIdx, 1);
-      newState[followed_username].current_user_follows = false;
+        newState[followed_id].follower_ids.indexOf(follower_id);
+      newState[followed_id].follower_ids.splice(followerIdx, 1);
+      newState[followed_id].current_user_follows = false;
 
       // current user is *not* in not in this slice of state
       // if this route was accessed via a permalink
-      if (newState[follower_username]) {
+      if (newState[follower_id]) {
         const followedIdx =
-          newState[follower_username].following_ids.indexOf(followed_id);
-        newState[follower_username].following_ids.splice(followedIdx, 1);
+          newState[follower_id].following_ids.indexOf(followed_id);
+        newState[follower_id].following_ids.splice(followedIdx, 1);
       }
 
       return newState;

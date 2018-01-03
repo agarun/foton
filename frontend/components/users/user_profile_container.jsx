@@ -6,12 +6,10 @@ import { toggleModal } from '../../actions/ui_actions';
 
 const mapStateToProps = (state, { match }) => {
   const username = match.params.username;
-  const user = selectUserByUsername(state, username);
   const currentUser = state.session.currentUser;
 
   return {
     username,
-    user,
     currentUser,
   };
 };
