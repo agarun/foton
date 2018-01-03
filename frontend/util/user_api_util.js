@@ -18,3 +18,17 @@ export const unfollowUser = userToUnfollow => (
     url: `api/users/${userToUnfollow.id}/unfollow`
   })
 );
+
+export const getUserFollowers = user => (
+  $.ajax({
+    method: 'GET',
+    url: `api/users/${user.id}/followers`,
+  })
+);
+
+export const getUserFollowing = user => (
+  $.ajax({
+    method: 'GET',
+    url: `api/users/${user.id}/following`,
+  })
+);

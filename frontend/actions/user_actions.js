@@ -1,12 +1,18 @@
 import * as UserApiUtil from '../util/user_api_util';
 
 export const RECEIVE_USER = 'RECEIVE_USER';
+export const RECEIVE_USERS = 'RECEIVE_USERS';
 export const RECEIVE_FOLLOW = 'RECEIVE_FOLLOW';
 export const RECEIVE_UNFOLLOW = 'RECEIVE_UNFOLLOW';
 
 export const receiveUser = user => ({
   type: RECEIVE_USER,
   user
+});
+
+export const receiveUsers = users => ({
+  type: RECEIVE_USERS,
+  users
 });
 
 export const receiveFollow = followData => ({
@@ -35,4 +41,16 @@ export const unfollowUser = user => dispatch => (
   UserApiUtil
     .unfollowUser(user)
     .then(payload => dispatch(receiveUnfollow(payload)))
+);
+
+export const getUserFollowers = user => dispatch => (
+  UserApiUtil
+    .getUserFollowers(user)
+    .then(followers => dispatch(receiveUsers(followers)))
+);
+
+export const getUserFollowing = user => dispatch => (
+  UserApiUtil
+    .getUserFollowing(user)
+    .then(following => dispatch(receiveUsers(following)))
 );
