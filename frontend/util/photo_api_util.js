@@ -7,3 +7,10 @@ export const createPhoto = formData => (
     data: formData,
   })
 );
+
+export const fetchPhotoFeed = () => (
+  $.ajax({
+    method: 'GET',
+    url: 'api/photos',
+  })
+);

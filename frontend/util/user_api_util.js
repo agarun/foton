@@ -19,14 +19,14 @@ export const unfollowUser = userToUnfollow => (
   })
 );
 
-export const getUserFollowers = user => (
+export const fetchUserFollowers = user => (
   $.ajax({
     method: 'GET',
     url: `api/users/${user.id}/followers`,
   })
 );
 
-export const getUserFollowing = user => (
+export const fetchUserFollowing = user => (
   $.ajax({
     method: 'GET',
     url: `api/users/${user.id}/following`,
