@@ -6,7 +6,7 @@ class Api::UsersController < ApplicationController
 
     if @user.save
       log_in(@user)
-      render :show
+      render partial: 'api/users/user', locals: { user: @user }
     else
       render json: @user.errors.to_hash(true),
              status: :unprocessable_entity
@@ -15,6 +15,7 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = User.find_by(username: params[:username])
+    @photos = @user.photos
     render json: ["Not Found"], status: :not_found if @user.nil?
   end
 
