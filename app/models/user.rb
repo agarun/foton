@@ -35,7 +35,7 @@ class User < ApplicationRecord
   validate :check_invalid_characters
   validates :password, length: { minimum: 6, allow_nil: true }
 
-  after_initialize :ensure_unique_session_token
+  before_validation :ensure_unique_session_token
   after_save :assign_default_profile_photo
 
   def self.find_by_credentials(username, plaintext_password)

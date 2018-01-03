@@ -1,19 +1,20 @@
 class Api::PhotosController < ApplicationController
   before_action :require_user_logged_in, only: %i[create update destroy]
 
-  # FIXME: N+1 queries
-  # .includes(:author) ?
   def index
-    @users = current_user.following + [current_user]
+    following = current_user.following_ids + [current_user.id]
+    @users = User
+      .includes(:followers, :following, :photos, :profile_photo)
+      .where(id: following)
     @photos = Photo
-      .where(author_id: current_user.following_ids + [current_user.id])
+      .where(author_id: following)
       .where.not(is_profile_photo: true)
       .order(created_at: :desc)
-      .limit(3) # TODO: remove dev stuff, implement infinite scroll
+      .limit(3) # FIXME
   end
 
   def show
-    @photo = Photo.find(params[:id])
+    @photo = Photo.includes(:author).find(params[:id])
   end
 
   def create
