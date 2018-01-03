@@ -13,6 +13,6 @@ Rails.application.routes.draw do
     resources :users, only: :show, param: :username
 
     resource :session, only: %i[create destroy]
-    resources :photos, only: %i[show create update destroy]
+    resources :photos, only: %i[index show create update destroy]
   end
 end
