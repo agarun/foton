@@ -6,18 +6,24 @@ class UserProfile extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { pageNotFound: false };
+    this.state = { pageNotFound: false, user: null };
     this.pageNotFound = this.pageNotFound.bind(this);
   }
 
   componentDidMount() {
-    this.props.fetchUser(this.props.username).then(null, this.pageNotFound);
+    this.props.fetchUser(this.props.username)
+      .then(
+        payload => this.setState({ user: payload.user }), this.pageNotFound
+      );
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.username !== nextProps.username) {
       this.setState({ pageNotFound: false });
-      this.props.fetchUser(nextProps.username).then(null, this.pageNotFound);
+      this.props.fetchUser(nextProps.username)
+        .then(
+          payload => this.setState({ user: payload.user }), this.pageNotFound
+        );
     }
   }
 
@@ -27,11 +33,14 @@ class UserProfile extends Component {
 
   render() {
     const {
-      user, currentUser, followUser, unfollowUser, toggleFollowsModal
+      currentUser, followUser, unfollowUser, toggleFollowsModal
     } = this.props;
+    const {
+      user
+    } = this.state;
 
     if (this.state.pageNotFound) return <PageNotFound />;
-    if (Object.keys(user).length === 0) return null;
+    if (!user) return null;
 
     return (
       <section className="main">
