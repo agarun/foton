@@ -29,6 +29,12 @@ export const createPhoto = photoData => dispatch => (
     ))
 );
 
+export const fetchPhoto = photoId => dispatch => (
+  PhotoApiUtil
+    .fetchPhoto(photoId)
+    .then(photo => dispatch(receivePhoto(photo)))
+);
+
 export const fetchPhotoFeed = () => dispatch => (
   PhotoApiUtil
     .fetchPhotoFeed()

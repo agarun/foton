@@ -8,6 +8,13 @@ export const createPhoto = formData => (
   })
 );
 
+export const fetchPhoto = photoId => (
+  $.ajax({
+    method: 'GET',
+    url: `api/photos/${photoId}`,
+  })
+);
+
 export const fetchPhotoFeed = () => (
   $.ajax({
     method: 'GET',

@@ -2,10 +2,16 @@ import {
   RECEIVE_USER,
   RECEIVE_USERS,
   RECEIVE_FOLLOW,
-  RECEIVE_UNFOLLOW
+  RECEIVE_UNFOLLOW,
 } from '../../actions/user_actions';
 
-import { RECEIVE_CURRENT_USER } from '../../actions/session_actions';
+import {
+  RECEIVE_CURRENT_USER,
+} from '../../actions/session_actions';
+
+import {
+  RECEIVE_PHOTO_FEED,
+} from '../../actions/photo_actions';
 
 import merge from 'lodash/merge'; // deep merge!
 
@@ -28,6 +34,8 @@ const usersReducer = (state = {}, action) => {
       return state;
     case RECEIVE_USERS:
       return Object.assign({}, state, action.users);
+    case RECEIVE_PHOTO_FEED:
+      return Object.assign({}, state, action.feedData.users);
     case RECEIVE_FOLLOW: {
       const {
         follower_id, followed_id
