@@ -43,14 +43,14 @@ export const unfollowUser = user => dispatch => (
     .then(payload => dispatch(receiveUnfollow(payload)))
 );
 
-export const getUserFollowers = user => dispatch => (
+export const fetchUserFollowers = user => dispatch => (
   UserApiUtil
-    .getUserFollowers(user)
+    .fetchUserFollowers(user)
     .then(followers => dispatch(receiveUsers(followers)))
 );
 
-export const getUserFollowing = user => dispatch => (
+export const fetchUserFollowing = user => dispatch => (
   UserApiUtil
-    .getUserFollowing(user)
+    .fetchUserFollowing(user)
     .then(following => dispatch(receiveUsers(following)))
 );
