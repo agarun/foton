@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const FollowModalItem = ({ user }) => (
   user ?
     <li>
-      <Link to={user.username}>
+      <Link to={`/${user.username}`}>
         <img
           className="follow-modal-users-profile-photo"
           src={user.profile_photo_url}
@@ -13,7 +13,7 @@ const FollowModalItem = ({ user }) => (
       </Link>
       <section className="follow-modal-users-mid">
         <section className="follow-modal-users-name">
-          <Link to={user.username}>
+          <Link to={`/${user.username}`}>
             <strong>{user.username}</strong>
           </Link>
         </section>
