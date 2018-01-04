@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import FollowButton from '../follows/follow_button';
 
 class PhotoShow extends React.Component {
@@ -8,6 +8,12 @@ class PhotoShow extends React.Component {
       this.props.fetchPhoto(this.props.photoId)
       .then(payload => this.props.fetchUser(payload.photo.author_name));
     }
+  }
+
+  componentWillReceiveProps(nextProp) {
+    debugger
+    // the problem is here! i'm wrapping container in withProps though..
+    // this.props.closeModal();
   }
 
   render() {
@@ -26,11 +32,10 @@ class PhotoShow extends React.Component {
           <section className={
             isModal ?
             'photo-show-content photo-show-content-hover' : 'photo-show-content'
+          } onClick={
+            () => ( closeModal ? closeModal() : null )
           }>
-            <img
-              onClick={() => ( closeModal ? closeModal() : null )}
-              src={photo.image_url}
-            />
+            <img src={photo.image_url} />
           </section>
           <section className="photo-show-sidebar">
             <section className="photo-show-sidebar-author">
@@ -67,4 +72,4 @@ class PhotoShow extends React.Component {
   }
 }
 
-export default withRouter(PhotoShow);
+export default PhotoShow;

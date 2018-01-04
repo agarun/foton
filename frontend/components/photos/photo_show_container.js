@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { fetchPhoto } from '../../actions/photo_actions';
 import { fetchUser } from '../../actions/user_actions';
 import PhotoShow from './photo_show';
+import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
   const isModal = !!ownProps.photoId;
@@ -22,7 +23,9 @@ const mapDispatchToProps = dispatch => ({
   fetchUser: userId => dispatch(fetchUser(userId)),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PhotoShow);
+export default withRouter(
+    connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(PhotoShow)
+);

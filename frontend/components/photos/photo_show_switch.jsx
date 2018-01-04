@@ -17,10 +17,6 @@ class PhotoShowSwitch extends React.Component {
       this.constructor.isModal || false;
   }
 
-  // componentWillReceiveProps(next) {
-  //   debugger
-  // }
-
   componentWillUpdate(nextProps) {
     if (
       nextProps.history.action !== 'POP' &&
