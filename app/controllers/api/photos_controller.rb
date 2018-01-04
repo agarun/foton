@@ -10,7 +10,7 @@ class Api::PhotosController < ApplicationController
       .where(author_id: following)
       .where.not(is_profile_photo: true)
       .order(created_at: :desc)
-      .limit(3) # FIXME
+      .limit(5) # FIXME
   end
 
   def show

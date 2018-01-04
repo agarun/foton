@@ -54,6 +54,8 @@
 }
 
 .photo-feed-item-image {
+  text-align: center;
+
   a {
     cursor: zoom-in;
 
@@ -63,7 +65,10 @@
   }
 
   img {
+    max-width: 100%;
     max-height: 100%;
+    object-fit: cover;
+    overflow: hidden;
   }
 }
 
@@ -123,6 +128,8 @@
   display: flex;
   justify-content: space-between;
   position: absolute;
+  right: 0;
+  left: 0;
   height: 100%;
   border-radius: 3px;
 
@@ -143,8 +150,10 @@
     overflow: hidden;
 
     img {
+      max-width: 100%;
       max-height: 100%;
-      border: none;
+      object-fit: cover;
+      overflow: hidden;
     }
   }
 

@@ -5,7 +5,7 @@ import { fetchPhotoFeed } from '../../actions/photo_actions';
 const mapStateToProps = state => ({
   users: state.entities.users,
   photos: Object.keys(state.entities.photos)
-            .map(key => state.entities.photos[key]),
+            .map(key => state.entities.photos[key]).reverse(),
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -3,6 +3,8 @@ import {
   RECEIVE_PHOTO_FEED,
 } from '../../actions/photo_actions';
 
+import { RECEIVE_USER } from '../../actions/user_actions';
+
 const photosReducer = (state = {}, action) => {
   Object.freeze(state);
 
@@ -12,6 +14,8 @@ const photosReducer = (state = {}, action) => {
       const newPhoto = { [newPhotoId]: action.photo };
       return Object.assign({}, state, newPhoto);
     }
+    case RECEIVE_USER:
+      return action.user.photos;
     case RECEIVE_PHOTO_FEED:
       return action.feedData.photos || {};
     default:

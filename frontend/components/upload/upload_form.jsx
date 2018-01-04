@@ -52,7 +52,7 @@ class UploadForm extends React.Component {
     }
     this.props.createPhoto(formData)
       .then(() => {
-        this.props.history.push(this.props.currentUser.username);
+        this.props.history.push(`/${this.props.currentUser.username}`);
       });
   }
 
