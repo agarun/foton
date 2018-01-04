@@ -28,6 +28,8 @@ users = [
   )
   p.image = File.open(Dir.glob('../../../../aaron/Desktop/color/*.jpg').sample)
   p.save!
+
+  p.is_cover_photo = true if rand(2).zero? && User.find(p.author_id).cover_photo.nil?
 end
 
 # random follows
@@ -172,12 +174,15 @@ end
 # end
 #
 # hundred_photos_data.each do |row|
-#   photo = File.open(row.first)
-#   Photo.create(
+#   file_photo = File.open(row.first)
+#   db_photo = Photo.create(
 #     author_id: users[rand(users.size)].id,
 #     title: row[1],
 #     description: row[2]
 #   )
+#   db_photo.image = file_photo
+#
+#   # TODO: cover photos etc
 # end
 #
 # # TODO: upload custom profile photos for seeded users
