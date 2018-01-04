@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import FollowButton from '../follows/follow_button';
 
 class PhotoShow extends React.Component {
-
   componentDidMount() {
     if (!this.props.photo) {
       this.props.fetchPhoto(this.props.photoId)
@@ -11,14 +12,52 @@ class PhotoShow extends React.Component {
 
   render() {
     if (!this.props.author) return null;
+    const {
+      photo, author, title, description, isModal, closeModal
+    } = this.props;
 
     return (
-      <section className="main">
-        {this.props.author.username}
-        {this.props.photo.image_url}
+      <section className={isModal ? undefined : 'main'}>
+        <section className={isModal ? 'photo-show' : 'photo-show photo-show-smaller'}>
+          <section className={isModal ? 'photo-show-content photo-show-content-hover' : 'photo-show-content'}>
+            <img
+              // className={isModal ? 'photo-show-content-hover' : undefined}
+              onClick={() => ( closeModal ? closeModal() : null )}
+              src={photo.image_url}
+            />
+          </section>
+          <section className="photo-show-sidebar">
+            <section className="photo-show-sidebar-author">
+              <section className="photo-show-sidebar-author-avatar">
+                <Link to={`/${author.username}`}>
+                  <img src={author.profile_photo_url} />
+                </Link>
+              </section>
+              <section className="photo-show-sidebar-author-info">
+                <section className="photo-show-sidebar-author-info-username">
+                  <Link to={`/${author.username}`}>
+                    {author.username}
+                  </Link>
+                </section>
+                <section className="photo-show-sidebar-author-info-button">
+                  <FollowButton user={author} />
+                </section>
+              </section>
+            </section>
+            <section className="photo-show-sidebar-title">
+              {photo.title}
+            </section>
+            {
+              description &&
+                <section className="photo-show-sidebar-description">
+                  {photo.description}
+                </section>
+            }
+          </section>
+        </section>
       </section>
     );
   }
 }
 
-export default PhotoShow;
+export default withRouter(PhotoShow);

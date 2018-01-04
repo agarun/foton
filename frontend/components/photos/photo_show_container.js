@@ -4,11 +4,13 @@ import { fetchUser } from '../../actions/user_actions';
 import PhotoShow from './photo_show';
 
 const mapStateToProps = (state, ownProps) => {
-  const photoId = ownProps.match.params.photoId;
+  const isModal = !!ownProps.photoId;
+  const photoId = ownProps.photoId || ownProps.match.params.photoId;
   const photo = state.entities.photos[photoId];
   const author = photo ? state.entities.users[photo.author_id] : null;
 
   return {
+    isModal,
     photoId,
     photo,
     author,
