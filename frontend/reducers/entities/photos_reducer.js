@@ -15,7 +15,7 @@ const photosReducer = (state = {}, action) => {
       return Object.assign({}, state, newPhoto);
     }
     case RECEIVE_USER:
-      return action.user.photos;
+      return action.user.photos ? action.user.photos : state;
     case RECEIVE_PHOTO_FEED:
       return action.feedData.photos || {};
     default:

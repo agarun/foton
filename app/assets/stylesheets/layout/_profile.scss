@@ -1,33 +1,105 @@
-.user-profile-cover-photo {
-
+.user-profile-top {
+  background-color: white;
 }
 
-.user-profile-header {
+.user-profile-cover-photo {
+  min-width: 100%;
+  height: 280px;
+  vertical-align: middle;
+  border-bottom: 1px solid $gray-border;
 
+  img {
+    min-width: 100%;
+    max-height: 280px;
+    object-fit: cover;
+    overflow: hidden;
+  }
 }
 
 .user-profile-buttons {
+  display: flex;
+  justify-content: flex-end;
+  background-color: white;
 
+  button {
+    margin: 10px;
+  }
+}
+
+.user-profile-photo {
+  position: relative;
+  right: 50px;
+  text-align: center;
+
+  img {
+    position: absolute;
+    bottom: -10px;
+    width: 100px;
+    height: 100px;
+    border: 2px solid white;
+    border-radius: 50%;
+    background-color: white;
+  }
+}
+
+.user-profile-header {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .user-profile-info {
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-bottom: 1px solid $gray-border;
+
+  h1 {
+    margin: 15px;
+    font-size: 30px;
+    color: $gray-medium-2;
+  }
+
+  p {
+    margin-bottom: 15px;
+    font-size: 15px;
+    word-wrap: break-word;
+    color: lighten($gray-medium-2, 15%);
+  }
 }
 
 .user-profile-stats {
+  padding-bottom: 20px;
+  font-size: 14px;
+  color: lighten($gray-medium, 15%);
+
   &-follows {
     margin: 0 16px;
     display: inline;
-    font-size: 14px;
-    color: $gray-medium;
     cursor: pointer;
 
     &:hover {
-      color: lighten($gray-medium, 10%);
+      color: lighten($gray-medium, 30%);
     }
 
     strong {
       font-weight: 600;
     }
   }
+
+  &-location {
+    margin: 0 16px;
+    display: inline;
+
+    svg {
+      margin-bottom: -1px;
+    }
+  }
+}
+
+.user-profile-gallery {
+  margin: 0 auto;
+  width: 95%;
 }
