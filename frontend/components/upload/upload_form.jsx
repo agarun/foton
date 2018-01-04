@@ -37,6 +37,7 @@ class UploadForm extends React.Component {
     if (file) {
       fileReader.readAsDataURL(file);
       if (!this.state.title.length) this.setState({ title: file.name });
+      if (this.props.errors) this.props.clearErrors();
     }
   }
 
@@ -63,6 +64,7 @@ class UploadForm extends React.Component {
 
   componentWillUpdate() {
     if (this.props.errors && !this.props.showModal) this.props.clearErrors();
+    if (!this.props.showModal) this.resetState();
   }
 
   render() {

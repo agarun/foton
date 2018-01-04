@@ -47,7 +47,7 @@ const FollowButton = ({
 const mapStateToProps = (state, ownProps) => {
   const currentUser = state.session.currentUser;
   const isCurrentUserFollowing =
-    ownProps.user.follower_ids.includes(currentUser.id);
+    currentUser ? ownProps.user.follower_ids.includes(currentUser.id) : false;
 
   return {
     currentUser,
