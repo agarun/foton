@@ -13,11 +13,7 @@ class PhotoFeed extends Component {
       .then(this.setState({ isFetching: false }));
   }
 
-  // TODO componentWillReceiveProps if logging in as a different user?
-  // TODO isFetching ui state && spinner when fetching
-
   render() {
-    debugger
     return (
       <section className="main">
         <ul className="photo-feed">

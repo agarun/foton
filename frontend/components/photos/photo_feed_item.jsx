@@ -21,7 +21,10 @@ const PhotoFeedItem = ({ photo, author }) => (
       </section>
     </section>
     <section className="photo-feed-item-image">
-      <Link to={`/photos/${photo.id}`}>
+      <Link to={{
+        pathname: `/photos/${photo.id}`,
+        state: { isModal: true, photoId: photo.id },
+      }}>
         <img src={photo.image_url} />
       </Link>
     </section>
