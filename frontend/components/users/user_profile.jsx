@@ -33,7 +33,11 @@ class UserProfile extends Component {
 
   render() {
     const {
-      currentUser, followUser, unfollowUser, toggleFollowsModal
+      users,
+      currentUser,
+      followUser,
+      unfollowUser,
+      toggleFollowsModal,
     } = this.props;
     const {
       user
@@ -54,7 +58,9 @@ class UserProfile extends Component {
           {
             currentUser && currentUser.id === user.id ?
               'Edit Profile Button Here' :
-              <FollowButton user={user} />
+              <FollowButton
+                user={this.props.users[user.id]}
+              />
           }
         </section>
         <section className="user-profile-info">

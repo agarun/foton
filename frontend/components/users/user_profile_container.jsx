@@ -6,10 +6,12 @@ import UserProfile from './user_profile';
 const mapStateToProps = (state, { match }) => {
   const username = match.params.username;
   const currentUser = state.session.currentUser;
+  const users = state.entities.users;
 
   return {
     username,
     currentUser,
+    users,
   };
 };
 
