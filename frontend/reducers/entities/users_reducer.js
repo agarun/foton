@@ -42,7 +42,6 @@ const usersReducer = (state = {}, action) => {
       } = action.followData;
 
       newState[followed_id].follower_ids.push(follower_id);
-      newState[followed_id].current_user_follows = true;
 
       // current user is *not* in not in this slice of state
       // if this route was accessed via a permalink
@@ -59,7 +58,6 @@ const usersReducer = (state = {}, action) => {
       const followerIdx =
         newState[followed_id].follower_ids.indexOf(follower_id);
       newState[followed_id].follower_ids.splice(followerIdx, 1);
-      newState[followed_id].current_user_follows = false;
 
       // current user is *not* in not in this slice of state
       // if this route was accessed via a permalink

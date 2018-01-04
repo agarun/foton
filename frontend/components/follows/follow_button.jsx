@@ -9,11 +9,12 @@ const FollowButton = ({
   followUser,
   unfollowUser,
   closeFollowsModal,
+  isCurrentUserFollowing,
   currentUser,
   history
 }) => (
   !currentUser || currentUser.id !== user.id ? (
-    user.current_user_follows ? (
+    isCurrentUserFollowing ? (
       <button
         className="unfollow-button"
         onClick={() => {
@@ -43,11 +44,18 @@ const FollowButton = ({
   )
 );
 
-const mapStateToProps = state => ({
-  currentUser: state.session.currentUser,
-});
+const mapStateToProps = (state, ownProps) => {
+  const currentUser = state.session.currentUser;
+  const isCurrentUserFollowing =
+    ownProps.user.follower_ids.includes(currentUser.id);
 
-const mapDispatchToProps = dispatch => ({
+  return {
+    currentUser,
+    isCurrentUserFollowing
+  };
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
   followUser: user => dispatch(followUser(user)),
   unfollowUser: user => dispatch(unfollowUser(user)),
   closeFollowsModal: () => dispatch(toggleModal(null)),
