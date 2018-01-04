@@ -3,8 +3,10 @@ import { toggleModal, fetchUpload } from '../../actions/ui_actions';
 import { createPhoto } from '../../actions/photo_actions';
 import { clearErrors } from '../../actions/error_actions';
 import UploadForm from './upload_form';
+import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = state => ({
+  currentUser: state.session.currentUser,
   showModal: state.ui.modal.showModal,
   isFetching: state.ui.upload.isFetching,
   errors: state.errors.upload,
@@ -17,7 +19,9 @@ const mapDispatchToProps = dispatch => ({
   clearErrors: () => dispatch(clearErrors()),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(UploadForm);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(UploadForm)
+);

@@ -52,8 +52,7 @@ class UploadForm extends React.Component {
     }
     this.props.createPhoto(formData)
       .then(() => {
-        // TODO: Navigate to user's profile
-        // this.props.toggleUploadModal();
+        this.props.history.push(this.props.currentUser.username);
       });
   }
 
