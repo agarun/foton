@@ -37,9 +37,9 @@ class PhotoShowSwitch extends React.Component {
 
   render() {
     this.constructor.isModal = Boolean(
-        this.props.location.state &&
-        this.props.location.state.isModal &&
-        this.constructor.previousLocation !== this.props.location
+      this.props.location.state &&
+      this.props.location.state.isModal &&
+      this.constructor.previousLocation !== this.props.location
     );
     const isModal = this.constructor.isModal;
     const previousLocation = this.constructor.previousLocation;

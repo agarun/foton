@@ -139,7 +139,7 @@
     background-color: lighten($gray-light-2, 6%);
     border-bottom-left-radius: 3px;
     border-top-left-radius: 3px;
-    border-right: 1px solid darken($gray-border, 3%);
+    border-right: 1px solid #e7e7e7;
     overflow: hidden;
 
     img {
@@ -161,7 +161,7 @@
     &-author {
       padding: 14px;
       display: flex;
-      border-bottom: 1px solid darken($gray-border, 3%);
+      border-bottom: 1px solid #e7e7e7;
 
       &-avatar {
         img {
@@ -205,11 +205,27 @@
 
     &-title {
       padding: 20px;
-      border-bottom: 1px solid darken($gray-border, 3%);
+      border-bottom: 1px solid #e7e7e7;
       font-size: 17px;
       color: darken($gray-medium, 5%);
       border-top: none;
       border-right: none;
+    }
+
+    &-description {
+      padding: 20px;
+      border-bottom: 1px solid #e7e7e7;
+      font-size: 14px;
+      color: darken($gray-medium, 5%);
+      border-top: none;
+      border-right: none;
+
+      small {
+        margin-top: 2px;
+        display: block;
+        font-size: 11px;
+        color: #969595;
+      }
     }
   }
 }

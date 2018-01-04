@@ -13,15 +13,21 @@ class PhotoShow extends React.Component {
   render() {
     if (!this.props.author) return null;
     const {
-      photo, author, title, description, isModal, closeModal
+      photo, author, isModal, closeModal
     } = this.props;
 
     return (
-      <section className={isModal ? undefined : 'main'}>
-        <section className={isModal ? 'photo-show' : 'photo-show photo-show-smaller'}>
-          <section className={isModal ? 'photo-show-content photo-show-content-hover' : 'photo-show-content'}>
+      <section className={
+        isModal ? undefined : 'main'
+      }>
+        <section className={
+          isModal ? 'photo-show' : 'photo-show photo-show-smaller'
+        }>
+          <section className={
+            isModal ?
+            'photo-show-content photo-show-content-hover' : 'photo-show-content'
+          }>
             <img
-              // className={isModal ? 'photo-show-content-hover' : undefined}
               onClick={() => ( closeModal ? closeModal() : null )}
               src={photo.image_url}
             />
@@ -48,9 +54,10 @@ class PhotoShow extends React.Component {
               {photo.title}
             </section>
             {
-              description &&
+              photo.description &&
                 <section className="photo-show-sidebar-description">
                   {photo.description}
+                  <small>Posted {photo.time_posted} ago.</small>
                 </section>
             }
           </section>
