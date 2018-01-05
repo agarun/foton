@@ -1,10 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PhotoGalleryItem from './photo_gallery_item';
 
 const PhotoGallery = ({ photos, photoIds }) => (
-  photoIds.map(photoId => (
-    <PhotoGalleryItem photo={photos[photoId]} />
-  ))
+  <section className="photo-gallery-item">
+    {
+      photoIds.map(photoId => (
+        <PhotoGalleryItem
+          key={photos[photoId].id}
+          photo={photos[photoId]}
+        />
+      ))
+    }
+  </section>
 );
 
 const mapStateToProps = state => ({
