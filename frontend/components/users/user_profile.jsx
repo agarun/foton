@@ -30,6 +30,9 @@ class UserProfile extends Component {
             user: payload.user, isFetching: false
           }), this.pageNotFound
         );
+    } else if (this.state.user) {
+      const user = nextProps.users[this.state.user.id];
+      this.setState({ user });
     }
   }
 
@@ -53,53 +56,59 @@ class UserProfile extends Component {
     if (this.state.pageNotFound) return <PageNotFound />;
     if (!user || isFetching) return null;
 
+    const profileUser = this.props.users[this.state.user.id];
     return (
       <section className="main">
         <section className="user-profile-top">
           <section className="user-profile-cover-photo">
-            <img src={user.cover_photo_url} />
+            <img src={profileUser.cover_photo_url} />
           </section>
           <section className="user-profile-buttons">
             {
               currentUser && currentUser.id === user.id ?
-                <button className="user-profile-edit-button">
+                <button
+                  className="user-profile-edit-button"
+                  onClick={this.props.toggleUserProfileEditModal}
+                >
                   Edit Profile
                 </button> :
                 <FollowButton
-                  user={this.props.users[user.id]}
+                  user={profileUser}
                 />
             }
           </section>
           <section className="user-profile-photo">
-            <img src={user.profile_photo_url} />
+            <img src={profileUser.profile_photo_url} />
           </section>
           <section className="user-profile-info">
             <ul className="user-profile-header">
-              <li><h1>{user.username}</h1></li>
-              <li><p>{user.bio}</p></li>
+              <li><h1>{profileUser.username}</h1></li>
+              <li><p>{profileUser.bio}</p></li>
             </ul>
             <ul className="user-profile-stats">
               <li
                 className="user-profile-stats-follows"
-                onClick={() => toggleFollowsModal(user, 'FOLLOWERS')}
+                onClick={() => toggleFollowsModal(profileUser, 'FOLLOWERS')}
               >
-                <strong>{user.follower_ids.length}</strong>&nbsp;Followers
+                <strong>{profileUser.follower_ids.length}</strong>
+                &nbsp;Followers
               </li>
               <li
                 className="user-profile-stats-follows"
-                onClick={() => toggleFollowsModal(user, 'FOLLOWING')}
+                onClick={() => toggleFollowsModal(profileUser, 'FOLLOWING')}
               >
-                <strong>{user.following_ids.length}</strong>&nbsp;Following
+                <strong>{profileUser.following_ids.length}</strong>
+                &nbsp;Following
               </li>
               <li className="user-profile-stats-location">
-                <LocationSVG />{user.location}
+                <LocationSVG />{profileUser.location}
               </li>
             </ul>
           </section>
         </section>
         <section className="user-profile-gallery">
           <PhotoGallery
-            photoIds={user.photo_ids}
+            photoIds={profileUser.photo_ids}
           />
         </section>
       </section>
