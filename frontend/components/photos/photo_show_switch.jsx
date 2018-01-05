@@ -6,6 +6,10 @@ import { MainPage } from '../../util/main_page_util';
 import PhotoFeed from './photo_feed_container';
 import PhotoShow from './photo_show_container';
 import PhotoShowModal from '../photos/photo_show_modal';
+import UserProfile from '../users/user_profile_container';
+
+// TODO refactor with Redux state
+// TODO when do we hit the PhotoShowSwitch constructor?
 
 class PhotoShowSwitch extends React.Component {
   constructor(props) {
@@ -28,8 +32,14 @@ class PhotoShowSwitch extends React.Component {
     }
   }
 
-  componentDidUpdate() {
-    if (this.constructor.isModal) this.props.togglePhotoShowModal();
+  componentDidUpdate(prevProps, prevState) {
+    if (this.constructor.isModal ||
+        this.constructor.previousLocation.state ||
+        ((prevProps.match.params &&
+          this.props.location.pathname.slice(1, 6) === "photo") &&
+         (prevProps.location !== this.props.location))) {
+        this.props.togglePhotoShowModal();
+    }
   }
 
   render() {
@@ -47,6 +57,7 @@ class PhotoShowSwitch extends React.Component {
       }>
         <Route exact path="/" component={MainPage} />
         <Route exact path="/photos/:photoId" component={PhotoShow} />
+        <Route exact path="/:username" component={UserProfile} />
       </Switch>
     );
   }

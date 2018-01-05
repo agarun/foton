@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import PhotoGalleryItem from './photo_gallery_item';
 
 const PhotoGallery = ({ photos, photoIds }) => (
-  <section className="photo-gallery-item">
+  <section className="photo-gallery-items">
     {
-      photoIds.map(photoId => (
+      photoIds.reverse().map(photoId => (
         <PhotoGalleryItem
           key={photos[photoId].id}
           photo={photos[photoId]}
@@ -19,4 +19,6 @@ const mapStateToProps = state => ({
   photos: state.entities.photos,
 });
 
-export default connect(mapStateToProps)(PhotoGallery);
+export default connect(
+  mapStateToProps
+)(PhotoGallery);

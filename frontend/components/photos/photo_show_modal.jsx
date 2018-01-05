@@ -12,6 +12,18 @@ class PhotoShowModal extends React.Component {
     this.closeModal = this.closeModal.bind(this);
   }
 
+  // componentWillReceiveProps(nextProps) {
+  //   debugger
+  // }
+  //
+  // componentWillUpdate(nextProps, nextState) {
+  //   debugger
+  // }
+  //
+  // componentDidUpdate(prevProps, prevState) {
+  //   debugger
+  // }
+
   closeModal() {
     this.props.history.goBack();
     this.props.togglePhotoShowModal();
@@ -24,7 +36,7 @@ class PhotoShowModal extends React.Component {
       <ReactModal
         isOpen={this.props.showModal}
         onRequestClose={this.closeModal}
-        closeTimeoutMS={300}
+        closeTimeoutMS={500}
         className="photo-show-modal"
         overlayClassName="photo-show-overlay"
       >

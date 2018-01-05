@@ -10,11 +10,17 @@ class PhotoShow extends React.Component {
     }
   }
 
-  componentWillReceiveProps(nextProp) {
-    debugger
-    // the problem is here! i'm wrapping container in withProps though..
-    // this.props.closeModal();
-  }
+  // componentWillUpdate() {
+  //   debugger
+  // }
+  //
+  // componentWillReceiveProps(nextProps) {
+  //   debugger
+  // }
+  //
+  // componentDidUpdate(prevProps, prevState) {
+  //   debugger
+  // }
 
   render() {
     if (!this.props.author) return null;
@@ -35,7 +41,7 @@ class PhotoShow extends React.Component {
           } onClick={
             () => ( closeModal ? closeModal() : null )
           }>
-            <img src={photo.image_url} />
+            <img src={photo.original_image_url} />
           </section>
           <section className="photo-show-sidebar">
             <section className="photo-show-sidebar-author">
@@ -55,9 +61,12 @@ class PhotoShow extends React.Component {
                 </section>
               </section>
             </section>
-            <section className="photo-show-sidebar-title">
-              {photo.title}
-            </section>
+            {
+              photo.title &&
+                <section className="photo-show-sidebar-title">
+                  {photo.title}
+                </section>
+            }
             {
               photo.description &&
                 <section className="photo-show-sidebar-description">
