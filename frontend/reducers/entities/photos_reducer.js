@@ -3,7 +3,13 @@ import {
   RECEIVE_PHOTO_FEED,
 } from '../../actions/photo_actions';
 
-import { RECEIVE_USER } from '../../actions/user_actions';
+import {
+  RECEIVE_CURRENT_USER,
+} from '../../actions/session_actions';
+
+import {
+  RECEIVE_USER,
+} from '../../actions/user_actions';
 
 const photosReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -16,6 +22,8 @@ const photosReducer = (state = {}, action) => {
     }
     case RECEIVE_USER:
       return action.user.photos ? action.user.photos : state;
+    case RECEIVE_CURRENT_USER:
+      return action.currentUser === null ? state : {};
     case RECEIVE_PHOTO_FEED:
       return action.feedData.photos || {};
     default:
