@@ -31,6 +31,12 @@ export const fetchUser = username => dispatch => (
     .then(user => dispatch(receiveUser(user)))
 );
 
+export const updateUser = userFormData => dispatch => (
+  UserApiUtil
+    .updateUser(userFormData)
+    .then(user => dispatch(receiveUser(user)))
+);
+
 export const followUser = user => dispatch => (
   UserApiUtil
     .followUser(user)

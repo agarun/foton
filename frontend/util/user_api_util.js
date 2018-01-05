@@ -5,6 +5,16 @@ export const fetchUser = username => (
   })
 );
 
+export const updateUser = userData => (
+  $.ajax({
+    method: 'PATCH',
+    url: `api/users/${userData.get('id')}`,
+    contentType: false,
+    processData: false,
+    data: userData,
+  })
+);
+
 export const followUser = userToFollow => (
   $.ajax({
     method: 'PATCH',
