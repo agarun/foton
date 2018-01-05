@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { toggleModal } from '../../actions/ui_actions';
+import { MainPage } from '../../util/main_page_util';
 import PhotoFeed from './photo_feed_container';
 import PhotoShow from './photo_show_container';
 import PhotoShowModal from '../photos/photo_show_modal';
@@ -44,7 +45,7 @@ class PhotoShowSwitch extends React.Component {
       <Switch location={
         isModal ? previousLocation : this.props.location
       }>
-        <Route exact path="/" component={PhotoFeed} />
+        <Route exact path="/" component={MainPage} />
         <Route exact path="/photos/:photoId" component={PhotoShow} />
       </Switch>
     );
