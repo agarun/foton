@@ -35,6 +35,7 @@ gem 'jquery-rails'
 
 # file uploads
 gem 'paperclip', '~> 5.0.0'
+gem 'paperclip-meta'
 gem 'aws-sdk', '< 3.0'
 gem 'figaro'
 
