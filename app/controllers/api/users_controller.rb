@@ -15,8 +15,12 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = User.find_by(username: params[:username])
-    @photos = @user.photos
-    render json: ["Not Found"], status: :not_found if @user.nil?
+    if @user.nil?
+      render json: ["Not Found"], status: :not_found
+    else
+      @photos = @user.photos
+      render :show
+    end
   end
 
   def followers

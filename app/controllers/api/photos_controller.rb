@@ -15,6 +15,7 @@ class Api::PhotosController < ApplicationController
 
   def show
     @photo = Photo.includes(:author).find(params[:id])
+    render json: ["Not Found"], status: :not_found if @photo.nil?
   end
 
   def create
