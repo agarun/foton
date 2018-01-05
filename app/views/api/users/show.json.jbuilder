@@ -10,4 +10,4 @@ json.photos do
 end
 
 cover_photo = @user.cover_photo
-json.cover_photo_url asset_url(cover_photo.image(:thumb)) if cover_photo
+json.cover_photo_url asset_url(cover_photo.image) if cover_photo

@@ -2,7 +2,7 @@ class Photo < ApplicationRecord
   belongs_to :author, class_name: :User
 
   has_attached_file :image,
-                    styles: { medium: "960x960>", thumb: "100x100>" }
+                    styles: { medium: "900x900>", thumb: "100x100>" }
 
   validates_attachment :image,
                        presence: true,
