@@ -79,12 +79,36 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
+  def update_profile_photo(new_profile_photo)
+    db_profile_photo = profile_photo
+    db_profile_photo&.destroy
+    save
+    Photo.create(
+      author_id: id,
+      is_profile_photo: true,
+      image: new_profile_photo
+    )
+    reload_profile_photo
+  end
+
+  def update_cover_photo(new_cover_photo_id)
+    db_cover_photo = cover_photo
+    if cover_photo
+      db_cover_photo.is_cover_photo = false
+      db_cover_photo.save!
+    end
+
+    new_cover_photo = Photo.find(new_cover_photo_id)
+    new_cover_photo.is_cover_photo = true
+    new_cover_photo.save!
+    reload_cover_photo
+  end
+
   private
 
   def ensure_unique_session_token
-    loop do
+    if User.find_by(session_token: session_token).nil?
       self.session_token = generate_session_token
-      break if User.find_by(session_token: session_token).nil?
     end
   end
 

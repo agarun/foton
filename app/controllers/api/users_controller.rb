@@ -15,11 +15,35 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = User.find_by(username: params[:username])
+
     if @user.nil?
       render json: ["Not Found"], status: :not_found
     else
       @photos = @user.photos
       render :show
+    end
+  end
+
+  def update
+    @user = User.find(params[:id])
+
+    new_profile_photo = params[:user][:new_profile_photo]
+    new_cover_photo_id = params[:user][:new_cover_photo_id]
+
+    if @user && @user.update(user_params)
+      if new_profile_photo
+        @user.update_profile_photo(new_profile_photo)
+      end
+
+      if new_cover_photo_id
+        @user.update_cover_photo(new_cover_photo_id)
+      end
+
+      render :show
+    else
+      # TODO: error handling
+      render json: @user.errors.to_hash(true),
+             status: :unprocessable_entity
     end
   end
 
@@ -52,6 +76,8 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(
+      :username, :password, :bio, :location
+    )
   end
 end
