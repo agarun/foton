@@ -23,10 +23,6 @@ const App = () => (
         exact path="/:formType(login|signup)"
         component={SessionForm}
       />
-      <Route
-        exact path="/:username"
-        component={UserProfile}
-      />
       {/* <Route component={PageNotFound} /> */}
       {/* <Route
         exact path="/upload"

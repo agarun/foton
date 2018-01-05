@@ -62,7 +62,9 @@ class UserProfile extends Component {
           <section className="user-profile-buttons">
             {
               currentUser && currentUser.id === user.id ?
-                <button>Edit Profile</button> :
+                <button className="user-profile-edit-button">
+                  Edit Profile
+                </button> :
                 <FollowButton
                   user={this.props.users[user.id]}
                 />
