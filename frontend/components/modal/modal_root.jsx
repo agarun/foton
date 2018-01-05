@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import UploadForm from '../upload/upload_form_container';
 import FollowModalContainer from '../follows/follow_modal_container';
 import PhotoShowModal from '../photos/photo_show_modal';
+import UserProfileEdit from '../users/user_profile_edit_container';
 
 const MODAL_COMPONENTS = {
   'UPLOAD': UploadForm,
   'FOLLOWS': FollowModalContainer,
   'PHOTO_SHOW': PhotoShowModal,
+  'PROFILE_EDIT': UserProfileEdit,
 };
 
 const ModalRoot = ({ currentModal, currentModalProps, showModal }) => {
