@@ -238,3 +238,30 @@
     }
   }
 }
+
+.photo-gallery-item {
+  display: flex;
+  flex-wrap: wrap;
+
+  &:after {
+    content: '';
+    flex-grow: 1e4;
+    min-width: 20%;
+  }
+
+  section {
+    margin: 5px;
+    position: relative;
+  }
+
+  i {
+    display: block;
+  }
+
+  img {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    vertical-align: bottom;
+  }
+}
