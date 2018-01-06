@@ -27,7 +27,7 @@ class PhotoShow extends React.Component {
             isModal ?
             'photo-show-content photo-show-content-hover' : 'photo-show-content'
           } onClick={
-            () => ( closeModal ? closeModal() : null )
+            (e) => ( closeModal ? closeModal(e) : null )
           }>
             <img src={photo.original_image_url} />
           </section>

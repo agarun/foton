@@ -12,7 +12,8 @@ class PhotoShowModal extends React.Component {
     this.closeModal = this.closeModal.bind(this);
   }
 
-  closeModal() {
+  closeModal(e) {
+    e.stopPropagation();
     this.props.history.goBack();
     this.props.togglePhotoShowModal();
   }

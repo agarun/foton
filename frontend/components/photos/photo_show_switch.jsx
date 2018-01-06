@@ -29,7 +29,12 @@ class PhotoShowSwitch extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     if (
       this.constructor.isModal ||
-      this.constructor.previousLocation.state
+      this.constructor.previousLocation.state || (
+        prevProps.match.params &&
+        this.props.location.pathname.slice(1, 6) === 'photo'
+      ) && (
+        prevProps.location !== this.props.location
+      )
     ) {
       this.props.togglePhotoShowModal();
     }
