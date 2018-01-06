@@ -34,7 +34,7 @@
     font-size: 14.5px;
 
     &-username {
-      font-weight: bold;
+      font-weight: 700;
 
       a {
         text-decoration: none;
@@ -225,20 +225,21 @@
       border-right: none;
     }
 
-    &-description {
+    &-description, &-time {
       padding: 20px;
       border-bottom: 1px solid #e7e7e7;
       font-size: 14px;
       color: darken($gray-medium, 5%);
       border-top: none;
       border-right: none;
+    }
 
-      small {
-        margin-top: 2px;
-        display: block;
-        font-size: 11px;
-        color: #969595;
-      }
+    &-time {
+      padding: 10px 20px;
+      display: block;
+      font-size: 12px;
+      background-color: #f4f4f4;
+      color: #969595;
     }
   }
 }
@@ -271,5 +272,55 @@
     top: 0;
     width: 100%;
     vertical-align: bottom;
+  }
+}
+
+.photo-gallery-item {
+  position: relative;
+
+  &:hover {
+    .photo-gallery-item-info, .photo-gallery-item-info-wrapper {
+      opacity: 1;
+    }
+  }
+}
+
+.photo-gallery-item-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  min-height: 50px;
+  max-height: 50px;
+  width: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 0, 0, 0.45) 100%
+  );
+  opacity: 0;
+  transition: opacity 200ms ease-in;
+  pointer-events: none;
+
+  &-wrapper {
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+  }
+
+  &-title {
+    padding: 3px;
+    margin: 8px;
+    display: block;
+    color: white;
+    font-size: 14px;
+    text-shadow: 0px 1px 1px black;
+    text-decoration: none;
+    pointer-events: auto;
+    cursor: default;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 3px;
+    }
   }
 }

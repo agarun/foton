@@ -46,7 +46,7 @@
     top: 9px;
     right: 5px;
     font-size: 19px;
-    font-weight: bold;
+    font-weight: 700;
     background-color: transparent;
     color: $gray-medium;
     border: none;
@@ -88,7 +88,7 @@
     a {
       display: inline;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
       color: darken($gray-medium, 25%);
       transition: 150ms ease-in;
 

@@ -8,7 +8,9 @@
   &-profile-icon  {
     margin-bottom: 1px;
     padding: 1px;
-    width: 38px;
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
     border-radius: 50%;
     background-color: $gray-light;
     border: 1px solid $gray-light-2;
@@ -44,7 +46,7 @@
 
   li a &-username {
     font-size: 11.5px;
-    font-weight: bold;
+    font-weight: 700;
     color: $blue-medium;
     overflow: hidden;
     text-overflow: ellipsis;

@@ -33,3 +33,7 @@
     animation-fill-mode: both;
   }
 }
+
+.ReactModal__Body--open {
+  overflow-y: hidden;
+}
