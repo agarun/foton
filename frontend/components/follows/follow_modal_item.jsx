@@ -14,7 +14,7 @@ const FollowModalItem = ({ user }) => (
       <section className="follow-modal-users-mid">
         <section className="follow-modal-users-name">
           <Link to={`/${user.username}`}>
-            <strong>{user.username}</strong>
+            {user.username}
           </Link>
         </section>
         <section className="follow-modal-users-follower-count">

@@ -66,12 +66,19 @@ class UserProfile extends Component {
           <section className="user-profile-buttons">
             {
               currentUser && currentUser.id === user.id ?
-                <button
-                  className="user-profile-edit-button"
-                  onClick={this.props.toggleUserProfileEditModal}
-                >
-                  Edit Profile
-                </button> :
+                <section>
+                  <button
+                    className="user-profile-manage-button"
+                  >
+                    Manage Photos
+                  </button>
+                  <button
+                    className="user-profile-edit-button"
+                    onClick={this.props.toggleUserProfileEditModal}
+                  >
+                    Edit Profile
+                  </button>
+                </section> :
                 <FollowButton
                   user={profileUser}
                 />
