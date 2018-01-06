@@ -15,7 +15,7 @@ class FollowModal extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const requestType = this.props.currentModalProps;
+    const { requestType } = this.props.currentModalProps;
     const nextRequestType = nextProps.currentModalProps.requestType;
 
     if (nextRequestType && requestType !== nextRequestType) {
