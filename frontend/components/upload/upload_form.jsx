@@ -61,9 +61,15 @@ class UploadForm extends React.Component {
     this.setState(blankState);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.location !== nextProps.location && nextProps.showModal) {
+      this.props.toggleUploadModal();
+    }
+  }
+
   componentWillUpdate() {
     if (this.props.errors && !this.props.showModal) this.props.clearErrors();
-    if (!this.props.showModal) this.resetState();
+    if (!this.props.showModal && this.state.imageFile) this.resetState();
   }
 
   render() {
