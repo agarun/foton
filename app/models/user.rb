@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  has_many :photos, -> { where is_profile_photo: false },
+  has_many :photos,
+           -> { where(is_profile_photo: false).order('created_at DESC') },
            foreign_key: :author_id
   has_one :cover_photo, -> { where is_cover_photo: true },
           foreign_key: :author_id,

@@ -5,7 +5,7 @@ import PhotoGalleryItem from './photo_gallery_item';
 const PhotoGallery = ({ photos, photoIds }) => (
   <section className="photo-gallery-items">
     {
-      photoIds.reverse().map(photoId => (
+      photoIds.map(photoId => (
         <PhotoGalleryItem
           key={photos[photoId].id}
           photo={photos[photoId]}
