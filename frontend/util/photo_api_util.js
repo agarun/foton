@@ -25,6 +25,13 @@ export const updatePhoto = photo => (
   })
 );
 
+export const deletePhoto = photoId => (
+  $.ajax({
+    method: 'DELETE',
+    url: `api/photos/${photoId}`,
+  })
+);
+
 export const fetchPhotoFeed = () => (
   $.ajax({
     method: 'GET',

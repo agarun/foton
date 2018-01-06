@@ -9,27 +9,23 @@ class PhotoManage extends React.Component {
       id: null,
       title: '',
       description: '',
+      isFetching: true,
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handlePhotoChoice = this.handlePhotoChoice.bind(this);
+    this.handleDeletePhoto = this.handleDeletePhoto.bind(this);
   }
 
   componentDidMount() {
-    this.props.fetchUser(this.props.currentUser.username);
-
-      // .then(
-      //   payload => this.setState({
-      //     user: payload.user, isFetching: false
-      //   }), this.pageNotFound
-      // );
+    this.props.fetchUser(this.props.currentUser.username)
+      .then(() => this.setState({ isFetching: false }));
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.updatePhoto(this.state)
-
+    this.props.updatePhoto(this.state);
   }
 
   handleChange(field) {
@@ -49,7 +45,17 @@ class PhotoManage extends React.Component {
     };
   }
 
+  handleDeletePhoto(e) {
+    e.preventDefault();
+    if (confirm('Are you sure you want to delete this photo?')) {
+      this.props.deletePhoto(this.state.id);
+    }
+  }
+
   render() {
+    if (this.state.isFetching) return null;
+    const user = this.props.users[this.props.currentUser.id];
+
     return (
       <section className="main">
         <section className="photo-manage">
@@ -65,7 +71,7 @@ class PhotoManage extends React.Component {
               </section>
               <section className="photo-manage-left-photos-list">
                 <section>All Photos</section>
-                <section>55</section>
+                <section>{user.photo_ids.length}</section>
               </section>
             </section>
           </section>
@@ -73,12 +79,11 @@ class PhotoManage extends React.Component {
             <section className="photo-manage-mid-heading">
               All Photos
               &nbsp;
-              <span>55 Photos</span>
+              <span>{user.photo_ids.length} Photos</span>
             </section>
             <ul className="photo-manage-mid-photos">
               {
-                Boolean(Object.keys(this.props.photos).length) &&
-                this.props.currentUser.photo_ids.map(photoId => (
+                user.photo_ids.map(photoId => (
                   <li
                     key={photoId}
                     className={
@@ -97,7 +102,9 @@ class PhotoManage extends React.Component {
               }
             </ul>
           </section>
-          <section className="photo-manage-right">
+          <section className={
+            this.state.id ? 'photo-manage-right' : 'photo-manage-right-pre'
+          }>
             <h1>Edit Photo</h1>
             <form
               className="photo-manage-form"
@@ -119,10 +126,25 @@ class PhotoManage extends React.Component {
                 placeholder="Tell us about your photo"
               />
               <section className="photo-manage-form-buttons">
-                Cancel
-                {/* hover for cancel is red */}
-                {/* cancel should hit a function that resets state */}
-                <button>
+                <button
+                  className="photo-manage-form-buttons-delete"
+                  onClick={this.handleDeletePhoto}
+                >
+                  Delete this photo
+                </button>
+                <a
+                  className="photo-manage-form-buttons-cancel"
+                  onClick={() => this.setState({
+                    id: null,
+                    title: '',
+                    description: '',
+                  })}
+                >
+                  Cancel
+                </a>
+                <button
+                  className="photo-manage-form-buttons-save"
+                >
                   Save
                 </button>
               </section>
@@ -132,7 +154,6 @@ class PhotoManage extends React.Component {
       </section>
     );
   }
-
 }
 
 export default PhotoManage;

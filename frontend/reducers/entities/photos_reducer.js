@@ -1,5 +1,6 @@
 import {
   RECEIVE_PHOTO,
+  REMOVE_PHOTO,
   RECEIVE_PHOTO_FEED,
 } from '../../actions/photo_actions';
 
@@ -19,6 +20,11 @@ const photosReducer = (state = {}, action) => {
       const newPhotoId = action.photo.id;
       const newPhoto = { [newPhotoId]: action.photo };
       return Object.assign({}, state, newPhoto);
+    }
+    case REMOVE_PHOTO: {
+      const newState = Object.assign({}, state);
+      delete newState[action.photo.id];
+      return newState;
     }
     case RECEIVE_USER:
       return action.user.photos || state;
