@@ -1,5 +1,6 @@
 class Api::PhotosController < ApplicationController
-  before_action :require_user_logged_in, only: %i[create update destroy]
+  before_action :require_user_logged_in,
+                only: %i[create update destroy]
 
   def index
     if current_user
@@ -30,17 +31,26 @@ class Api::PhotosController < ApplicationController
     if @photo.save
       render :show
     else
-      render json: @photo.errors.full_messages, status: :unprocessable_entity
+      render json: @photo.errors.full_messages,
+             status: :unprocessable_entity
     end
   end
 
   def update
-    @photo = Photo.find(params[:id])
+    @photo = current_user.photos.find(params[:id])
+
+    if @photo && @photo.update(photo_params)
+      render :show
+    else
+      render json: @photo.errors.full_messages,
+             status: :unprocessable_entity
+    end
   end
 
   def destroy
-    @photo = Photo.find(params[:id])
+    @photo = current_user.photos.find(params[:id])
     @photo.destroy
+    render :show
   end
 
   private
