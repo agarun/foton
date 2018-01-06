@@ -8,18 +8,12 @@ import PhotoShow from './photo_show_container';
 import PhotoShowModal from '../photos/photo_show_modal';
 import UserProfile from '../users/user_profile_container';
 
-// TODO refactor with Redux state
-// TODO when do we hit the PhotoShowSwitch constructor?
-
 class PhotoShowSwitch extends React.Component {
   constructor(props) {
     super(props);
 
-    // static class constants
-    this.constructor.previousLocation =
-      this.constructor.previousLocation || this.props.location;
-    this.constructor.isModal =
-      this.constructor.isModal || false;
+    this.constructor.previousLocation = props.location;
+    this.constructor.isModal = false;
   }
 
   componentWillUpdate(nextProps) {
@@ -33,12 +27,11 @@ class PhotoShowSwitch extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.constructor.isModal ||
-        this.constructor.previousLocation.state ||
-        ((prevProps.match.params &&
-          this.props.location.pathname.slice(1, 6) === "photo") &&
-         (prevProps.location !== this.props.location))) {
-        this.props.togglePhotoShowModal();
+    if (
+      this.constructor.isModal ||
+      this.constructor.previousLocation.state
+    ) {
+      this.props.togglePhotoShowModal();
     }
   }
 

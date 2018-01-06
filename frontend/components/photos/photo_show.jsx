@@ -10,18 +10,6 @@ class PhotoShow extends React.Component {
     }
   }
 
-  // componentWillUpdate() {
-  //   debugger
-  // }
-  //
-  // componentWillReceiveProps(nextProps) {
-  //   debugger
-  // }
-  //
-  // componentDidUpdate(prevProps, prevState) {
-  //   debugger
-  // }
-
   render() {
     if (!this.props.author) return null;
     const {
@@ -71,9 +59,11 @@ class PhotoShow extends React.Component {
               photo.description &&
                 <section className="photo-show-sidebar-description">
                   {photo.description}
-                  <small>Posted {photo.time_posted} ago.</small>
                 </section>
             }
+            <section className="photo-show-sidebar-time">
+              Posted {photo.time_posted} ago.
+            </section>
           </section>
         </section>
       </section>

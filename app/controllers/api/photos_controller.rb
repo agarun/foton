@@ -2,7 +2,12 @@ class Api::PhotosController < ApplicationController
   before_action :require_user_logged_in, only: %i[create update destroy]
 
   def index
-    following = current_user.following_ids + [current_user.id]
+    if current_user
+      following = current_user.following_ids + [current_user.id]
+    else
+      following = []
+    end
+
     @users = User
       .includes(:followers, :following, :photos, :profile_photo)
       .where(id: following)
