@@ -17,7 +17,7 @@ export const fetchPhoto = photoId => (
 
 export const updatePhoto = photo => (
   $.ajax({
-    method: 'POST',
+    method: 'PATCH',
     url: `api/photos/${photo.id}`,
     data: {
       photo
