@@ -1,14 +1,13 @@
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import { toggleModal } from '../../actions/ui_actions';
 import { fetchUserFollowers, fetchUserFollowing }
   from '../../actions/user_actions';
 import FollowModal from './follow_modal';
 
-const mapStateToProps = (state, ownProps) => {
-  const userIds = ownProps.requestType === 'FOLLOWING' ?
-      ownProps.user.following_ids :
-      ownProps.user.follower_ids;
+const mapStateToProps = (state, { currentModalProps }) => {
+  const userIds = currentModalProps.requestType === 'FOLLOWING' ?
+      currentModalProps.user.following_ids :
+      currentModalProps.user.follower_ids;
 
   return {
     showModal: state.ui.modal.showModal,
@@ -17,9 +16,11 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch, { currentModalProps }) => {
   const processRequest =
-    ownProps.requestType === 'FOLLOWING' ? fetchUserFollowing : fetchUserFollowers;
+    currentModalProps.requestType === 'FOLLOWING' ?
+    fetchUserFollowing :
+    fetchUserFollowers;
 
   return {
     toggleFollowsModal: user => dispatch(toggleModal('FOLLOWS', { user })),
@@ -27,9 +28,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(FollowModal)
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(FollowModal);

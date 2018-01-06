@@ -12,13 +12,15 @@ const MODAL_COMPONENTS = {
   'PROFILE_EDIT': UserProfileEdit,
 };
 
-const ModalRoot = ({ currentModal, currentModalProps, showModal }) => {
+const ModalRoot = (props) => {
+  const { currentModal } = props;
+
   // `ModalRoot` shows at least 1 and at most 1 modal,
   // uses a `react-modal` portal, and retains a closing animation
   if (!currentModal) return null;
 
   const Modal = MODAL_COMPONENTS[currentModal];
-  return <Modal {...currentModalProps} />;
+  return <Modal {...props} />;
 };
 
 export default connect(
