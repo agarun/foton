@@ -157,6 +157,8 @@
 }
 
 .user-profile-edit-top {
+  position: relative;
+
   &-cover-photo {
     min-height: 140px;
     max-height: 140px;
@@ -252,7 +254,6 @@
       outline: none;
       border-color: darken($blue, 10%);
     }
-
   }
 
   textarea {
@@ -264,8 +265,8 @@
 .user-profile-edit-cover-camera,
 .user-profile-edit-profile-camera {
   margin-left: 10px;
-  position: relative;
-  bottom: 90px;
+  position: absolute;
+  bottom: 170px;
   left: 33.33%;
   font-size: 13px;
   letter-spacing: 0.02em;
@@ -280,7 +281,7 @@
 
 .user-profile-edit-profile-camera {
   margin-left: 0;
-  bottom: 67px;
+  bottom: 42px;
   left: 42%;
 }
 
