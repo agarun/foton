@@ -10,7 +10,9 @@ const sessionReducer = (state = {}, action) => {
       return { currentUser };
     case RECEIVE_USER:
       const fetchedUser = action.user;
-      if (fetchedUser.id === state.currentUser.id) {
+      if (
+        state.currentUser && fetchedUser.id === state.currentUser.id
+      ) {
         return { currentUser: fetchedUser };
       } else {
         return state;
