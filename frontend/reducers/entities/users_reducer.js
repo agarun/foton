@@ -10,6 +10,7 @@ import {
 } from '../../actions/session_actions';
 
 import {
+  REMOVE_PHOTO,
   RECEIVE_PHOTO_FEED,
 } from '../../actions/photo_actions';
 
@@ -67,6 +68,11 @@ const usersReducer = (state = {}, action) => {
         newState[follower_id].following_ids.splice(followedIdx, 1);
       }
 
+      return newState;
+    case REMOVE_PHOTO:
+      const photoIdx =
+        newState[action.photo.author_id].photo_ids.indexOf(action.photo.id);
+      newState[action.photo.author_id].photo_ids.splice(photoIdx, 1);
       return newState;
     default:
       return state;
