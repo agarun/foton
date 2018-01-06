@@ -35,6 +35,12 @@ export const fetchPhoto = photoId => dispatch => (
     .then(photo => dispatch(receivePhoto(photo)))
 );
 
+export const updatePhoto = photo => dispatch => (
+  PhotoApiUtil
+    .updatePhoto(photo)
+    .then(updatedPhoto => dispatch(receivePhoto(updatedPhoto)))
+);
+
 export const fetchPhotoFeed = () => dispatch => (
   PhotoApiUtil
     .fetchPhotoFeed()
