@@ -25,6 +25,7 @@ class User < ApplicationRecord
            source: :follower
 
   before_validation { username.downcase! }
+  before_validation :ensure_unique_session_token
 
   validates :password_digest, :session_token, presence: true
   validates :session_token, uniqueness: true
@@ -36,7 +37,6 @@ class User < ApplicationRecord
   validate :check_invalid_characters
   validates :password, length: { minimum: 6, allow_nil: true }
 
-  before_validation :ensure_unique_session_token
   after_save :assign_default_profile_photo
 
   def self.find_by_credentials(username, plaintext_password)
@@ -83,7 +83,7 @@ class User < ApplicationRecord
   def update_profile_photo(new_profile_photo)
     db_profile_photo = profile_photo
     db_profile_photo&.destroy
-    save
+    db_profile_photo.save!
     Photo.create(
       author_id: id,
       is_profile_photo: true,

@@ -1,5 +1,6 @@
 class Api::UsersController < ApplicationController
-  before_action :require_user_logged_in, only: %i[follow unfollow]
+  before_action :require_user_logged_in,
+                only: %i[update follow unfollow]
 
   def create
     @user = User.new(user_params)
