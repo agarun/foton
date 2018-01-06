@@ -16,6 +16,11 @@ const NavProfileDropdown = ({ logOut, currentUser }) => (
         </li>
       </Link>
       <li>
+        <Link to={`/${currentUser.username}`}>
+          Profile
+        </Link>
+      </li>
+      <li>
         <a onClick={logOut}>Log out</a>
       </li>
     </ul>

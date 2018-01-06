@@ -5,7 +5,9 @@ import UserProfileEdit from './user_profile_edit';
 
 const mapStateToProps = (state, ownProps) => ({
   showModal: state.ui.modal.showModal,
-  user: state.entities.users[state.session.currentUser.id],
+  user: state.session.currentUser ?
+    state.entities.users[state.session.currentUser.id] :
+    null,
   photos: state.entities.photos,
 });
 

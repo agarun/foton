@@ -14,10 +14,6 @@ import PageNotFound from './pages/404';
 const App = () => (
   <main>
     <Nav />
-    <Route
-      path="/"
-      component={PhotoSwitch}
-    />
     <Switch>
       <AuthRoute
         exact path="/:formType(login|signup)"
@@ -29,6 +25,10 @@ const App = () => (
         // TODO: Navigate user to ':username/manage' and open upload modal
       /> */}
     </Switch>
+    <Route
+      path="/"
+      component={PhotoSwitch}
+    />
     <ModalRoot />
   </main>
 );
