@@ -41,7 +41,6 @@ class UserProfileEdit extends React.Component {
 
     if (file) {
       fileReader.readAsDataURL(file);
-      if (this.props.errors) this.props.clearErrors();
     }
   }
 
@@ -72,6 +71,7 @@ class UserProfileEdit extends React.Component {
 
   render() {
     const { user } = this.props;
+    if (!user) return null;
 
     return (
       <ReactModal
@@ -128,22 +128,27 @@ class UserProfileEdit extends React.Component {
             />
           </section>
           {
-            this.state.showCoverPhotoSelect &&
-            <section className="user-profile-edit-cover-photo-select">
-              {
-                user.photo_ids.map(photoId => (
-                  <label key={photoId}>
-                    <input
-                      type="radio"
-                      value={photoId}
-                      onChange={this.handleChange('newCoverPhotoId')}
-                      checked={photoId === parseInt(this.state.newCoverPhotoId)}
-                    />
-                    <img src={this.props.photos[photoId].thumb_image_url} />
-                  </label>
-                ))
-              }
-            </section>
+            this.state.showCoverPhotoSelect && (
+              this.state.newCoverPhotoId ? (
+                <section className="user-profile-edit-cover-photo-select">
+                  {
+                    user.photo_ids.map(photoId => (
+                      <label key={photoId}>
+                        <input
+                          type="radio"
+                          value={photoId}
+                          onChange={this.handleChange('newCoverPhotoId')}
+                          checked={photoId === parseInt(this.state.newCoverPhotoId)}
+                        />
+                        <img src={this.props.photos[photoId].thumb_image_url} />
+                      </label>
+                    ))
+                  }
+                </section>
+              ) : <div style={{textAlign: 'center'}}>
+                You'll need to upload some photos first before setting a cover photo.
+              </div>
+            )
           }
           <section className="user-profile-edit-form-buttons">
             <span

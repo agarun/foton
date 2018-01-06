@@ -107,9 +107,13 @@ class UserProfile extends Component {
                 <strong>{profileUser.following_ids.length}</strong>
                 &nbsp;Following
               </li>
-              <li className="user-profile-stats-location">
-                <LocationSVG />{profileUser.location}
-              </li>
+              {
+                profileUser.location &&
+                <li className="user-profile-stats-location">
+                  <LocationSVG />
+                  {profileUser.location}
+                </li>
+              }
             </ul>
           </section>
         </section>
