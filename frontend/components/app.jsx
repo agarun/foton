@@ -24,11 +24,11 @@ const App = () => (
         exact path="/upload"
         // TODO: Navigate user to ':username/manage' and open upload modal
       /> */}
+      <Route
+        path="/"
+        component={PhotoSwitch}
+      />
     </Switch>
-    <Route
-      path="/"
-      component={PhotoSwitch}
-    />
     <ModalRoot />
   </main>
 );
