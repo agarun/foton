@@ -202,7 +202,7 @@
       width: 100px;
       height: 100px;
       border-radius: 50%;
-      opacity: 0.2;
+      opacity: 0.3;
       transition: 200ms ease-in;
 
       &:hover {
@@ -238,12 +238,15 @@
 
   input, textarea {
     padding: 8px 10px;
-    background-color: white;
     width: 100%;
     border: 1px solid rgba(183, 199, 207, 0.73);
     border-radius: 3px;
-    font-size: 13px;
+    font-family: inherit;
+    font-size: 14px;
+    color: $gray-medium-2;
+    background-color: white;
     resize: none;
+    transition: 100ms ease-in;
 
     &::placeholder {
       color: $gray-light-2;
@@ -257,8 +260,7 @@
   }
 
   textarea {
-    height: 185px;
-    font-family: inherit;
+    height: 150px;
   }
 }
 
@@ -296,11 +298,11 @@
   .user-profile-edit-cancel {
     margin: 0 10px;
     font-size: 14px;
-    color: $gray-medium-2;
+    color: lighten($gray-medium-2, 10%);
     cursor: pointer;
 
     &:hover {
-      color: lighten($gray-medium-2, 25%);
+      color: lighten($gray-medium-2, 35%);
     }
   }
 

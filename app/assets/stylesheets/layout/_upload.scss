@@ -87,6 +87,7 @@
       display: block;
       width: 200px;
       font-size: 14px;
+      font-family: inherit;
       background-color: $gray-light;
       color: darken($gray-medium, 15%);
       border: 1px solid #dbdde0;
@@ -101,7 +102,6 @@
     }
 
     textarea {
-      font-family: inherit;
       resize: none;
       height: 170px;
     }
