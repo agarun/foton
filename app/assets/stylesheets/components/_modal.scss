@@ -36,4 +36,14 @@
 
 .ReactModal__Body--open {
   overflow-y: hidden;
+  margin-right: 17px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  .nav-fixed {
+    padding-right: 17px;
+  }
 }
