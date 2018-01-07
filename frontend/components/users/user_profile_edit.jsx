@@ -144,7 +144,7 @@ class UserProfileEdit extends React.Component {
           </section>
           {
             this.state.showCoverPhotoSelect && (
-              this.state.newCoverPhotoId ? (
+              user.photo_ids.length ? (
                 <section className="user-profile-edit-cover-photo-select">
                   {
                     user.photo_ids.map(photoId => (
