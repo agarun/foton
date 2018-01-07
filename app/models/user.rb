@@ -82,12 +82,16 @@ class User < ApplicationRecord
 
   def update_profile_photo(new_profile_photo)
     db_profile_photo = profile_photo
-    db_profile_photo&.destroy
-    Photo.create(
-      author_id: id,
-      is_profile_photo: true,
-      image: new_profile_photo
-    )
+
+    Photo.transaction do
+      db_profile_photo&.destroy
+      Photo.create!(
+        author_id: id,
+        is_profile_photo: true,
+        image: new_profile_photo
+      )
+    end
+
     reload_profile_photo
   end
 
