@@ -95,7 +95,10 @@ class PhotoManage extends React.Component {
                   >
                     <div className="photo-manage-mid-photo-wrapper">
                       <img src={this.props.photos[photoId].image_url} />
-                      <CheckSVG />
+                      {
+                        this.state.id === photoId &&
+                        <CheckSVG />
+                      }
                     </div>
                   </li>
                 ))

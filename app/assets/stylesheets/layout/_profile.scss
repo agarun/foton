@@ -355,6 +355,9 @@
   label > svg {
     bottom: 0;
     right: 0;
+    animation: zoomIn;
+    animation-duration: 0.125s;
+    animation-fill-mode: both;
   }
 
   label > input + img {

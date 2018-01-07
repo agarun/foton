@@ -413,7 +413,7 @@
     }
 
     &-photos {
-      padding: 40px;
+      padding: 30px;
       display: flex;
       flex-flow: row wrap;
       align-content: flex-start;
@@ -443,10 +443,14 @@
           max-width: 150px;
           max-height: 150px;
           border: 3px solid transparent;
+          transition: border-color 60ms ease-in;
         }
 
         svg {
           display: none;
+          animation: zoomIn;
+          animation-duration: 0.125s;
+          animation-fill-mode: both;
         }
       }
 
@@ -467,7 +471,7 @@
     }
   }
 
-  &-right {
+  &-right, &-right-pre {
     min-width: 350px;
     max-width: 350px;
     background-color: white;
@@ -478,6 +482,11 @@
       color: $gray-medium-2;
       font-size: 20px;
     }
+  }
+
+  &-right-pre {
+    opacity: 0.5;
+    pointer-events: none;
   }
 
   &-form {
@@ -518,7 +527,30 @@
     }
 
     &-buttons {
+      cursor: pointer;
 
+      &-delete {
+        @include colored-button($gray-medium);
+        padding: 6px 0;
+        margin-bottom: 20px;
+        font-size: 13px;
+        width: 310px;
+      }
+
+      &-cancel {
+        margin: 0 20px;
+        font-size: 14px;
+
+        &:hover {
+          color: $red;
+        }
+      }
+
+      &-save {
+        @include colored-button($green);
+        width: 220px;
+        font-size: 14px;
+      }
     }
   }
 }
