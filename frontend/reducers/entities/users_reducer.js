@@ -10,6 +10,7 @@ import {
 } from '../../actions/session_actions';
 
 import {
+  RECEIVE_PHOTO,
   REMOVE_PHOTO,
   RECEIVE_PHOTO_FEED,
 } from '../../actions/photo_actions';
@@ -35,6 +36,9 @@ const usersReducer = (state = {}, action) => {
       return state;
     case RECEIVE_USERS:
       return Object.assign({}, state, action.users);
+    case RECEIVE_PHOTO:
+      newState[action.photo.author_id].photo_ids.unshift(action.photo.id);
+      return newState;
     case RECEIVE_PHOTO_FEED:
       return Object.assign({}, state, action.feedData.users);
     case RECEIVE_FOLLOW: {
