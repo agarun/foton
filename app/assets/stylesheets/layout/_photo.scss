@@ -57,6 +57,7 @@
   text-align: center;
 
   a {
+    display: block;
     cursor: zoom-in;
 
     &:focus {
@@ -465,7 +466,7 @@
           position: absolute;
           bottom: 0;
           right: -5px;
-          z-index: 1000;
+          z-index: 0;
         }
       }
     }

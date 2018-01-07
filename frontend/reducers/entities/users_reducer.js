@@ -37,7 +37,8 @@ const usersReducer = (state = {}, action) => {
     case RECEIVE_USERS:
       return Object.assign({}, state, action.users);
     case RECEIVE_PHOTO:
-      newState[action.photo.author_id].photo_ids.unshift(action.photo.id);
+      if (newState[action.photo.author_id])
+        newState[action.photo.author_id].photo_ids.unshift(action.photo.id);
       return newState;
     case RECEIVE_PHOTO_FEED:
       return Object.assign({}, state, action.feedData.users);
