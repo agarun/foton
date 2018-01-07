@@ -2,9 +2,7 @@ import React from 'react';
 import ReactModal from 'react-modal';
 import PhotoShow from './photo_show_container';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import { toggleModal } from '../../actions/ui_actions';
-
 
 class PhotoShowModal extends React.Component {
   constructor(props) {
@@ -46,9 +44,7 @@ const mapDispatchToProps = dispatch => ({
   togglePhotoShowModal: () => dispatch(toggleModal('PHOTO_SHOW')),
 });
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(PhotoShowModal)
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PhotoShowModal);

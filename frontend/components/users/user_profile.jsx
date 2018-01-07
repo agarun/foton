@@ -62,7 +62,7 @@ class UserProfile extends React.Component {
       <section className="main">
         <section className="user-profile-top">
           <section className="user-profile-cover-photo">
-            <img src={profileUser.cover_photo_medium_url} />
+            <img src={profileUser.cover_photo_url} />
           </section>
           <section className="user-profile-buttons">
             {

@@ -32,7 +32,6 @@ const FollowButton = ({
           followUser(user)
             .then(null, () => {
               history.push('/login');
-              closeFollowsModal();
             });
         }}
       ></button>

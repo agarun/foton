@@ -31,7 +31,6 @@ class FollowModal extends Component {
   }
 
   render() {
-    if (this.state.isFetching) return null;
     const { user, requestType } = this.props.currentModalProps;
 
     return (
@@ -51,21 +50,26 @@ class FollowModal extends Component {
           <button
             className="follow-modal-header-close"
             onClick={() => this.props.toggleFollowsModal(user)}
-          ></button>
-        </section>
-        <section className="follow-modal-scroll">
-          <ul className="follow-modal-users">
+            ></button>
+          </section>
+          <section className="follow-modal-scroll">
             {
-              this.props.userIds &&
-              this.props.userIds.map(userId => (
-                <FollowModalItem
-                  key={userId}
-                  user={this.props.users[userId]}
-                />
-              ))
+              this.state.isFetching ?
+              null : (
+                <ul className="follow-modal-users">
+                  {
+                    this.props.userIds &&
+                    this.props.userIds.map(userId => (
+                      <FollowModalItem
+                        key={userId}
+                        user={this.props.users[userId]}
+                      />
+                    ))
+                  }
+                </ul>
+              )
             }
-        </ul>
-        </section>
+          </section>
       </ReactModal>
     );
   }
