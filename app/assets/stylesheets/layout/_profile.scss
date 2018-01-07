@@ -62,6 +62,7 @@
     bottom: 0px;
     width: 100px;
     height: 100px;
+    object-fit: cover;
     border: 2px solid white;
     border-radius: 50%;
     background-color: white;
@@ -202,6 +203,7 @@
       bottom: 0px;
       width: 100px;
       height: 100px;
+      object-fit: cover;
       border-radius: 50%;
       opacity: 0.3;
       transition: 200ms ease-in;
@@ -378,4 +380,9 @@
   label > input:checked + img {
     border: 3px solid $blue;
   }
+}
+
+.user-profile-edit-spinner {
+  margin: 23px;
+  margin-left: 22px;
 }

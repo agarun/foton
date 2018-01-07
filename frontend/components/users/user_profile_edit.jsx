@@ -2,6 +2,7 @@ import React from 'react';
 import ReactModal from 'react-modal';
 import CameraSVG from '../svg/camera';
 import CheckSVG from '../svg/check';
+import Spinner from '../spinner/spinner';
 
 class UserProfileEdit extends React.Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class UserProfileEdit extends React.Component {
       profilePhotoUrl: this.props.user.profile_photo_url || '',
       showCoverPhotoSelect: false,
       newCoverPhotoId: this.props.user.cover_photo_id,
+      isUpdating: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -63,8 +65,14 @@ class UserProfileEdit extends React.Component {
     if (this.state.newCoverPhotoId !== this.props.user.cover_photo_id) {
       formData.append('user[new_cover_photo_id]', this.state.newCoverPhotoId);
     }
-    this.props.updateUser(formData)
-      .then(this.closeModal);
+    this.setState({ isUpdating: true }, () => {
+      this.props.updateUser(formData)
+        .then(() => {
+          this.setState({ isUpdating: false }, () => this.closeModal());
+        }, () => {
+          this.setState({ isUpdating: false });
+        });
+    });
   }
 
   showCoverPhotoSelect() {
@@ -72,8 +80,8 @@ class UserProfileEdit extends React.Component {
   }
 
   closeModal() {
-    this.setState({ showCoverPhotoSelect: false });
-    this.props.toggleUserProfileEditModal();
+    this.setState({ showCoverPhotoSelect: false, isUpdating: false });
+    if (this.props.showModal) this.props.toggleUserProfileEditModal();
   }
 
   render() {
@@ -167,7 +175,15 @@ class UserProfileEdit extends React.Component {
               className="user-profile-edit-cancel"
               onClick={this.props.toggleUserProfileEditModal}
             >Cancel</span>
-            <button className="user-profile-edit-submit">Submit</button>
+            {
+              this.state.isUpdating ?
+                <div className="user-profile-edit-spinner">
+                  <Spinner />
+                </div> :
+                <button className="user-profile-edit-submit">
+                  Submit
+                </button>
+            }
           </section>
         </form>
       </ReactModal>
