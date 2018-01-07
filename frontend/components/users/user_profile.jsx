@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import PhotoGallery from '../photos/photo_gallery';
 import PageNotFound from '../pages/404';
 import FollowButton from '../follows/follow_button';
 import LocationSVG from '../svg/location';
 
-class UserProfile extends Component {
+class UserProfile extends React.Component {
   constructor(props) {
     super(props);
 
@@ -61,17 +62,17 @@ class UserProfile extends Component {
       <section className="main">
         <section className="user-profile-top">
           <section className="user-profile-cover-photo">
-            <img src={profileUser.cover_photo_url} />
+            <img src={profileUser.cover_photo_medium_url} />
           </section>
           <section className="user-profile-buttons">
             {
               currentUser && currentUser.id === user.id ?
                 <section>
-                  <button
-                    className="user-profile-manage-button"
-                  >
-                    Manage Photos
-                  </button>
+                  <Link to="/manage">
+                    <button className="user-profile-manage-button">
+                      Manage Photos
+                    </button>
+                  </Link>
                   <button
                     className="user-profile-edit-button"
                     onClick={this.props.toggleUserProfileEditModal}

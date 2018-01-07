@@ -185,9 +185,10 @@
   }
 
   &-profile-photo {
-    margin: 0 auto;
+    display: inline-block;
     position: relative;
     bottom: 50px;
+    left: calc(50% - 50px);
     width: 100px;
     height: 100px;
     background-color: #161616;
@@ -314,7 +315,6 @@
   }
 }
 
-
 .user-profile-edit-cover-photo-select {
   margin: 20px 0;
   padding: 20px;
@@ -325,14 +325,36 @@
   animation-duration: 0.1s;
   animation-fill-mode: both;
 
+  &::-webkit-scrollbar {
+    height: 10px;
+  	background-color: #F5F5F5;
+  }
+
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.35);
+  	background-color: #ebecee;
+  }
+
+  &::-webkit-scrollbar-thumb {
+  	background-color: #838383;
+    border-radius: 50px;
+    border: 1px solid #6f6f6f;
+  }
+
   label {
+    position: relative;
     display: inline;
     overflow: hidden;
   }
 
-  label > input {
+  label > input, label > svg {
     visibility: hidden;
     position: absolute;
+  }
+
+  label > svg {
+    bottom: 0;
+    right: 0;
   }
 
   label > input + img {
@@ -343,7 +365,11 @@
     object-fit: cover;
     border: 3px solid transparent;
     border-radius: 5px;
-    transition: 110ms ease-in;
+    transition: 60ms ease-in;
+  }
+
+  label > input:checked ~ svg {
+    visibility: visible;
   }
 
   label > input:checked + img {

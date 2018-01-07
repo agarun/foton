@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactModal from 'react-modal';
 import CameraSVG from '../svg/camera';
+import CheckSVG from '../svg/check';
 
 class UserProfileEdit extends React.Component {
   constructor(props) {
@@ -21,6 +22,12 @@ class UserProfileEdit extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.showCoverPhotoSelect = this.showCoverPhotoSelect.bind(this);
     this.closeModal = this.closeModal.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.location !== nextProps.location && nextProps.showModal) {
+      this.closeModal();
+    }
   }
 
   handleChange(field) {
@@ -141,12 +148,17 @@ class UserProfileEdit extends React.Component {
                           checked={photoId === parseInt(this.state.newCoverPhotoId)}
                         />
                         <img src={this.props.photos[photoId].thumb_image_url} />
+                        {
+                          photoId === parseInt(this.state.newCoverPhotoId) &&
+                          <CheckSVG />
+                        }
                       </label>
                     ))
                   }
                 </section>
               ) : <div style={{textAlign: 'center'}}>
-                You'll need to upload some photos first before setting a cover photo.
+                You'll need to upload some photos first before
+                setting a cover photo.
               </div>
             )
           }
@@ -161,7 +173,6 @@ class UserProfileEdit extends React.Component {
       </ReactModal>
     );
   }
-
 }
 
 export default UserProfileEdit;
