@@ -10,6 +10,7 @@
   background-color: white;
   border-radius: 3px;
   border: 1px solid $gray-border;
+  list-style: none;
 }
 
 .photo-feed-item-header {
@@ -280,6 +281,10 @@
 
 .photo-gallery-item {
   position: relative;
+
+  a {
+    cursor: zoom-in;
+  }
 
   &:hover {
     .photo-gallery-item-info, .photo-gallery-item-info-wrapper {
