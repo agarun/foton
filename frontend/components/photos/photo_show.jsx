@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import FollowButton from '../follows/follow_button';
+import TagShow from '../tags/tag_show';
 
 class PhotoShow extends React.Component {
   componentDidMount() {
@@ -65,6 +66,12 @@ class PhotoShow extends React.Component {
             <section className="photo-show-sidebar-time">
               Posted {photo.time_posted} ago.
             </section>
+            {
+              photo.tags.length &&
+                <section className="photo-show-sidebar-tags">
+                  <TagShow tags={photo.tags} />
+                </section>
+            }
           </section>
         </section>
       </section>
