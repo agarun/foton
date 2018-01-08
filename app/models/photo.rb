@@ -1,7 +1,7 @@
 class Photo < ApplicationRecord
   belongs_to :author, class_name: :User
 
-  has_many :taggings
+  has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
   has_attached_file :image,
                     styles: { medium: "900x900>", thumb: "100x100>" }
