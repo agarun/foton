@@ -13,3 +13,5 @@ json.users do
     end
   end
 end
+
+json.is_last_page @photos.last_page?

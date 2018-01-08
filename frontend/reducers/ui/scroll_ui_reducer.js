@@ -23,7 +23,9 @@ const modalUiReducer = (state = initialState, action) => {
     case RECEIVE_PHOTO_FEED:
       newState.feed.isFetchingNextPage = false;
       newState.feed.hasNextPage =
-        action.feedData.photos && Boolean(Object.keys(action.feedData.photos));
+        action.feedData.photos &&
+        Boolean(Object.keys(action.feedData.photos)) &&
+        !action.feedData.is_last_page;
       return newState;
     default:
       return state;
