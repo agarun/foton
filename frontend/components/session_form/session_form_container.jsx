@@ -14,9 +14,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   const processForm =
-    (ownProps.match.params.formType === 'login') ?
-    logIn :
-    signUp;
+    ownProps.match.params.formType === 'login'
+      ? logIn
+      : signUp;
   return {
     processForm: user => dispatch(processForm(user)),
     clearErrors: () => dispatch(clearErrors()),

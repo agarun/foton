@@ -57,9 +57,9 @@ class SessionForm extends React.Component {
             Username
             <input
               className={
-                errors && errors.username ?
-                'input-block input-session input-invalid' :
-                'input-block input-session'
+                errors && errors.username
+                  ? 'input-block input-session input-invalid'
+                  : 'input-block input-session'
               }
               type="text"
               autoComplete="username"
@@ -72,9 +72,9 @@ class SessionForm extends React.Component {
             Password
             <input
               className={
-                errors && errors.password ?
-                'input-block input-session input-invalid' :
-                'input-block input-session'
+                errors && errors.password
+                  ? 'input-block input-session input-invalid'
+                  : 'input-block input-session'
               }
               type="password"
               autoComplete="off"

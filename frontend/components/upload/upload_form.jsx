@@ -110,14 +110,14 @@ class UploadForm extends React.Component {
         >
           <section className="upload-form-submit">
             {
-              isFetching ? (
-                <Spinner />
-              ) : (
-                showModal &&
-                <button className="green-button upload-submit-button">
-                  Submit
-                </button>
-              )
+              isFetching
+                ? <Spinner />
+                : (
+                  showModal &&
+                  <button className="green-button upload-submit-button">
+                    Submit
+                  </button>
+                )
             }
           </section>
           <section

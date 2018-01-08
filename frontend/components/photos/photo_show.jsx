@@ -24,8 +24,9 @@ class PhotoShow extends React.Component {
           isModal ? 'photo-show' : 'photo-show photo-show-smaller'
         }>
           <section className={
-            isModal ?
-            'photo-show-content photo-show-content-hover' : 'photo-show-content'
+            isModal
+              ? 'photo-show-content photo-show-content-hover'
+              : 'photo-show-content'
           } onClick={
             (e) => ( closeModal ? closeModal(e) : null )
           }>

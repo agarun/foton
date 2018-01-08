@@ -15,7 +15,7 @@ import {
   RECEIVE_PHOTO_FEED,
 } from '../../actions/photo_actions';
 
-import merge from 'lodash/merge'; // deep merge!
+import merge from 'lodash/merge';
 
 const usersReducer = (state = {}, action) => {
   Object.freeze(state);
