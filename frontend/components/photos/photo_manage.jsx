@@ -147,6 +147,7 @@ class PhotoManage extends React.Component {
                     onChange={tags => this.setState({ tags })}
                     value={this.state.tags}
                     noResultsText={null}
+                    ignoreCase={true}
                     placeholder={null}
                     promptTextCreator={tagName => (
                       <span>

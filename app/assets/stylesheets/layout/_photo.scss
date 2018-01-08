@@ -254,6 +254,13 @@
 
     &-tags {
       margin: 40px 20px;
+
+      small {
+        margin: 12.5px 0;
+        display: block;
+        font-size: 13px;
+        color: lighten($gray-medium, 9%);
+      }
     }
   }
 }

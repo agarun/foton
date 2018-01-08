@@ -67,10 +67,12 @@ class PhotoShow extends React.Component {
               Posted {photo.time_posted} ago.
             </section>
             {
-              photo.tags.length &&
-                <section className="photo-show-sidebar-tags">
+              photo.tags.length
+                ? <section className="photo-show-sidebar-tags">
+                  <small>Tags</small>
                   <TagShow tags={photo.tags} />
                 </section>
+                : null
             }
           </section>
         </section>
