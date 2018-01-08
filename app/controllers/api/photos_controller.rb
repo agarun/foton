@@ -9,6 +9,7 @@ class Api::PhotosController < ApplicationController
       following = []
     end
 
+    # TODO: persist @users between fetches, or is it negligible?
     @users = User
       .includes(:followers, :following, :photos, :profile_photo)
       .where(id: following)
@@ -16,7 +17,7 @@ class Api::PhotosController < ApplicationController
       .where(author_id: following)
       .where.not(is_profile_photo: true)
       .order(created_at: :desc)
-      .limit(5) # FIXME
+      .page(params[:page].to_i / 2 + 1).per(2)
   end
 
   def show
