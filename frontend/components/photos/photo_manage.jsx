@@ -1,5 +1,6 @@
 import React from 'react';
 import CheckSVG from '../svg/check';
+import { Creatable } from 'react-select';
 
 class PhotoManage extends React.Component {
   constructor(props) {
@@ -9,6 +10,7 @@ class PhotoManage extends React.Component {
       id: null,
       title: '',
       description: '',
+      tags: [],
       isFetching: true,
     };
 
@@ -41,6 +43,7 @@ class PhotoManage extends React.Component {
         id: photoId,
         title: this.props.photos[photoId].title || '',
         description: this.props.photos[photoId].description || '',
+        tags: this.formatTags(this.props.photos[photoId].tags) || [],
       });
     };
   }
@@ -50,6 +53,14 @@ class PhotoManage extends React.Component {
     if (confirm('Are you sure you want to delete this photo?')) {
       this.props.deletePhoto(this.state.id);
     }
+  }
+
+  formatTags(tags) {
+    return tags.map(tagName => ({
+      value: tagName,
+      label: tagName,
+      className: "Select-create-option-placeholder",
+    }));
   }
 
   render() {
@@ -128,6 +139,26 @@ class PhotoManage extends React.Component {
                 value={this.state.description}
                 placeholder="Tell us about your photo"
               />
+              <label>
+                Tags
+                <section className="manage-form-tags">
+                  <Creatable
+                    multi={true}
+                    onChange={tags => this.setState({ tags })}
+                    value={this.state.tags}
+                    noResultsText={null}
+                    placeholder={null}
+                    promptTextCreator={tagName => (
+                      <span>
+                        Add tag <span style={{fontWeight: 700}}>{tagName}</span>
+                      </span>
+                    )}
+                    isValidNewOption={({ label }) => (
+                      label && label.length <= 20
+                    )}
+                  />
+                </section>
+              </label>
               <section className="photo-manage-form-buttons">
                 <button
                   className="photo-manage-form-buttons-delete"
@@ -141,6 +172,7 @@ class PhotoManage extends React.Component {
                     id: null,
                     title: '',
                     description: '',
+                    tags: [],
                   })}
                 >
                   Cancel
