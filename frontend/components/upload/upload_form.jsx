@@ -48,6 +48,7 @@ class UploadForm extends React.Component {
     const formData = new FormData();
     formData.append('photo[title]', this.state.title);
     formData.append('photo[description]', this.state.description);
+    formData.append('photo[tags]', JSON.stringify(this.state.tags));
     if (this.state.imageFile) {
       formData.append('photo[image]', this.state.imageFile);
       this.props.fetchUpload();
@@ -60,6 +61,7 @@ class UploadForm extends React.Component {
 
   resetState() {
     const blankState = Object.assign({}, this.initialState);
+    blankState.tags = [];
     this.setState(blankState);
   }
 
@@ -161,10 +163,14 @@ class UploadForm extends React.Component {
                   placeholder={null}
                   promptTextCreator={tagName => (
                     <span>
-                      Add tag <span style={{fontWeight: 700}}>{tagName}</span>
+                      Add tag <strong style={{ fontWeight: 700 }}>
+                        {tagName}
+                      </strong>
                     </span>
                   )}
-                  isValidNewOption={({ label }) => label && label.length <= 20}
+                  isValidNewOption={({ label }) => (
+                    label && label.length <= 20
+                  )}
                 />
               </section>
             </label>

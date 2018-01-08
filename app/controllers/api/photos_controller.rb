@@ -9,7 +9,7 @@ class Api::PhotosController < ApplicationController
       following = []
     end
 
-    # TODO: persist @users between fetches, or is it negligible?
+    # TODO: persist @users between fetches, or is the load negligible?
     @users = User
       .includes(:followers, :following, :photos, :profile_photo)
       .where(id: following)
@@ -30,6 +30,7 @@ class Api::PhotosController < ApplicationController
     @photo.author_id = current_user.id
 
     if @photo.save
+      @photo.tags = build_tags(JSON.parse(params[:photo][:tags]))
       render :show
     else
       render json: @photo.errors.full_messages,
@@ -41,6 +42,7 @@ class Api::PhotosController < ApplicationController
     @photo = current_user.photos.find(params[:id])
 
     if @photo && @photo.update(photo_params)
+      @photo.tags = build_tags(params[:photo][:tags].values)
       render :show
     else
       render json: @photo.errors.full_messages,
@@ -58,5 +60,12 @@ class Api::PhotosController < ApplicationController
 
   def photo_params
     params.require(:photo).permit(:title, :description, :image)
+  end
+
+  def build_tags(tag_data)
+    tag_data.map do |tag|
+      Tag.find_by(name: tag["value"]) ||
+      Tag.create!(name: tag["value"])
+    end
   end
 end
