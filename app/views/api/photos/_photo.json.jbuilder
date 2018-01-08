@@ -7,3 +7,5 @@ json.thumb_image_url photo.image.url(:thumb)
 
 json.width photo.image.width(:medium)
 json.height photo.image.height(:medium)
+
+json.tags photo.tags.pluck(:name)
