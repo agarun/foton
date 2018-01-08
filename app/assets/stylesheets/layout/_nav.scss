@@ -160,25 +160,4 @@ nav {
       fill: #3b3b3b;
     }
   }
-
-  &-reset {
-    // display: none;
-    position: absolute;
-    top: 8px;
-    right: 8px;
-
-    svg {
-      margin: 0;
-      padding: 0;
-      display: block;
-      width: 18px;
-      height: 18px;
-      fill: #999;
-      cursor: pointer;
-    }
-
-    &::-webkit-search-decoration, &::-webkit-search-cancel-button {
-      display: none;
-    }
-  }
 }
