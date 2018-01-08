@@ -27,6 +27,7 @@
     img {
       width: 50px;
       height: 50px;
+      object-fit: cover;
       border-radius: 50%;
       border: 1px solid $gray-light-2;
     }
@@ -429,7 +430,7 @@
       display: flex;
       flex-flow: row wrap;
       align-content: flex-start;
-      height: calc(100% - 115px);
+      height: calc(100% - 65px);
       overflow-y: auto;
     }
 
@@ -545,6 +546,7 @@
         @include colored-button($gray-medium);
         padding: 6px 0;
         margin-bottom: 20px;
+        margin-top: 30px;
         font-size: 13px;
         width: 310px;
       }
