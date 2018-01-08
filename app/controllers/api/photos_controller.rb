@@ -42,6 +42,7 @@ class Api::PhotosController < ApplicationController
     @photo = current_user.photos.find(params[:id])
 
     if @photo && @photo.update(photo_params)
+      params[:photo][:tags] ||= {}
       @photo.tags = build_tags(params[:photo][:tags].values)
       render :show
     else
@@ -64,8 +65,8 @@ class Api::PhotosController < ApplicationController
 
   def build_tags(tag_data)
     tag_data.map do |tag|
-      Tag.find_by(name: tag["value"]) ||
-      Tag.create!(name: tag["value"])
+      Tag.find_by(name: tag["value"].downcase) ||
+      Tag.create!(name: tag["value"].downcase)
     end
   end
 end
