@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactModal from 'react-modal';
 import Spinner from '../spinner/spinner';
+import { Creatable } from 'react-select';
 
 class UploadForm extends React.Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class UploadForm extends React.Component {
       description: '',
       imageFile: null,
       imageUrl: '',
+      tags: [],
     };
 
     this.state = Object.assign({}, this.initialState);
@@ -122,7 +124,10 @@ class UploadForm extends React.Component {
           </section>
           <section
             className="upload-form-input"
-            style={{ opacity: isFetching ? 0.5 : 1 }}
+            style={{
+              opacity: isFetching ? 0.5 : 1,
+              pointerEvents: isFetching ? 'none' : 'auto',
+            }}
           >
             {
               errors && (
@@ -145,9 +150,26 @@ class UploadForm extends React.Component {
                 value={this.state.description}
               />
             </label>
+            <label>
+              Tags
+              <section className="upload-form-tags">
+                <Creatable
+                  multi={true}
+                  onChange={tags => this.setState({ tags })}
+                  value={this.state.tags}
+                  noResultsText={null}
+                  placeholder={null}
+                  promptTextCreator={tagName => (
+                    <span>
+                      Add tag <span style={{fontWeight: 700}}>{tagName}</span>
+                    </span>
+                  )}
+                  isValidNewOption={({ label }) => label && label.length <= 20}
+                />
+              </section>
+            </label>
           </section>
         </form>
-
         <button
           className="upload-close"
           onClick={toggleUploadModal}>
