@@ -256,6 +256,7 @@
 .photo-gallery-items {
   display: flex;
   flex-wrap: wrap;
+  padding-bottom: 50px;
 
   a:hover {
     cursor: zoom-in;
@@ -574,4 +575,8 @@
   &:focus {
     outline: none;
   }
+}
+
+.ReactVirtualized__Grid__innerScrollContainer {
+  margin-bottom: 110px;
 }
