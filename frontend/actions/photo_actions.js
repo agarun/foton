@@ -2,6 +2,7 @@ import * as PhotoApiUtil from '../util/photo_api_util';
 
 export const RECEIVE_PHOTO = 'RECEIVE_PHOTO';
 export const REMOVE_PHOTO = 'REMOVE_PHOTO';
+export const FETCH_PHOTO_FEED_PAGE = 'FETCH_PHOTO_FEED_PAGE';
 export const RECEIVE_PHOTO_FEED = 'RECEIVE_PHOTO_FEED';
 export const RECEIVE_UPLOAD_ERRORS = 'RECEIVE_UPLOAD_ERRORS';
 
@@ -13,6 +14,11 @@ export const receivePhoto = photo => ({
 export const removePhoto = photo => ({
   type: REMOVE_PHOTO,
   photo
+});
+
+export const fetchPhotoFeedPage = index => ({
+  type: FETCH_PHOTO_FEED_PAGE,
+  index,
 });
 
 export const receivePhotoFeed = feedData => ({
@@ -53,8 +59,11 @@ export const deletePhoto = photoId => dispatch => (
     .then(photo => dispatch(removePhoto(photo)))
 );
 
-export const fetchPhotoFeed = () => dispatch => (
-  PhotoApiUtil
-    .fetchPhotoFeed()
-    .then(feedData => dispatch(receivePhotoFeed(feedData)))
-);
+export const fetchPhotoFeed = pageNumber => dispatch => {
+  dispatch(fetchPhotoFeedPage(pageNumber));
+  return (
+    PhotoApiUtil
+      .fetchPhotoFeed(pageNumber)
+      .then(feedData => dispatch(receivePhotoFeed(feedData)))
+  );
+};

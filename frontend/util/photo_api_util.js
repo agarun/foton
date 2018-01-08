@@ -32,9 +32,9 @@ export const deletePhoto = photoId => (
   })
 );
 
-export const fetchPhotoFeed = () => (
+export const fetchPhotoFeed = pageNumber => (
   $.ajax({
     method: 'GET',
-    url: 'api/photos',
+    url: `api/photos?page=${pageNumber}`,
   })
 );
