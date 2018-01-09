@@ -1,7 +1,7 @@
 
-# User.destroy_all
-# Photo.destroy_all
-# Follow.destroy_all
+User.destroy_all
+Photo.destroy_all
+Follow.destroy_all
 
 # dev
 
@@ -273,33 +273,29 @@ tags = [
   ["feathers", "animal", "nature", "blue"]
 ]
 
-pics
-
 num_photos_to_test = 100
 hundred_photos_data = (0...num_photos_to_test).map do |n|
   [hundred_photos[n]] + hundred_photos_attributes[n] + [tags[n]]
 end
 
-puts hundred_photos_data
-#
-# hundred_photos_data.each do |row|
-#   puts row
-#   db_photo = Photo.create(
-#     image: File.open(row.first),
-#     author_id: users[rand(users.size)].id,
-#     title: row[1],
-#     description: row[2]
-#   )
-#   db_photo.save!
-#
-#   row[3].each do |tag_name|
-#     tag = Tag.find(name: tag_name) || Tag.create!(name: tag_name)
-#     db_photo.tags << tag
-#   end
-#
-#   db_photo.is_cover_photo = true if rand(3).zero? && User.find(db_photo.author_id).cover_photo.nil?
-#   db_photo.save!
-# end
+hundred_photos_data.each do |row|
+  puts row
+  db_photo = Photo.create(
+    image: File.open(row.first),
+    author_id: users[rand(users.size)].id,
+    title: row[1],
+    description: row[2]
+  )
+  db_photo.save!
+
+  row[3].each do |tag_name|
+    tag = Tag.find_by(name: tag_name) || Tag.create!(name: tag_name)
+    db_photo.tags << tag
+  end
+
+  db_photo.is_cover_photo = true if rand(3).zero? && User.find(db_photo.author_id).cover_photo.nil?
+  db_photo.save!
+end
 
 # # TODO: upload custom profile photos for seeded users
 # # TODO: choose which ones will be cover photos for users
