@@ -101,7 +101,7 @@ class UserProfileEdit extends React.Component {
             className="user-profile-edit-top-cover-photo"
             onClick={this.showCoverPhotoSelect}
           >
-            <img src={user.cover_photo_medium_url} />
+            <img src={user.cover_photo_large_url} />
             <span className="user-profile-edit-cover-camera">
               <CameraSVG /> change your cover photo
             </span>

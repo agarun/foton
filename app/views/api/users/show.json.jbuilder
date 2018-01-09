@@ -15,5 +15,5 @@ cover_photo = @user.cover_photo
 if cover_photo
   json.cover_photo_id cover_photo.id
   json.cover_photo_url asset_url(cover_photo.image)
-  json.cover_photo_medium_url asset_url(cover_photo.image(:medium))
+  json.cover_photo_large_url asset_url(cover_photo.image(:large))
 end
