@@ -92,6 +92,8 @@ nav {
   }
 
   .login {
+    margin-left: 10px;
+    width: 76px;
     padding: 15px;
     display: block;
 
@@ -101,6 +103,8 @@ nav {
   }
 
   .signup {
+    margin-left: 10px;
+    width: 76px;
     padding: 15px;
     display: block;
     background-color: lighten($green, 3%);
@@ -151,13 +155,23 @@ nav {
     }
 
     svg {
-      position: absolute;
-      bottom: 17px;
-      left: 11px;
-      width: 17px;
-      height: 17px;
+      width: 16px;
+      height: 16px;
       vertical-align: middle;
       fill: #3b3b3b;
+    }
+
+    button {
+      position: absolute;
+      bottom: 8px;
+      left: 6px;
+      width: 16px;
+      height: 16px;
+
+      vertical-align: middle;
+      outline: none;
+      border: none;
+      background-color: transparent;
     }
   }
 }

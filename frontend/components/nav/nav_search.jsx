@@ -15,7 +15,9 @@ class NavSearch extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger
+    return this.props.history.push(
+      `/search?query=${this.state.searchText}&type=photos`
+    );
   }
 
   render() {
@@ -29,26 +31,16 @@ class NavSearch extends React.Component {
             type="text"
             name="search"
             autoComplete="off"
-            // required
             onChange={e => this.setState({ searchText: e.target.value })}
             placeholder="Search for photos and users"
           />
           <button>
             <SearchSVG />
           </button>
-          {/* hidden input, default photos? */}
         </form>
       </li>
     );
   }
-
 }
 
 export default withRouter(NavSearch);
-
-// const NavSearch = ({}) => (
-//   // TODO don't render on /search
-//
-// );
-//
-// export default NavSearch;

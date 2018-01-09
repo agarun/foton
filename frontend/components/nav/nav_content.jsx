@@ -4,11 +4,9 @@ import { toggleModal } from '../../actions/ui_actions';
 import { logOut } from '../../actions/session_actions';
 import UploadSVG from '../svg/upload';
 import NavProfileDropdown from './nav_profile_dropdown';
-import NavSearch from './nav_search';
 
 const NavContent = ({ showUploadModal, logOut, currentUser }) => (
   <ul>
-    <NavSearch />
     <NavProfileDropdown
       logOut={logOut}
       currentUser={currentUser}
