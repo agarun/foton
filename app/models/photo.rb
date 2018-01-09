@@ -4,7 +4,11 @@ class Photo < ApplicationRecord
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
   has_attached_file :image,
-                    styles: { medium: "900x900>", thumb: "100x100>" }
+                    styles: {
+                      large: "1280x1280>",
+                      medium: "800x800>",
+                      thumb: "100x100>"
+                    }
 
   validates_attachment :image,
                        presence: true,
