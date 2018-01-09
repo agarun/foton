@@ -13,7 +13,16 @@ class PhotoShowModal extends React.Component {
   closeModal(e) {
     e.stopPropagation();
     this.props.history.goBack();
-    this.props.togglePhotoShowModal();
+    if (this.props.showModal) this.props.togglePhotoShowModal();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (
+      this.props.location.pathname !== nextProps.location.pathname &&
+      this.props.showModal
+    ) {
+      this.props.togglePhotoShowModal();
+    }
   }
 
   render() {

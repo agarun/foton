@@ -20,7 +20,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
   fetchPhoto: photoId => dispatch(fetchPhoto(photoId)),
-  fetchUser: userId => dispatch(fetchUser(userId)),
+  fetchUser: username => dispatch(fetchUser(username)),
 });
 
 export default withRouter(
