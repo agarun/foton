@@ -7,7 +7,7 @@ const usersSearchUiReducer = (state = [], action) => {
 
   switch (action.type) {
     case RECEIVE_USERS:
-      return Object.keys(action.users);
+      return action.users ? Object.keys(action.users) : state;
     default:
       return state;
   }
@@ -18,8 +18,7 @@ const photosSearchUiReducer = (state = [], action) => {
 
   switch (action.type) {
     case RECEIVE_PHOTOS:
-      debugger
-      return Object.keys(action.photos);
+      return action.photos ? Object.keys(action.photos) : state;
     default:
       return state;
   }
