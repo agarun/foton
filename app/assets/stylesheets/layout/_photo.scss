@@ -535,8 +535,8 @@
       transition: 100ms ease-in;
 
       &::placeholder {
-        color: #cccccc;
         font-weight: lighter;
+        color: #ccc;
       }
 
       &:focus {
@@ -575,6 +575,11 @@
         @include colored-button($green);
         width: 220px;
         font-size: 14px;
+
+        &:active {
+          background-color: darken($green, 10%);
+          box-shadow: inset 1px 1px 1px #018235;
+        }
       }
     }
   }

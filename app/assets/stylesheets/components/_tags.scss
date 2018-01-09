@@ -56,6 +56,13 @@
       color: $gray-light;
     }
   }
+
+  .Select-placeholder {
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: lighter;
+    color: #ccc;
+  }
 }
 
 .manage-form-tags {
@@ -66,6 +73,7 @@
   .Select-control {
     width: 100%;
     background-color: white;
+    border: 1px solid rgba(183, 199, 207, 0.73);
     box-shadow: none;
   }
 }
