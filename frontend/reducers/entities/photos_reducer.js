@@ -1,5 +1,6 @@
 import {
   RECEIVE_PHOTO,
+  RECEIVE_PHOTOS,
   REMOVE_PHOTO,
   FETCH_PHOTO_FEED_PAGE,
   RECEIVE_PHOTO_FEED,
@@ -17,6 +18,8 @@ const photosReducer = (state = {}, action) => {
   Object.freeze(state);
 
   switch (action.type) {
+    case RECEIVE_PHOTOS:
+      return Object.assign({}, state, action.photos);
     case RECEIVE_PHOTO: {
       const newPhotoId = action.photo.id;
       const newPhoto = { [newPhotoId]: action.photo };
