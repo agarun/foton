@@ -1,0 +1,55 @@
+.search-bar {
+  width: 100%;
+  background-color: white;
+  border-bottom: 1px solid $gray-border;
+
+  form {
+    position: relative;
+    height: 70px;
+
+    .search-bar-input {
+      margin-left: 5%;
+      position: absolute;
+      top: 0;
+      width: 75%;
+      height: 70px;
+      font-size: 24px;
+      font-family: inherit;
+      color: #222;
+      border: none;
+
+      &::placeholder {
+        font-size: 24px;
+        font-weight: 500;
+        letter-spacing: 0.01em;
+        color: darken($gray-light-2, 10%);
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  &-icon {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    left: calc(75% + 70px);
+    background-color: darken($blue, 2%);
+    border: none;
+    cursor: pointer;
+
+    svg {
+      margin-top: 6px;
+      margin-right: 1px;
+      fill: white;
+      width: 37px;
+      height: 37px;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

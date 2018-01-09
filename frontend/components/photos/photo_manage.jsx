@@ -148,7 +148,7 @@ class PhotoManage extends React.Component {
                     value={this.state.tags}
                     noResultsText={null}
                     ignoreCase={true}
-                    placeholder={null}
+                    placeholder={'Add some tags'}
                     promptTextCreator={tagName => (
                       <span>
                         Add tag <span style={{fontWeight: 700}}>{tagName}</span>
