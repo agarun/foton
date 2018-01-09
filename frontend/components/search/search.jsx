@@ -1,16 +1,12 @@
 import React from 'react';
 import SearchBar from './search_bar';
+import SearchResults from './search_results';
 
-class Search extends React.Component {
-
-  render() {
-    return (
-      <section className="main">
-        <SearchBar />
-        {/* <SearchResults /> */}
-      </section>
-    );
-  }
-}
+const Search = ({}) => (
+  <section className="main">
+    <SearchBar />
+    <SearchResults />
+  </section>
+);
 
 export default Search;
