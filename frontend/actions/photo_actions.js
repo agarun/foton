@@ -1,6 +1,7 @@
 import * as PhotoApiUtil from '../util/photo_api_util';
 
 export const RECEIVE_PHOTO = 'RECEIVE_PHOTO';
+export const RECEIVE_PHOTOS = 'RECEIVE_PHOTOS';
 export const REMOVE_PHOTO = 'REMOVE_PHOTO';
 export const FETCH_PHOTO_FEED_PAGE = 'FETCH_PHOTO_FEED_PAGE';
 export const RECEIVE_PHOTO_FEED = 'RECEIVE_PHOTO_FEED';
@@ -9,6 +10,11 @@ export const RECEIVE_UPLOAD_ERRORS = 'RECEIVE_UPLOAD_ERRORS';
 export const receivePhoto = photo => ({
   type: RECEIVE_PHOTO,
   photo
+});
+
+export const receivePhotos = photos => ({
+  type: RECEIVE_PHOTOS,
+  photos,
 });
 
 export const removePhoto = photo => ({
