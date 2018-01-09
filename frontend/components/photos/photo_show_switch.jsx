@@ -6,6 +6,7 @@ import { MainPage } from '../../util/main_page_util';
 import PhotoFeed from './photo_feed_container';
 import PhotoShow from './photo_show_container';
 import PhotoShowModal from '../photos/photo_show_modal';
+import Search from '../search/search';
 import UserProfile from '../users/user_profile_container';
 
 class PhotoShowSwitch extends React.Component {
@@ -30,8 +31,10 @@ class PhotoShowSwitch extends React.Component {
     if (
       this.constructor.isModal ||
       this.constructor.previousLocation.state || (
-        prevProps.match.params &&
-        this.props.location.pathname.slice(1, 6) === 'photo'
+        prevProps.match.params && (
+          this.props.location.pathname.slice(1, 6) === 'photo' ||
+          this.props.location.pathname.slice(1) === 'search'
+        )
       ) && (
         prevProps.location !== this.props.location
       )
@@ -55,6 +58,7 @@ class PhotoShowSwitch extends React.Component {
       }>
         <Route exact path="/" component={MainPage} />
         <Route exact path="/photos/:photoId" component={PhotoShow} />
+        <Route exact path="/search" component={Search} />
         <Route exact path="/:username" component={UserProfile} />
       </Switch>
     );

@@ -8,7 +8,6 @@ import Nav from './nav/nav';
 import SessionForm from './session_form/session_form_container';
 import UserProfile from './users/user_profile_container';
 import PhotoManage from './photos/photo_manage_container';
-import Search from './search/search';
 import PhotoSwitch from './photos/photo_show_switch';
 
 import ModalRoot from './modal/modal_root';
@@ -32,10 +31,6 @@ const App = () => (
         exact path="/upload"
         // TODO: Navigate user to ':username/manage' and open upload modal
       /> */}
-      <Route
-        exact path="/search"
-        component={Search}
-      />
       <Route
         path="/"
         component={PhotoSwitch}
