@@ -4,11 +4,19 @@ import { fetchEditorsChoicePhotos } from '../../actions/discover_actions';
 import PhotoGallery from '../photos/photo_gallery';
 
 class DiscoverEditorsChoice extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { isFetching: true };
+  }
+
   componentDidMount() {
-    this.props.fetchEditorsChoicePhotos();
+    this.props.fetchEditorsChoicePhotos()
+      .then(() => this.setState({ isFetching: false }));
   }
 
   render() {
+    if (this.state.isFetching) return null;
+
     return (
       <div className="discover-editors-choice">
         <PhotoGallery photoIds={this.props.photoIds} />

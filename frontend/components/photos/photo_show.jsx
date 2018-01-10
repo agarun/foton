@@ -2,18 +2,33 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import FollowButton from '../follows/follow_button';
 import TagShow from '../tags/tag_show';
+import PageNotFound from '../pages/404';
 
 class PhotoShow extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { pageNotFound: false };
+    this.pageNotFound = this.pageNotFound.bind(this);
+  }
+
+  pageNotFound() {
+    this.setState({ pageNotFound: true });
+  }
+
   componentDidMount() {
     if (!this.props.photo) {
       this.props.fetchPhoto(this.props.photoId)
-        .then(payload => this.props.fetchUser(payload.photo.author_name));
+        .then(
+          payload => this.props.fetchUser(payload.photo.author_name),
+          this.pageNotFound
+        );
     } else if (!this.props.author) {
       this.props.fetchUser(this.props.photo.author_name);
     }
   }
 
   render() {
+    if (this.state.pageNotFound) return <PageNotFound />;
     if (!this.props.author) return null;
     const {
       photo, author, isModal, closeModal
