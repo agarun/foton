@@ -1,0 +1,52 @@
+.slider {
+  min-height: 220px !important;
+  max-height: 220px !important;
+
+  &-decorator-0 {
+    & > button {
+      visibility: hidden;
+
+      &::after {
+        position: absolute;
+        left: -100%;
+        margin: 10px;
+        visibility: visible !important;
+        width: 5rem;
+        height: 5rem;
+        color: #202020;
+        font-size: 40px;
+        content: '\2329';
+      }
+    }
+  }
+
+  &-decorator-1 {
+    & > button {
+      visibility: hidden;
+
+      &::after {
+        position: absolute;
+        right: -100%;
+        visibility: visible !important;
+        width: 5rem;
+        height: 5rem;
+        color: #202020;
+        font-size: 40px;
+        content: '\232A';
+      }
+    }
+  }
+
+  .slider-slide > img {
+    position: sticky !important;
+    width: auto;
+    margin: 0 auto;
+    min-height: 220px !important;
+    max-height: 220px !important;
+    background-repeat: no-repeat;
+  }
+
+  .slider-slide {
+    text-align: center;
+  }
+}
