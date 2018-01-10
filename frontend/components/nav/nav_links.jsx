@@ -1,10 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const NavLinks = () => (
   <ul>
-    <li><Link to="/discover">Discover</Link></li>
-    <li><Link to="/about">About</Link></li>
+    <li>
+      <NavLink to="/discover" activeClassName="nav-link-active">
+        Discover
+      </NavLink>
+    </li>
+    <li>
+      <NavLink to="/about" activeClassName="nav-link-active">
+        About
+      </NavLink>
+    </li>
   </ul>
 );
 
