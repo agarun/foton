@@ -1,0 +1,88 @@
+.discover {
+  &-top {
+    padding: 0 5%;
+    background-color: white;
+    border-bottom: 1px solid $gray-border;
+  }
+
+  &-header {
+    padding-top: 30px;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #222;
+  }
+
+  &-description {
+    margin: 16px 0 24px 0;
+    font-size: 18px;
+    color: $gray-medium;
+  }
+
+  &-nav {
+    display: flex;
+    flex-flow: row wrap;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: $gray-medium;
+
+    li {
+      margin-right: 30px;
+      padding-bottom: 18px;
+      cursor: pointer;
+
+      &:hover {
+        color: darken($blue, 2%);
+      }
+    }
+
+    &-active {
+      color: $blue;
+      border-bottom: 2px solid $blue;
+    }
+  }
+
+  &-content {
+    padding-bottom: 100px;
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+.discover-editors-choice {
+  margin-top: 10px;
+}
+
+.discover-recommended-editor {
+  a {
+    color: $blue;
+    text-decoration: none;
+  }
+}
+
+.discover-recommended-tag {
+  margin: 60px 0 20px 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: #3d3d3d;
+  letter-spacing: 0.02em;
+}
+
+.discover-recommended-users {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.discover-recommended-photos {
+  margin: 0 auto;
+  width: 85%;
+
+  img {
+    width: auto;
+    min-height: 220px;
+    max-height: 220px;
+  }
+}
