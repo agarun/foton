@@ -91,6 +91,10 @@ nav {
     &:hover { color: $blue; }
   }
 
+  .nav-link-active {
+    color: $blue;
+  }
+
   .login {
     margin-left: 10px;
     width: 80px;
@@ -151,6 +155,7 @@ nav {
 
       &::placeholder {
         color: #c1c1c1;
+        font-weight: 300;
       }
     }
 
