@@ -92,7 +92,7 @@ class UserProfileEdit extends React.Component {
       <ReactModal
         isOpen={this.props.showModal}
         onRequestClose={this.closeModal}
-        closeTimeoutMS={300}
+        closeTimeoutMS={200}
         className="user-profile-edit-modal"
         overlayClassName="user-profile-edit-overlay"
       >

@@ -7,7 +7,9 @@ class PhotoShow extends React.Component {
   componentDidMount() {
     if (!this.props.photo) {
       this.props.fetchPhoto(this.props.photoId)
-      .then(payload => this.props.fetchUser(payload.photo.author_name));
+        .then(payload => this.props.fetchUser(payload.photo.author_name));
+    } else if (!this.props.author) {
+      this.props.fetchUser(this.props.photo.author_name);
     }
   }
 

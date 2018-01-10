@@ -32,7 +32,7 @@ class PhotoShowModal extends React.Component {
       <ReactModal
         isOpen={this.props.showModal}
         onRequestClose={this.closeModal}
-        closeTimeoutMS={500}
+        closeTimeoutMS={200}
         className="photo-show-modal"
         overlayClassName="photo-show-overlay"
       >

@@ -84,7 +84,7 @@ class UploadForm extends React.Component {
         isOpen={showModal}
         contentLabel="Upload Photo"
         onRequestClose={toggleUploadModal}
-        closeTimeoutMS={400}
+        closeTimeoutMS={200}
         className="upload-modal"
         overlayClassName="upload-overlay"
       >
