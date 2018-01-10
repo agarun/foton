@@ -55,12 +55,9 @@ class Api::DiscoverController < ApplicationController
   end
 
   def editors_choice
-    @photos = EDITORS_CHOICE_PHOTOS
-      .reduce([]) do |photos, image_file_name|
-        photos << Photo
-          .includes(:taggings, :tags, :author)
-          .find_by(image_file_name: image_file_name)
-      end
+    @photos = Photo
+      .includes(:taggings, :tags, :author)
+      .where(image_file_name: EDITORS_CHOICE_PHOTOS)
 
     render :editors_choice
   end
