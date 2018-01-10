@@ -7,6 +7,7 @@ import PhotoFeed from './photo_feed_container';
 import PhotoShow from './photo_show_container';
 import PhotoShowModal from '../photos/photo_show_modal';
 import Search from '../search/search';
+import Discover from '../discover/discover';
 import UserProfile from '../users/user_profile_container';
 
 class PhotoShowSwitch extends React.Component {
@@ -57,6 +58,7 @@ class PhotoShowSwitch extends React.Component {
         <Route exact path="/" component={MainPage} />
         <Route exact path="/photos/:photoId" component={PhotoShow} />
         <Route exact path="/search" component={Search} />
+        <Route exact path="/discover" component={Discover} />
         <Route exact path="/:username" component={UserProfile} />
       </Switch>
     );

@@ -22,7 +22,7 @@ class Api::DiscoverController < ApplicationController
     @tags = popular_tags.map do |tag|
       current_tag_photo_ids = tag.photo_ids
       all_plucked_tags_photo_ids += current_tag_photo_ids[0..7]
-      [tag.name, current_tag_photo_ids]
+      [tag.name, current_tag_photo_ids[0..7]]
     end
 
     @photos = Photo
@@ -42,17 +42,16 @@ class Api::DiscoverController < ApplicationController
       )
       .left_joins(:followers)
       .group(:id)
-      .order('COUNT(followers_users.id) DESC')
-      .limit(10)
-      .shuffle
+      .order('COUNT(followers_users.id) DESC')[0..9]
+      .shuffle[0..4]
   end
 
   def popular_tags
     Tag
       .left_joins(:photos)
       .group(:id)
-      .order('COUNT(photos.id) DESC')[0..3]
-      .shuffle
+      .order('COUNT(photos.id) DESC')[0..7]
+      .shuffle[0..3]
   end
 
   def editors_choice
