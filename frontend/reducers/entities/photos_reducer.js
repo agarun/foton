@@ -31,7 +31,7 @@ const photosReducer = (state = {}, action) => {
       return newState;
     }
     case RECEIVE_USER:
-      return action.user.photos || state;
+      return Object.assign({}, state, action.user.photos);
     case RECEIVE_CURRENT_USER:
       return action.currentUser === null ? state : {};
     case FETCH_PHOTO_FEED_PAGE:
