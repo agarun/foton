@@ -15,5 +15,7 @@ Rails.application.routes.draw do
     resource :session, only: %i[create destroy]
     resources :photos, only: %i[index show create update destroy]
     get 'search', to: 'search#query'
+    get 'discover/recommended', to: 'discover#recommended'
+    get 'discover/editorschoice', to: 'discover#editors_choice'
   end
 end
