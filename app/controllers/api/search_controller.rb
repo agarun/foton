@@ -11,14 +11,9 @@ class Api::SearchController < ApplicationController
 
   def photo_query
     if params[:query].empty?
-      @photos =
-        Photo.order("RANDOM()").where(is_profile_photo: false).limit(10)
+      Photo.order("RANDOM()").where(is_profile_photo: false).limit(10)
     else
-      @photos = Photo
-        .where(
-          "title LIKE :query OR description LIKE :query",
-          query: "%#{params[:query]}%"
-        )
+      Photo.full_text_search_photos(params[:query])
     end
   end
 
@@ -26,11 +21,7 @@ class Api::SearchController < ApplicationController
     if params[:query].empty?
       User.order("RANDOM()").limit(12)
     else
-      User
-        .where(
-          "username LIKE :query",
-          query: "%#{params[:query]}%"
-        )
+      User.full_text_search_users(params[:query])
     end
   end
 end

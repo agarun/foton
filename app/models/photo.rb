@@ -1,4 +1,9 @@
 class Photo < ApplicationRecord
+  include PgSearch
+  pg_search_scope :full_text_search_photos,
+                  against: %i[title description],
+                  associated_against: { tags: :name }
+
   belongs_to :author, class_name: :User
 
   has_many :taggings, dependent: :destroy

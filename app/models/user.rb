@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  include PgSearch
+  pg_search_scope :full_text_search_users, against: %i[username location]
+
   has_many :photos,
            -> { where(is_profile_photo: false).order('created_at DESC') },
            foreign_key: :author_id
