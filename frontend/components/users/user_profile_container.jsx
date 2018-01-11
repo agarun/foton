@@ -21,7 +21,6 @@ const mapDispatchToProps = dispatch => ({
     dispatch(toggleModal('FOLLOWS', { user, requestType }))
   ),
   toggleUserProfileEditModal: () => dispatch(toggleModal('PROFILE_EDIT')),
-  toggleUploadModal: () => dispatch(toggleModal('UPLOAD')),
 });
 
 export default connect(

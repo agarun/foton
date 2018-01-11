@@ -4,6 +4,7 @@ import PhotoGallery from '../photos/photo_gallery';
 import PageNotFound from '../pages/404';
 import FollowButton from '../follows/follow_button';
 import LocationSVG from '../svg/location';
+import UserProfileWelcome from './user_profile_welcome';
 
 class UserProfile extends React.Component {
   constructor(props) {
@@ -124,17 +125,7 @@ class UserProfile extends React.Component {
               ? <PhotoGallery
                   photoIds={profileUser.photo_ids}
                 />
-              : <section className="user-profile-gallery-empty">
-                  <div className="user-profile-gallery-empty-header">
-                    You don't have any uploads yet.
-                  </div>
-                  <div className="user-profile-gallery-empty-info">
-                    Get started by&nbsp;
-                    <a onClick={this.props.toggleUploadModal}>uploading</a> a photo,&nbsp;
-                    <Link to="/search">searching</Link> for photos, or&nbsp;
-                    <Link to="/discover">discovering</Link> popular posts.
-                  </div>
-                </section>
+              : <UserProfileWelcome />
           }
         </section>
       </section>
