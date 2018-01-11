@@ -144,6 +144,9 @@ class PhotoManage extends React.Component {
                 <section className="manage-form-tags">
                   <Creatable
                     multi={true}
+                    onInputChange={value => (
+                      value.replace(/[^0-9a-z\s]/i, '').toLowerCase()
+                    )}
                     onChange={tags => this.setState({ tags })}
                     value={this.state.tags}
                     noResultsText={null}

@@ -42,7 +42,6 @@ class Api::UsersController < ApplicationController
 
       render :show
     else
-      # TODO: error handling
       render json: @user.errors.to_hash(true),
              status: :unprocessable_entity
     end
