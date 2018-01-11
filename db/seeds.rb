@@ -382,4 +382,11 @@ hundred_photos_data.shuffle.each do |row|
 
   db_photo.is_cover_photo = true if rand(3).zero? && User.find(db_photo.author_id).cover_photo.nil?
   db_photo.save!
+
+  13.times do
+    random_user = User.all.sample
+    unless random_user.liked_photos.include?(db_photo) && rand(3).zero?
+      db_photo.like(random_user)
+    end
+  end
 end
