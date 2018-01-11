@@ -32,13 +32,14 @@ const DiscoverRecommendedPhotoRow = ({ tagName, photos, photoIds }) => (
       {
         photoIds.map(photoId => (
           <div
+            key={photoId} 
             className="discover-gallery-item"
             style={{
               maxWidth:
                 `${photos[photoId].width * 220 / photos[photoId].height}px`
             }}
           >
-            <Link key={photoId} to={{
+            <Link to={{
               pathname: `/photos/${photoId}`,
               state: { isModal: true, photoId },
             }}>

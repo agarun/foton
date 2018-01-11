@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchRecommended } from '../../actions/discover_actions';
 import DiscoverRecommendedUsers from './discover_recommended_users';
 import DiscoverRecommendedPhotoRow from './discover_recommended_photos';
+import Spinner from '../spinner/spinner';
 
 class DiscoverRecommended extends React.Component {
   constructor(props) {
@@ -16,7 +17,9 @@ class DiscoverRecommended extends React.Component {
   }
 
   render() {
-    if (this.state.isFetching) return null;
+    if (this.state.isFetching) {
+      return <span className="discover-spinner"><Spinner /></span>;
+    }
 
     return (
       <div>
