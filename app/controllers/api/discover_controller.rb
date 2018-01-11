@@ -51,12 +51,12 @@ class Api::DiscoverController < ApplicationController
       .left_joins(:photos)
       .group(:id)
       .order('COUNT(photos.id) DESC')[0..7]
-      .shuffle[0..3]
+      .shuffle[0..4]
   end
 
   def editors_choice
     @photos = Photo
-      .includes(:taggings, :tags, :author)
+      .includes(:tags, :author)
       .where(image_file_name: EDITORS_CHOICE_PHOTOS)
 
     render :editors_choice
