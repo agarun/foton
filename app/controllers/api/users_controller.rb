@@ -20,7 +20,7 @@ class Api::UsersController < ApplicationController
     if @user.nil?
       render json: ["Not Found"], status: :not_found
     else
-      @photos = @user.photos.includes(:tags)
+      @photos = @user.photos.includes(:tags, :likers)
       render :show
     end
   end

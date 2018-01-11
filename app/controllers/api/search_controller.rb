@@ -12,7 +12,7 @@ class Api::SearchController < ApplicationController
   def photo_query
     if params[:query].empty?
       Photo
-        .includes(:tags, :author)
+        .includes(:tags, :author, :likers)
         .order("RANDOM()")
         .where(is_profile_photo: false)
         .limit(10)

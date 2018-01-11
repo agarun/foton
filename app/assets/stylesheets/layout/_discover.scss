@@ -48,6 +48,12 @@
     width: 90%;
     margin: 0 auto;
   }
+
+  &-spinner {
+    position: relative;
+    top: 100px;
+    left: 50%;
+  }
 }
 
 .discover-editors-choice {

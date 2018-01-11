@@ -26,7 +26,7 @@ class Api::DiscoverController < ApplicationController
     end
 
     @photos = Photo
-      .includes(:tags, :author)
+      .includes(:tags, :likers, :author)
       .where(id: all_plucked_tags_photo_ids)
 
     render :recommended
@@ -56,7 +56,7 @@ class Api::DiscoverController < ApplicationController
 
   def editors_choice
     @photos = Photo
-      .includes(:tags, :author)
+      .includes(:tags, :likers, :author)
       .where(image_file_name: EDITORS_CHOICE_PHOTOS)
 
     render :editors_choice
