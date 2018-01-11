@@ -29,6 +29,9 @@ class User < ApplicationRecord
            through: :received_follows,
            source: :follower
 
+  has_many :likes, dependent: :destroy
+  has_many :liked_photos, through: :likes, source: :photo
+
   before_validation { username.downcase! }
   before_validation :ensure_unique_session_token
 

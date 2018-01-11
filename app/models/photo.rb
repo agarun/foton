@@ -7,8 +7,12 @@ class Photo < ApplicationRecord
 
   belongs_to :author, class_name: :User
 
+  has_many :likes, dependent: :destroy
+  has_many :likers, through: :likes, source: :user
+
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
+
   has_attached_file :image,
                     styles: {
                       large: "1280x1280>",
@@ -30,4 +34,12 @@ class Photo < ApplicationRecord
             uniqueness: { scope: :author_id,
                           message: 'error: can only have 1 profile photo' },
             if: :is_profile_photo
+
+  def like(other_user)
+    likers << other_user
+  end
+
+  def unlike(other_user)
+    likers.delete(other_user)
+  end
 end
