@@ -4,6 +4,8 @@ import {
   REMOVE_PHOTO,
   FETCH_PHOTO_FEED_PAGE,
   RECEIVE_PHOTO_FEED,
+  RECEIVE_LIKE,
+  RECEIVE_UNLIKE,
 } from '../../actions/photo_actions';
 
 import {
@@ -13,6 +15,8 @@ import {
 import {
   RECEIVE_USER,
 } from '../../actions/user_actions';
+
+import merge from 'lodash/merge';
 
 const photosReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -39,6 +43,19 @@ const photosReducer = (state = {}, action) => {
     case RECEIVE_PHOTO_FEED: {
       const nextFeed = Object.assign({}, state, action.feedData.photos);
       return nextFeed;
+    }
+    case RECEIVE_LIKE: {
+      const newState = merge({}, state);
+      const { liker_id, photo_id } = action.likeData;
+      newState[photo_id].liker_ids.push(liker_id);
+      return newState;
+    }
+    case RECEIVE_UNLIKE: {
+      const newState = merge({}, state);
+      const { liker_id, photo_id } = action.likeData;
+      const likerIdx = newState[photo_id].liker_ids.indexOf(liker_id);
+      newState[photo_id].liker_ids.splice(likerIdx, 1);
+      return newState;
     }
     default:
       return state;

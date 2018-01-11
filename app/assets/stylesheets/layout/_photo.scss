@@ -145,15 +145,20 @@
 
 .photo-feed-item-info {
   margin: 15px;
-  color: darken($gray-medium, 15%);
+  display: flex;
+  justify-content: space-between;
 
-  h2 {
-    margin-bottom: 12px;
-    font-size: 17px;
-  }
+  &-text {
+    color: darken($gray-medium, 15%);
 
-  h3 {
-    font-size: 14.5px;
+    h2 {
+      margin: 6px 0;
+      font-size: 17px;
+    }
+
+    h3 {
+      font-size: 14.5px;
+    }
   }
 }
 

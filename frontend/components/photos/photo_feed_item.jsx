@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import LikeButton from '../likes/like_button';
 
 const PhotoFeedItem = ({ photo, author, measure }) => (
   <section className="photo-feed-item-container">
@@ -30,8 +31,13 @@ const PhotoFeedItem = ({ photo, author, measure }) => (
         </Link>
       </section>
       <section className="photo-feed-item-info">
-        <h2>{photo.title}</h2>
-        <h3>{photo.description}</h3>
+        <div className="photo-feed-item-info-text">
+          <h2>{photo.title}</h2>
+          <h3>{photo.description}</h3>
+        </div>
+        <div className="photo-feed-item-info-interact">
+          <LikeButton photo={photo} />
+        </div>
       </section>
     </section>
   </section>

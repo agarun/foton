@@ -1,0 +1,54 @@
+.like-button, .unlike-button {
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  height: 30px;
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  transition: 150ms ease-in;
+  border-radius: 3px;
+
+  span {
+    min-width: 15px;
+    margin-left: 10px;
+    font-size: 15px;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  svg {
+    margin-top: -1px;
+  }
+}
+
+.like-button {
+  background-color: $red-light;
+  box-shadow: inset 1px 1px 1px opacify(lighten($red-light, 5%), 0.5);
+  border: 1px solid darken($red-light, 5%);
+
+  &:hover {
+    background-color: lighten($red-light, 8%);
+  }
+}
+
+.unlike-button {
+  background-color: $gray-medium;
+  box-shadow: inset 1px 1px 1px opacify(lighten($gray-medium, 5%), 0.5);
+  border: 1px solid darken($gray-medium, 5%);
+
+  &:hover {
+    background-color: lighten($gray-medium, 8%);
+  }
+
+  svg {
+    animation-name: bounceIn;
+    animation-duration: 0.4s;
+    animation-fill-mode: both;
+  }
+}
