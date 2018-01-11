@@ -9,7 +9,7 @@
       &::after {
         position: absolute;
         left: -100%;
-        margin: 10px;
+        margin: 0 10px;
         visibility: visible !important;
         width: 5rem;
         height: 5rem;
@@ -27,6 +27,7 @@
       &::after {
         position: absolute;
         right: -100%;
+        margin: 0 10px;
         visibility: visible !important;
         width: 5rem;
         height: 5rem;
@@ -35,15 +36,6 @@
         content: '\232A';
       }
     }
-  }
-
-  .slider-slide > img {
-    position: sticky !important;
-    width: auto;
-    margin: 0 auto;
-    min-height: 220px !important;
-    max-height: 220px !important;
-    background-repeat: no-repeat;
   }
 
   .slider-slide {

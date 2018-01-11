@@ -20,7 +20,7 @@ class Discover extends React.Component {
               this.state.discoverType === 'RECOMMENDED'
                 ? 'Browse new posts and find inspiration.'
                 : <div className="discover-recommended-editor">
-                    Photos selected by Foton designer <a href="https://agarun.com">Aaron Agarunov</a>.
+                    Photos selected by editor <a href="https://agarun.com">Aaron Agarunov</a>.
                   </div>
             }
           </div>

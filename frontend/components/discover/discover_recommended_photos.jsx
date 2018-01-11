@@ -24,7 +24,7 @@ const DiscoverRecommendedPhotoRow = ({ tagName, photos, photoIds }) => (
       }
     </div>
     <Carousel
-      slidesToShow={3}
+      slidesToShow={4}
       framePadding="0 50px"
       decorators={Carousel.getDefaultProps().decorators.slice(0, 2)}
       cellSpacing={20}
