@@ -38,3 +38,17 @@ export const fetchPhotoFeed = pageNumber => (
     url: `api/photos?page=${pageNumber}`,
   })
 );
+
+export const likePhoto = photoId => (
+  $.ajax({
+    method: 'PATCH',
+    url: `api/photos/${photoId}/like`,
+  })
+);
+
+export const unlikePhoto = photoId => (
+  $.ajax({
+    method: 'DELETE',
+    url: `api/photos/${photoId}/unlike`
+  })
+);
