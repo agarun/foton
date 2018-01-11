@@ -85,5 +85,28 @@
     min-height: 220px;
     max-height: 220px;
     object-fit: cover;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.discover-gallery-item {
+  position: relative;
+  margin: 0 auto;
+
+  a {
+    cursor: zoom-in;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &:hover {
+    .photo-gallery-item-info, .photo-gallery-item-info-wrapper {
+      opacity: 1;
+    }
   }
 }

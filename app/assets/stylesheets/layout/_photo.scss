@@ -295,17 +295,22 @@
       }
     }
 
+    &-likes {
+      padding: 20px;
+    }
+
     &-title {
       padding: 20px;
-      border-bottom: 1px solid #e7e7e7;
+      padding-bottom: 0px;
       font-size: 17px;
       color: darken($gray-medium, 5%);
-      border-top: none;
+      border-top: 1px solid #e7e7e7;
       border-right: none;
     }
 
     &-description, &-time {
       padding: 20px;
+      padding-top: 5px;
       border-bottom: 1px solid #e7e7e7;
       font-size: 14px;
       color: darken($gray-medium, 5%);
@@ -318,6 +323,7 @@
       display: block;
       font-size: 12px;
       background-color: #f4f4f4;
+      border-bottom: 1px solid #e7e7e7;
       color: #969595;
     }
 
