@@ -119,9 +119,23 @@ class UserProfile extends React.Component {
           </section>
         </section>
         <section className="user-profile-gallery">
-          <PhotoGallery
-            photoIds={profileUser.photo_ids}
-          />
+          {
+            profileUser.photo_ids.length
+              ? <PhotoGallery
+                  photoIds={profileUser.photo_ids}
+                />
+              : <section className="user-profile-gallery-empty">
+                  <div className="user-profile-gallery-empty-header">
+                    You don't have any uploads yet.
+                  </div>
+                  <div className="user-profile-gallery-empty-info">
+                    Get started by&nbsp;
+                    <a onClick={this.props.toggleUploadModal}>uploading</a> a photo,&nbsp;
+                    <Link to="/search">searching</Link> for photos, or&nbsp;
+                    <Link to="/discover">discovering</Link> popular posts.
+                  </div>
+                </section>
+          }
         </section>
       </section>
     );

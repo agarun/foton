@@ -136,6 +136,31 @@
   margin: 0 auto;
   padding: 15px 2.5%;
   background-color: $gray-light;
+
+  &-empty {
+    margin: 50px 0;
+    padding-bottom: 100px;
+    text-align: center;
+    color: $gray-medium;
+
+    &-header {
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+
+    &-info {
+      margin: 0 auto;
+      width: 350px;
+      font-size: 15px;
+      color: $gray-medium-2;
+
+      a {
+        text-decoration: none;
+        color: $blue;
+        cursor: pointer;
+      }
+    }
+  }
 }
 
 .user-profile-edit-modal {
@@ -324,7 +349,7 @@
 }
 
 .user-profile-edit-cover-photo-select {
-  margin: 20px 0;
+  margin: 10px 0;
   padding: 20px;
   text-align: center;
   overflow-x: auto;
@@ -347,6 +372,11 @@
   	background-color: #838383;
     border-radius: 50px;
     border: 2px solid #7d7d7d;
+  }
+
+  &-title {
+    margin-bottom: 10px;
+    color: #454545;
   }
 
   label {
