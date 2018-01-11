@@ -13,12 +13,12 @@ const DiscoverRecommendedUsers = ({ users, userIds }) => (
 );
 
 const DiscoverRecommendedUserItem = ({ user }) => (
-    <section className="search-users-results-item">
-      <div className="search-users-results-item-cover">
-        <img src={user.cover_photo_url} />
-      </div>
-      <div className="search-users-results-item-profile-photo">
-        <Link to={`/${user.username}`}>
+  <section className="search-users-results-item">
+    <div className="search-users-results-item-cover">
+      <img src={user.cover_photo_url} />
+    </div>
+    <div className="search-users-results-item-profile-photo">
+      <Link to={`/${user.username}`}>
         <img src={user.profile_photo_url} />
       </Link>
     </div>
