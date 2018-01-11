@@ -1,3 +1,69 @@
+.photo-feed-welcome {
+  text-align: center;
+
+  &-title {
+    margin: 70px 0 30px 0;
+    font-size: 42px;
+    font-weight: 400;
+    color: darken($gray-medium, 18%);
+  }
+
+  &-subtitle {
+    color: $gray-medium;
+    font-size: 15px;
+  }
+
+  &-cards {
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    width: 440px;
+
+    a {
+      text-decoration: none;
+      cursor: pointer;
+
+      &:hover {
+        li {
+          border-color: $blue;
+          color: $blue;
+        }
+
+        svg {
+          fill: $blue;
+        }
+      }
+    }
+
+    li {
+      margin: 10px;
+      padding: 15px;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      flex: 1 0 40%;
+      width: 200px;
+      height: 200px;
+      font-size: 16px;
+      background-color: white;
+      color: $gray-medium;
+      border: 2px solid lighten($gray-medium, 45%);
+      border-radius: 5px;
+    }
+
+    svg {
+      margin: 10px;
+      fill: $gray-medium;
+      width: 40px;
+      height: 40px;
+    }
+  }
+}
+
 .photo-feed-item-container {
   margin-top: 10px;
   padding: 1px;

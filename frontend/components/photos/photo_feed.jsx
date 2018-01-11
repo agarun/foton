@@ -8,7 +8,7 @@ import {
 } from 'react-virtualized';
 import PhotoFeedItem from './photo_feed_item';
 import Spinner from '../spinner/spinner';
-
+import PhotoFeedWelcome from './photo_feed_welcome';
 
 class PhotoFeed extends React.Component {
   constructor(props) {
@@ -98,6 +98,14 @@ class PhotoFeed extends React.Component {
         </div>
       );
     };
+
+    if (
+      !isFetchingNextPage &&
+      !hasNextPage &&
+      !this.props.photos.length
+    ) {
+      return <PhotoFeedWelcome />;
+    }
 
     return (
       <section className="main">
