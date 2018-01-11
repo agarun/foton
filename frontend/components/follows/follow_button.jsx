@@ -1,8 +1,8 @@
 import React from 'react';
-import { followUser, unfollowUser } from '../../actions/user_actions';
-import { toggleModal } from '../../actions/ui_actions';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { followUser, unfollowUser } from '../../actions/user_actions';
+import { toggleModal } from '../../actions/ui_actions';
 
 const FollowButton = ({
   user,
@@ -61,7 +61,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 });
 
 export default withRouter(
-    connect(
+  connect(
     mapStateToProps,
     mapDispatchToProps
   )(FollowButton)

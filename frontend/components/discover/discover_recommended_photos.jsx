@@ -31,15 +31,30 @@ const DiscoverRecommendedPhotoRow = ({ tagName, photos, photoIds }) => (
     >
       {
         photoIds.map(photoId => (
-          <Link key={photoId} to={{
-            pathname: `/photos/${photoId}`,
-            state: { isModal: true, photoId },
-          }}>
-            <img
-              src={photos[photoId].image_url}
-              onLoad={() => hotfixCarousel(window, 'resize')}
-            />
-          </Link>
+          <div
+            className="discover-gallery-item"
+            style={{
+              maxWidth:
+                `${photos[photoId].width * 220 / photos[photoId].height}px`
+            }}
+          >
+            <Link key={photoId} to={{
+              pathname: `/photos/${photoId}`,
+              state: { isModal: true, photoId },
+            }}>
+              <img
+                src={photos[photoId].image_url}
+                onLoad={() => hotfixCarousel(window, 'resize')}
+              />
+            </Link>
+            <div className="photo-gallery-item-info">
+              <div className="photo-gallery-item-info-wrapper">
+                <div className="photo-gallery-item-info-title">
+                  {photos[photoId].title}
+                </div>
+              </div>
+            </div>
+          </div>
         ))
       }
     </Carousel>

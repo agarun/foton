@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import FollowButton from '../follows/follow_button';
+import LikeButton from '../likes/like_button';
 import TagShow from '../tags/tag_show';
 import PageNotFound from '../pages/404';
 
@@ -68,18 +69,18 @@ class PhotoShow extends React.Component {
                 </section>
               </section>
             </section>
+            <section className="photo-show-sidebar-likes">
+              <LikeButton photo={photo} />
+            </section>
             {
               photo.title &&
                 <section className="photo-show-sidebar-title">
                   {photo.title}
                 </section>
             }
-            {
-              photo.description &&
-                <section className="photo-show-sidebar-description">
-                  {photo.description}
-                </section>
-            }
+            <section className="photo-show-sidebar-description">
+              {photo.description}
+            </section>
             <section className="photo-show-sidebar-time">
               Posted {photo.time_posted} ago.
             </section>
