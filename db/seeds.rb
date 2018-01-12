@@ -2,6 +2,7 @@
 User.destroy_all
 Photo.destroy_all
 Follow.destroy_all
+Like.destroy_all
 
 # dev
 
@@ -367,12 +368,12 @@ end
 hundred_photos_data.shuffle.each do |row|
   p row
   db_photo = Photo.create(
-    image: File.open(row.first),
+    image: open(row.first),
     author_id: users[rand(users.size)].id,
     title: row[1],
     description: row[2]
   )
-  db_photo.image.instance_write(:file_name, File.basename(row.first).slice(0, 7))
+  # db_photo.image.instance_write(:file_name, File.basename(row.first).slice(0, 7))
   db_photo.save!
 
   row[3].each do |tag_name|
@@ -385,7 +386,7 @@ hundred_photos_data.shuffle.each do |row|
 
   13.times do
     random_user = User.all.sample
-    unless random_user.liked_photos.include?(db_photo) && rand(3).zero?
+    if !random_user.liked_photos.include?(db_photo) && rand(3).zero?
       db_photo.like(random_user)
     end
   end
