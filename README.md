@@ -23,7 +23,7 @@ Users can view their own profile or visit and follow other users. Profiles are r
 
 Users can edit their profiles by updating their information or changing their profile and cover photos.
 
-Profile images are related to users by `is_profile_photo` and `is_cover_photo` boolean fields. The booleans are stored in the `photos` table with PSQL partial indexes and are accessible by scoped Rails associations:
+Profile images are related to users by `is_profile_photo` and `is_cover_photo` boolean fields. The booleans are stored in the `photos` table with PSQL partial indexes. These photos are accessible by scoped Rails associations:
 ```rb
 has_one :cover_photo, -> { where is_cover_photo: true }
 has_one :profile_photo, -> { where is_profile_photo: true }
@@ -36,10 +36,10 @@ Users can also edit their photos in their *Manage* console.
 
 
 ### Photo Feed
-Logged in users' home page is an infinitely scrolling photo feed of their followees' recent posts.   
+The user home page is an infinitely scrolling photo feed of their own & their followees' recent posts.   
 
-Users can click on any photo to visit the photo's page in a modal. Photo pages have information about the photo and let users follow the author or like the image.   
-Modals are routed, so a user can send the `/photos/:photoId` link to friends and retain the photo display in a full page.
+Users can click on any photo on the site to visit the photo's page in a modal. Photo pages have information about the photo and let users follow the author or like the image.   
+Modals are routed, so a user can send the `/photos/:photoId` link to friends and retain the photo display in a full page instead.
 
 
 ### Search
@@ -52,10 +52,11 @@ Popular tags and users are picked to be shown on the discover page. Users can br
 
 ### Technologies
 
-- [react-virtualized](): Infinite scrolling and dynamically rendering photo feed & query paging
-- [kaminari](): Paginating rails queries
-- [react-select](): Multiselecting input fields during tag creation
-- [paperclip-meta](): Extracting image width & height attributes for a responsive gallery and resizeable carousels
+- [react-virtualized](https://github.com/bvaughn/react-virtualized): Infinite scrolling and dynamically rendering photos
+- [kaminari](https://github.com/kaminari/kaminari): Paginating rails queries
+- [react-select](https://github.com/JedWatson/react-select): Multiselecting input fields in tag creation
+- [paperclip-meta](https://github.com/teeparham/paperclip-meta): Extracting image width & height attributes for a responsive gallery and resizeable carousels
+  - [CSS responsive gallery layout article](https://github.com/xieranmaya/blog/issues/6)
 
 ## Future Directions
 - Elastic search, fuzzy queries and typeaheads with typeahead.js
