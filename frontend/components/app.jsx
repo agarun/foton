@@ -26,11 +26,6 @@ const App = () => (
         exact path="/manage"
         component={PhotoManage}
       />
-      {/* <Route component={PageNotFound} /> */}
-      {/* <Route
-        exact path="/upload"
-        // TODO: Navigate user to ':username/manage' and open upload modal
-      /> */}
       <Route
         path="/"
         component={PhotoSwitch}

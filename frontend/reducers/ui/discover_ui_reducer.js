@@ -16,7 +16,6 @@ const discoverRecommendedReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_TAG_PHOTO_IDS:
       newState.taggedPhotoIds = action.taggedPhotoIds;
-      // debugger
       return newState;
     case RECEIVE_USERS:
       newState.userIds = action.users
