@@ -33,6 +33,8 @@ has_one :cover_photo, -> { where is_cover_photo: true }
 has_one :profile_photo, -> { where is_profile_photo: true }
 ```
 
+Users can see their followers & following list in small modals from their profile page. The data is only fetched *if* a user chooses to open either display, but will persist in Redux state should they click on another list on the site with some of the same users.
+
 ### Photo Uploads
 Users can upload photos, which are stored in Amazon Web Services S3 buckets. They can add a title, description, or multiple tags when uploading.
 
@@ -50,10 +52,11 @@ The user home page is an infinitely scrolling photo feed of their own & their fo
 </p>
 
 Users can click on any photo on the site to visit the photo's page in a modal. Photo pages have information about the photo and let users follow the author or like the image.   
-Photo modals are routed, so a user can send the `/photos/:photoId` link to friends and retain the photo display in a full page instead. Each Modal is rendered based on `showModal` Redux state managed with a `ModalRoot` component.
+
+Photo modals are routed - clicking a photo on the site opens the modal in place with its URL, so a user can copy and send the `/photos/:photoId` link to friends and retain the photo display in a full page instead. Each Modal is rendered based on `showModal` Redux state managed with a `ModalRoot` component.
 
 <p align="center">
-<img width=91% src="https://i.imgur.com/TK93ZSM.png" />
+<img width=91% src="https://i.imgur.com/B9C9t5Q.png" />
 </p>
 
 
