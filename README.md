@@ -14,7 +14,7 @@ Foton uses Ruby on Rails with a PostgreSQL database on the back end, and React t
 * [Photo Uploads](#photo-uploads)
 * [Photo Feed](#photo-feed)
 * [Search & Tags](#search)
-* [Discover](#discover)
+* [Discover Photos & Users](#discover)
 
 ### Users
 Visitors can sign up or log in to the site.
@@ -45,6 +45,10 @@ Users can also edit their photos in their *Manage* console.
 ### Photo Feed
 The user home page is an infinitely scrolling photo feed of their own & their followees' recent posts.   
 
+<p align="center">
+<img src="https://media.giphy.com/media/3ohc0QaTzNSePJw1W0/giphy.gif" />
+</p>
+
 Users can click on any photo on the site to visit the photo's page in a modal. Photo pages have information about the photo and let users follow the author or like the image.   
 Photo modals are routed, so a user can send the `/photos/:photoId` link to friends and retain the photo display in a full page instead. Each Modal is rendered based on `showModal` Redux state managed with a `ModalRoot` component.
 
@@ -65,7 +69,7 @@ Popular tags and users are picked to be shown on the discover page. Users can br
 <img width=91% src="https://i.imgur.com/0bWmgQ5.png" />
 </p>
 
-## Additional Technologies
+## Technologies
 
 - [react-virtualized](https://github.com/bvaughn/react-virtualized) - Infinite scrolling and dynamically rendering photos
 - [kaminari](https://github.com/kaminari/kaminari) - Paginating rails queries
