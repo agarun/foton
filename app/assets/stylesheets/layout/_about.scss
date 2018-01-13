@@ -1,8 +1,11 @@
 .about {
+  padding: 0 100px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   position: relative;
+  width: 75%;
+  margin: 0 auto;
+  background-color: white;
 
   &-masthead {
 
@@ -12,8 +15,8 @@
     margin-top: 70px;
 
     svg {
-      width: 500px;
-      fill: #d7d7dd;
+      width: 700px;
+      fill: #efeff4;
       z-index: -10;
     }
   }
@@ -21,50 +24,56 @@
   &-logo {
     margin-top: 10px;
     margin-bottom: 70px;
-    max-width: 10%;
+    max-width: 12%;
     height: auto;
   }
 
   &-blurb {
-    margin-top: -10px;
+    margin-top: -150px;
     margin-bottom: 50px;
     position: relative;
     left: 0px;
     padding: 5px;
-    max-width: 520px;
+    max-width: 700px;
     text-align: left;
-    line-height: 1;
-    font-weight: 600;
-    font-size: 33px;
+    line-height: 1.5;
+    font-weight: 500;
+    font-size: 38px;
     color: #373737;
-    background-color: rgba(white, 0.55);
+
+    &-bold {
+      color: $blue;
+      font-weight: 700;
+    }
   }
 
   &-description {
-    width: 90%;
-    margin: 0 auto;
+    width: 95%;
 
     a {
       font-weight: 600;
       text-decoration: none;
       color: darken(#11395e, 9%);
+      transition: 150ms ease-in;
+
+      &:hover {
+        color: darken($blue, 9%);
+      }
     }
   }
 
   &-content {
-    padding: 40px 27%;
+    padding: 40px;
     position: relative;
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
-    justify-content: center;
-    align-content: center;
     background-color: white;
-    width: 100%;
+    width: 80%;
     font-size: 20px;
-    line-height: 1.4;
-    color: #252525;
-    border-top: 1px solid $gray-border;
+    line-height: 1.6;
+    color: #4f4e4e;
+    border-top: 2px solid $gray-border;
   }
 
   &-links {
@@ -72,20 +81,19 @@
     margin-top: 40px;
     padding-bottom: 100px;
     display: flex;
-    justify-content: center;
     align-items: center;
     align-content: center;
     width: 100%;
 
     svg {
       width: 60px;
-      margin: 10px;
-      transition: 250ms ease-in;
-      fill: #11395e;
+      margin: -10px 10px;
+      transition: 150ms ease-in;
+      fill: #303850;
 
       &:hover {
-        transform: scale(1.1);
-        fill: darken(#11395e, 9%);
+        transform: scale(1.05);
+        fill: darken($blue, 9%);
       }
     }
   }
