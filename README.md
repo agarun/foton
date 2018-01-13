@@ -23,6 +23,10 @@ Users can view their own profile or visit and follow other users. Profiles are r
 
 Users can edit their profiles by updating their information or changing their profile and cover photos.
 
+<p align="center">
+<img width=91% src="https://i.imgur.com/1Hfkj5I.png" />
+</p>
+
 Profile images are related to users by `is_profile_photo` and `is_cover_photo` boolean fields. The booleans are stored in the `photos` table with PSQL partial indexes. These photos are accessible by scoped Rails associations:
 ```rb
 has_one :cover_photo, -> { where is_cover_photo: true }
@@ -34,12 +38,19 @@ Users can upload photos, which are stored in Amazon Web Services S3 buckets. The
 
 Users can also edit their photos in their *Manage* console.
 
+<p align="center">
+<img width=91% src="https://i.imgur.com/tXYWzMn.png" />
+</p>
 
 ### Photo Feed
 The user home page is an infinitely scrolling photo feed of their own & their followees' recent posts.   
 
 Users can click on any photo on the site to visit the photo's page in a modal. Photo pages have information about the photo and let users follow the author or like the image.   
 Photo modals are routed, so a user can send the `/photos/:photoId` link to friends and retain the photo display in a full page instead. Each Modal is rendered based on `showModal` Redux state managed with a `ModalRoot` component.
+
+<p align="center">
+<img width=91% src="https://i.imgur.com/TK93ZSM.png" />
+</p>
 
 
 ### Search
@@ -49,6 +60,10 @@ The photo gallery used by the search and profile pages uses a pure CSS image lay
 
 ### Discover
 Popular tags and users are picked to be shown on the discover page. Users can browse photos from the returned tags in a carousel or choose to follow a user or visit their profile. Users can also visit an *Editors Choice* page to view a predetermined selection of photos.
+
+<p align="center">
+<img width=91% src="https://i.imgur.com/0bWmgQ5.png" />
+</p>
 
 ## Additional Technologies
 
