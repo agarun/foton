@@ -16,7 +16,7 @@ const About = () => (
       </div>
       <section className="about-content">
         <div className="about-description">
-          The app uses React together with Redux on the front end and a Rails API with a PostgreSQL database on the back end. AWS S3 buckets handle photo storage.
+          The app uses React together with Redux on the front end and provides a Rails API with a PostgreSQL database in the back end. AWS S3 buckets handle photo storage.
           <br />
           Read more on <a href="https://github.com/agarun/foton">GitHub</a>.
         </div>

@@ -45,8 +45,9 @@
     margin: 0 auto;
 
     a {
-      color: $blue;
+      font-weight: 600;
       text-decoration: none;
+      color: darken(#11395e, 9%);
     }
   }
 
