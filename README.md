@@ -39,23 +39,23 @@ Users can also edit their photos in their *Manage* console.
 The user home page is an infinitely scrolling photo feed of their own & their followees' recent posts.   
 
 Users can click on any photo on the site to visit the photo's page in a modal. Photo pages have information about the photo and let users follow the author or like the image.   
-Modals are routed, so a user can send the `/photos/:photoId` link to friends and retain the photo display in a full page instead.
+Photo modals are routed, so a user can send the `/photos/:photoId` link to friends and retain the photo display in a full page instead. Each Modal is rendered based on `showModal` Redux state managed with a `ModalRoot` component.
 
 
 ### Search
 Foton uses PostgreSQL full text search scopes to enable searching photos by details and tags, or users by usernames or locations.
 
-The photo gallery used by the search and profile pages uses a pure CSS image layout based on each image's width and height values.
+The photo gallery used by the search and profile pages uses a pure CSS image layout based on each image's width and height.
 
 ### Discover
-Popular tags and users are picked to be shown on the discover page. Users can browse photos from the returned tags in a carousel or choose to follow a user or visit their profile. Users can also visit an *Editors Choice* page to view a selection of photos.
+Popular tags and users are picked to be shown on the discover page. Users can browse photos from the returned tags in a carousel or choose to follow a user or visit their profile. Users can also visit an *Editors Choice* page to view a predetermined selection of photos.
 
-### Technologies
+## Additional Technologies
 
-- [react-virtualized](https://github.com/bvaughn/react-virtualized): Infinite scrolling and dynamically rendering photos
-- [kaminari](https://github.com/kaminari/kaminari): Paginating rails queries
-- [react-select](https://github.com/JedWatson/react-select): Multiselecting input fields in tag creation
-- [paperclip-meta](https://github.com/teeparham/paperclip-meta): Extracting image width & height attributes for a responsive gallery and resizeable carousels
+- [react-virtualized](https://github.com/bvaughn/react-virtualized) - Infinite scrolling and dynamically rendering photos
+- [kaminari](https://github.com/kaminari/kaminari) - Paginating rails queries
+- [react-select](https://github.com/JedWatson/react-select) - Multiselecting input fields in tag creation
+- [paperclip-meta](https://github.com/teeparham/paperclip-meta) - Extracting image width & height attributes for a responsive gallery and resizeable carousels
   - [CSS responsive gallery layout article](https://github.com/xieranmaya/blog/issues/6)
 
 ## Future Directions
@@ -63,3 +63,4 @@ Popular tags and users are picked to be shown on the discover page. Users can br
 - Google Maps API integration for searching by photo location & proximity
 - Photo processing with filters & pulling image Exif data
 - Drag and drop multi file uploads with Dropzone.js
+- Favoriting photos & building albums
