@@ -9,7 +9,6 @@ class Api::PhotosController < ApplicationController
       following = []
     end
 
-    # TODO: persist @users between fetches, or is the load negligible?
     @users = User
       .includes(:followers, :following, :photos, :profile_photo)
       .where(id: following)

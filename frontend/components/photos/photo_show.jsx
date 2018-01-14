@@ -87,9 +87,9 @@ class PhotoShow extends React.Component {
             {
               photo.tags.length
                 ? <section className="photo-show-sidebar-tags">
-                  <small>Tags</small>
-                  <TagShow tags={photo.tags} />
-                </section>
+                    <small>Tags</small>
+                    <TagShow tags={photo.tags} />
+                  </section>
                 : null
             }
           </section>
