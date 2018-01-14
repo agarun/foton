@@ -21,6 +21,10 @@ Visitors can sign up or log in to the site.
 
 Users can view their own profile or visit and follow other users. Profiles are routed by `/:username` by overriding the User model's `to_param` method. Follow actions are available through Rails `member` routes.
 
+<p align="center">
+<img width=91% src="https://i.imgur.com/1U1ssM1.png" />
+</p>
+
 Users can edit their profiles by updating their information or changing their profile and cover photos.
 
 <p align="center">
@@ -33,7 +37,7 @@ has_one :cover_photo, -> { where is_cover_photo: true }
 has_one :profile_photo, -> { where is_profile_photo: true }
 ```
 
-Users can see their followers & following list in small modals from their profile page. The data is only fetched *if* a user chooses to open either display, but will persist in Redux state should they click on another list on the site with some of the same users.
+Users can see their followers & following list in small modals from their profile page. The data is only fetched *if* a user chooses to open either display, and the data will persist in Redux state should they click on another list on the site with some of the same users.
 
 ### Photo Uploads
 Users can upload photos, which are stored in Amazon Web Services S3 buckets. They can add a title, description, or multiple tags when uploading.
@@ -45,7 +49,7 @@ Users can also edit their photos in their *Manage* console.
 </p>
 
 ### Photo Feed
-The user home page is an infinitely scrolling photo feed of their own & their followees' recent posts.   
+The user home page is an infinitely scrolling photo feed of their own & their followees' recent posts. Several React virtualized higher-order components are used to handle rendering each photo on the feed. Scrolling past the threshold sends an AJAX request to the Rails API with the next index, which then returns the next page of photos in JSON.
 
 <p align="center">
 <img src="https://media.giphy.com/media/3ohc0QaTzNSePJw1W0/giphy.gif" />
@@ -59,14 +63,19 @@ Photo modals are routed - clicking a photo on the site opens the modal in place 
 <img width=91% src="https://i.imgur.com/B9C9t5Q.png" />
 </p>
 
-
 ### Search
 Foton uses PostgreSQL full text search scopes to enable searching photos by details and tags, or users by usernames or locations.
 
-The photo gallery used by the search and profile pages uses a pure CSS image layout based on each image's width and height.
+<p align="center">
+<img width=45% src="https://i.imgur.com/pqr1RZb.png" />
+
+<img width=45% src="https://i.imgur.com/tiuVVMi.png" />
+</p>
+
+The photo gallery used by the search, discover, and profile pages is a reusable component that implements a pure CSS image layout based on each image's width and height.
 
 ### Discover
-Popular tags and users are picked to be shown on the discover page. Users can browse photos from the returned tags in a carousel or choose to follow a user or visit their profile. Users can also visit an *Editors Choice* page to view a predetermined selection of photos.
+Popular tags and users are picked to be shown on the discover page. Users can browse a random selection of photos for each tag in a carousel or click on a recommended user. Users can also visit an *Editors Choice* page to view a predetermined selection of photos.
 
 <p align="center">
 <img width=91% src="https://i.imgur.com/0bWmgQ5.png" />
@@ -83,6 +92,6 @@ Popular tags and users are picked to be shown on the discover page. Users can br
 ## Future Directions
 - Elastic search, fuzzy queries and typeaheads with typeahead.js
 - Google Maps API integration for searching by photo location & proximity
-- Photo processing with filters & pulling image Exif data
+- Image lazy loading, photo processing with filters, and pulling image Exif data
 - Drag and drop multi file uploads with Dropzone.js
 - Favoriting photos & building albums
