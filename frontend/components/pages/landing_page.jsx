@@ -14,7 +14,7 @@ const LandingPage = () => (
       >
         Join Foton
       </Link>
-  </section>
+    </section>
   </section>
 );
 

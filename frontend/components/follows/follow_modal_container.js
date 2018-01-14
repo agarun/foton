@@ -5,9 +5,10 @@ import { fetchUserFollowers, fetchUserFollowing }
 import FollowModal from './follow_modal';
 
 const mapStateToProps = (state, { currentModalProps }) => {
-  const userIds = currentModalProps.requestType === 'FOLLOWING' ?
-      currentModalProps.user.following_ids :
-      currentModalProps.user.follower_ids;
+  const userIds =
+    currentModalProps.requestType === 'FOLLOWING'
+      ? currentModalProps.user.following_ids
+      : currentModalProps.user.follower_ids;
 
   return {
     showModal: state.ui.modal.showModal,
@@ -18,9 +19,9 @@ const mapStateToProps = (state, { currentModalProps }) => {
 
 const mapDispatchToProps = (dispatch, { currentModalProps }) => {
   const processRequest =
-    currentModalProps.requestType === 'FOLLOWING' ?
-    fetchUserFollowing :
-    fetchUserFollowers;
+    currentModalProps.requestType === 'FOLLOWING'
+      ? fetchUserFollowing
+      : fetchUserFollowers;
 
   return {
     toggleFollowsModal: user => dispatch(toggleModal('FOLLOWS', { user })),
