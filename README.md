@@ -6,7 +6,7 @@
 Foton uses Ruby on Rails with a PostgreSQL database on the back end, and React together with Redux on the front end.
 
 <p align="center">
-<a href="https://fotons.herokuapp.com"><img width=80% src="https://i.imgur.com/SPb2a3R.png" /></a>
+<a href="https://fotons.herokuapp.com"><img width=91% src="https://i.imgur.com/SPb2a3R.png" /></a>
 </p>
 
 ## Key Features
@@ -22,13 +22,13 @@ Visitors can sign up or log in to the site.
 Users can view their own profile or visit and follow other users. Profiles are routed by `/:username` by overriding the User model's `to_param` method. Follow actions are available through Rails `member` routes.
 
 <p align="center">
-<img width=80% src="https://i.imgur.com/1U1ssM1.png" />
+<img width=85% src="https://i.imgur.com/1U1ssM1.png" />
 </p>
 
 Users can edit their profiles by updating their information or changing their profile and cover photos.
 
 <p align="center">
-<img width=80% src="https://i.imgur.com/1Hfkj5I.png" />
+<img width=85% src="https://i.imgur.com/1Hfkj5I.png" />
 </p>
 
 Profile images are related to users by `is_profile_photo` and `is_cover_photo` boolean fields. The booleans are stored in the `photos` table with PSQL partial indexes. These photos are accessible by scoped Rails associations:
@@ -45,7 +45,7 @@ Users can upload photos, which are stored in Amazon Web Services S3 buckets. The
 Users can also edit their photos in their *Manage* console.
 
 <p align="center">
-<img width=80% src="https://i.imgur.com/tXYWzMn.png" />
+<img width=85% src="https://i.imgur.com/tXYWzMn.png" />
 </p>
 
 ### Photo Feed
@@ -60,7 +60,7 @@ Users can click on any photo on the site to visit the photo's page in a modal. P
 Photo modals are routed - clicking a photo on the site opens the modal in place with its URL, so a user can copy and send the `/photos/:photoId` link to friends and retain the photo display in a full page instead. Each Modal is rendered based on `showModal` Redux state managed with a `ModalRoot` component.
 
 <p align="center">
-<img width=80% src="https://i.imgur.com/B9C9t5Q.png" />
+<img width=85% src="https://i.imgur.com/B9C9t5Q.png" />
 </p>
 
 ### Search
@@ -78,7 +78,7 @@ The photo gallery used by the search, discover, and profile pages is a reusable 
 Popular tags and users are picked to be shown on the discover page. Users can browse a random selection of photos for each tag in a carousel or click on a recommended user. Users can also visit an *Editors Choice* page to view a predetermined selection of photos.
 
 <p align="center">
-<img width=80% src="https://i.imgur.com/0bWmgQ5.png" />
+<img width=85% src="https://i.imgur.com/0bWmgQ5.png" />
 </p>
 
 ## Technologies
