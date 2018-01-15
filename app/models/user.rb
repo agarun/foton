@@ -105,7 +105,7 @@ class User < ApplicationRecord
 
   def update_cover_photo(new_cover_photo_id)
     db_cover_photo = cover_photo
-    if cover_photo
+    if db_cover_photo
       db_cover_photo.is_cover_photo = false
       db_cover_photo.save!
     end

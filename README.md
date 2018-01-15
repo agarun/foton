@@ -57,7 +57,7 @@ The user home page is an infinitely scrolling photo feed of their own & their fo
 
 Users can click on any photo on the site to visit the photo's page in a modal. Photo pages have information about the photo and let users follow the author or like the image.   
 
-Photo modals are routed - clicking a photo on the site opens the modal in place with its URL, so a user can copy and send the `/photos/:photoId` link to friends and retain the photo display in a full page instead. Each Modal is rendered based on `showModal` Redux state managed with a `ModalRoot` component.
+Photo modals are routed - clicking a photo on the site opens the modal in place with its URL - so a user can copy and send the `/photos/:photoId` link to friends and retain the photo display in a full page instead. Each Modal is rendered based on `showModal` Redux state managed with a `ModalRoot` component.
 
 <p align="center">
 <img width=85% src="https://i.imgur.com/B9C9t5Q.png" />
