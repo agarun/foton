@@ -12,6 +12,7 @@ class PhotoManage extends React.Component {
       description: '',
       tags: [],
       isFetching: true,
+      isSaved: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -27,12 +28,13 @@ class PhotoManage extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.updatePhoto(this.state);
+    this.props.updatePhoto(this.state)
+      .then(() => this.setState({ isSaved: true }));
   }
 
   handleChange(field) {
     return (e) => {
-      this.setState({ [field]: e.target.value });
+      this.setState({ [field]: e.target.value, isSaved: false });
     };
   }
 
@@ -44,6 +46,7 @@ class PhotoManage extends React.Component {
         title: this.props.photos[photoId].title || '',
         description: this.props.photos[photoId].description || '',
         tags: this.formatTags(this.props.photos[photoId].tags) || [],
+        isSaved: false,
       });
     };
   }
@@ -147,14 +150,14 @@ class PhotoManage extends React.Component {
                     onInputChange={value => (
                       value.replace(/[^0-9a-z\s]/i, '').toLowerCase()
                     )}
-                    onChange={tags => this.setState({ tags })}
+                    onChange={tags => this.setState({ tags, isSaved: false })}
                     value={this.state.tags}
                     noResultsText={null}
                     ignoreCase={true}
                     placeholder={'Add some tags'}
                     promptTextCreator={tagName => (
                       <span>
-                        Add tag <span style={{fontWeight: 700}}>{tagName}</span>
+                        Add tag <span style={{ fontWeight: 700 }}>{tagName}</span>
                       </span>
                     )}
                     isValidNewOption={({ label }) => (
@@ -184,7 +187,13 @@ class PhotoManage extends React.Component {
                 <button
                   className="photo-manage-form-buttons-save"
                 >
-                  Save
+                  {
+                    this.state.isSaved
+                      ? <span style={{ fontWeight: 800 }}>
+                          Saved!
+                        </span>
+                      : 'Save'
+                  }
                 </button>
               </section>
             </form>
