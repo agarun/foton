@@ -18,7 +18,8 @@ class Photo < ApplicationRecord
                       large: "1280x1280>",
                       medium: "800x800>",
                       thumb: "100x100>"
-                    }
+                    },
+                    s3_protocol: :https
 
   validates_attachment :image,
                        presence: true,
