@@ -1,6 +1,6 @@
 class Photo < ApplicationRecord
   include PgSearch
-  # TODO: `prefix: true` for only `title`
+  
   pg_search_scope :full_text_search_photos,
                   against: %i[title description],
                   associated_against: { tags: :name }
