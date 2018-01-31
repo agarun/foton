@@ -90,7 +90,7 @@ Popular tags and users are picked to be shown on the discover page. Users can br
   - [CSS responsive gallery layout article](https://github.com/xieranmaya/blog/issues/6)
 
 ## Future Directions
-- Elastic search, fuzzy queries and typeaheads with typeahead.js
+- Elasticsearch integration, fuzzy queries and typeaheads with typeahead.js
 - Google Maps API integration for searching by photo location & proximity
 - Image lazy loading, photo processing with filters, and pulling image Exif data
 - Drag and drop multi file uploads with Dropzone.js
